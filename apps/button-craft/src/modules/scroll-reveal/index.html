@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Scroll Reveal</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="scroll-reveal.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                margin: 0;
+                padding: 2rem;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 1rem;
+            }
+            .spacer {
+                height: 60vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--bc-text-muted);
+            }
+            .card {
+                max-width: 500px;
+                margin: 2rem auto;
+                padding: 2rem;
+                background: var(--bc-surface);
+                border: 1px solid var(--bc-border);
+                border-radius: 1rem;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>📜 Scroll Reveal</h1>
+        <div class="spacer">⬇ Przewiń w dół ⬇</div>
+
+        <div class="card" data-reveal="up">Reveal from bottom (up)</div>
+        <div class="card" data-reveal="left" data-reveal-delay="200">
+            Reveal from left (delay 200ms)
+        </div>
+        <div class="card" data-reveal="right" data-reveal-delay="400">
+            Reveal from right (delay 400ms)
+        </div>
+        <div class="card" data-reveal="zoom">Reveal zoom</div>
+        <div class="card" data-reveal="fade">Reveal fade</div>
+
+        <div class="spacer">Koniec demo</div>
+
+        <script src="scroll-reveal.js"></script>
+    </body>
+</html>

@@ -1,0 +1,929 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft UI Library — Demo</title>
+
+        <!-- Utilities & Theme -->
+        <link rel="stylesheet" href="../src/utils/variables.css" />
+        <link rel="stylesheet" href="../src/utils/mixins.css" />
+        <link rel="stylesheet" href="../src/utils/utilities.css" />
+
+        <!-- Button modules -->
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-3d/btn-3d.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-neon/btn-neon.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-glass/btn-glass.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-ripple/btn-ripple.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-gradient/btn-gradient.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-magnetic/btn-magnetic.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-animated-border/btn-animated-border.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-text-anim/btn-text-anim.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-micro/btn-micro.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/components/buttons/btn-parallax/btn-parallax.css"
+        />
+
+        <!-- UI components -->
+        <link rel="stylesheet" href="../src/components/cards/cards.css" />
+        <link rel="stylesheet" href="../src/components/forms/forms.css" />
+        <link rel="stylesheet" href="../src/components/toggles/toggles.css" />
+        <link rel="stylesheet" href="../src/components/tooltips/tooltips.css" />
+        <link rel="stylesheet" href="../src/components/modals/modals.css" />
+        <link rel="stylesheet" href="../src/components/loaders/loaders.css" />
+
+        <!-- Animations -->
+        <link
+            rel="stylesheet"
+            href="../src/modules/animations/entrance-animations.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/modules/animations/background-animations.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/modules/animations/svg-animations.css"
+        />
+        <link
+            rel="stylesheet"
+            href="../src/modules/scroll-reveal/scroll-reveal.css"
+        />
+
+        <style>
+            /* ── Demo layout ─────────────────────────────────────── */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: var(--bc-font-family, "Inter", sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                margin: 0;
+                line-height: 1.6;
+            }
+
+            .demo-header {
+                text-align: center;
+                padding: 4rem 2rem 3rem;
+                background: linear-gradient(
+                    135deg,
+                    rgba(99, 102, 241, 0.15),
+                    rgba(236, 72, 153, 0.1)
+                );
+                border-bottom: 1px solid var(--bc-border);
+            }
+
+            .demo-header h1 {
+                font-size: 2.5rem;
+                margin: 0 0 0.5rem;
+                background: linear-gradient(
+                    135deg,
+                    var(--bc-color-primary),
+                    var(--bc-color-secondary)
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+
+            .demo-header p {
+                color: var(--bc-text-secondary);
+                max-width: 600px;
+                margin: 0 auto;
+            }
+
+            .demo-nav {
+                display: flex;
+                justify-content: center;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+                padding: 1rem 2rem;
+                background: var(--bc-surface);
+                border-bottom: 1px solid var(--bc-border);
+                position: sticky;
+                top: 0;
+                z-index: 50;
+            }
+
+            .demo-nav a {
+                padding: 0.4rem 1rem;
+                color: var(--bc-text-secondary);
+                text-decoration: none;
+                font-size: 0.85rem;
+                border-radius: var(--bc-radius-full);
+                transition: all 0.2s;
+                font-weight: 500;
+            }
+
+            .demo-nav a:hover {
+                background: var(--bc-surface-hover);
+                color: var(--bc-color-primary);
+            }
+
+            .demo-section {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 3rem 2rem;
+                border-bottom: 1px solid var(--bc-border);
+            }
+
+            .demo-section h2 {
+                font-size: 1.75rem;
+                margin: 0 0 0.5rem;
+                color: var(--bc-text);
+            }
+
+            .demo-section .subtitle {
+                color: var(--bc-text-muted);
+                margin: 0 0 2rem;
+                font-size: 0.95rem;
+            }
+
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                align-items: center;
+                margin-bottom: 1.5rem;
+            }
+
+            .demo-row-label {
+                width: 100%;
+                font-size: 0.8rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 0.05em;
+                color: var(--bc-text-muted);
+                margin-bottom: 0.25rem;
+            }
+
+            .demo-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .demo-bg-box {
+                height: 180px;
+                border-radius: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-weight: 700;
+                font-size: 1.1rem;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .theme-toggle {
+                position: fixed;
+                bottom: 2rem;
+                right: 2rem;
+                z-index: 1000;
+                width: 48px;
+                height: 48px;
+                border-radius: 50%;
+                background: var(--bc-color-primary);
+                color: #fff;
+                border: none;
+                cursor: pointer;
+                font-size: 1.4rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: var(--bc-shadow-lg);
+                transition: transform 0.3s;
+            }
+            .theme-toggle:hover {
+                transform: scale(1.1);
+            }
+
+            .loader-row {
+                display: flex;
+                gap: 3rem;
+                align-items: center;
+                flex-wrap: wrap;
+            }
+
+            .loader-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.75rem;
+                color: var(--bc-text-muted);
+            }
+
+            footer {
+                text-align: center;
+                padding: 2rem;
+                color: var(--bc-text-muted);
+                font-size: 0.85rem;
+                border-top: 1px solid var(--bc-border);
+            }
+
+            footer a {
+                color: var(--bc-color-primary);
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- ─── Header ──────────────────────────────────────── -->
+        <div class="demo-header">
+            <h1>🎨 ButtonCraft UI Library</h1>
+            <p>
+                Kompletna kolekcja gotowych modułów UI — przyciski, animacje,
+                efekty interakcji i komponenty front-endowe.
+            </p>
+        </div>
+
+        <!-- ─── Navigation ──────────────────────────────────── -->
+        <nav class="demo-nav">
+            <a href="#buttons-3d">3D</a>
+            <a href="#buttons-neon">Neon</a>
+            <a href="#buttons-glass">Glass</a>
+            <a href="#buttons-ripple">Ripple</a>
+            <a href="#buttons-gradient">Gradient</a>
+            <a href="#buttons-magnetic">Magnetic</a>
+            <a href="#buttons-border">Border</a>
+            <a href="#buttons-text">Text Anim</a>
+            <a href="#buttons-micro">Micro</a>
+            <a href="#buttons-parallax">Parallax</a>
+            <a href="#cards">Cards</a>
+            <a href="#forms">Forms</a>
+            <a href="#toggles">Toggles</a>
+            <a href="#modals">Modals</a>
+            <a href="#loaders">Loaders</a>
+            <a href="#animations">Animations</a>
+        </nav>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!--                    BUTTONS                         -->
+        <!-- ═══════════════════════════════════════════════════ -->
+
+        <!-- 3D -->
+        <section class="demo-section" id="buttons-3d">
+            <h2>🎲 3D Buttons</h2>
+            <p class="subtitle">
+                Przyciski z efektem trójwymiarowej głębi i animacją wciskania.
+            </p>
+            <div class="demo-row">
+                <button class="btn-3d">Primary</button>
+                <button class="btn-3d btn-3d--secondary">Secondary</button>
+                <button class="btn-3d btn-3d--success">Success</button>
+                <button class="btn-3d btn-3d--danger">Danger</button>
+                <button class="btn-3d btn-3d--warning">Warning</button>
+                <button class="btn-3d btn-3d--dark">Dark</button>
+            </div>
+            <div class="demo-row">
+                <button class="btn-3d btn-3d--sm">Small</button>
+                <button class="btn-3d">Medium</button>
+                <button class="btn-3d btn-3d--lg">Large</button>
+            </div>
+        </section>
+
+        <!-- Neon -->
+        <section
+            class="demo-section"
+            id="buttons-neon"
+            style="background: #0a0a1a"
+        >
+            <h2>💡 Neon Buttons</h2>
+            <p class="subtitle">
+                Świecące przyciski neonowe z animowanym glow.
+            </p>
+            <div class="demo-row">
+                <button class="btn-neon btn-neon--cyan">Cyan</button>
+                <button class="btn-neon btn-neon--pink">Pink</button>
+                <button class="btn-neon btn-neon--green">Green</button>
+                <button class="btn-neon btn-neon--red">Red</button>
+                <button class="btn-neon btn-neon--yellow">Yellow</button>
+                <button class="btn-neon btn-neon--violet">Violet</button>
+            </div>
+            <div class="demo-row">
+                <button class="btn-neon btn-neon--cyan btn-neon--pulse">
+                    Pulsating
+                </button>
+                <button class="btn-neon btn-neon--pink btn-neon--pill">
+                    Pill
+                </button>
+            </div>
+        </section>
+
+        <!-- Glass -->
+        <section
+            class="demo-section"
+            id="buttons-glass"
+            style="
+                background: linear-gradient(135deg, #1a1a3e, #6366f1, #ec4899);
+                border-radius: 0;
+            "
+        >
+            <h2 style="color: #fff">🪟 Glass Buttons</h2>
+            <p class="subtitle" style="color: rgba(255, 255, 255, 0.7)">
+                Efekt glassmorphism — rozmyte tło, przezroczystość.
+            </p>
+            <div class="demo-row">
+                <button class="btn-glass">Default</button>
+                <button class="btn-glass btn-glass--blue">Blue</button>
+                <button class="btn-glass btn-glass--pink">Pink</button>
+                <button class="btn-glass btn-glass--green">Green</button>
+                <button class="btn-glass btn-glass--dark">Dark</button>
+                <button class="btn-glass btn-glass--pill">Pill</button>
+            </div>
+        </section>
+
+        <!-- Ripple -->
+        <section class="demo-section" id="buttons-ripple">
+            <h2>🌊 Ripple Buttons</h2>
+            <p class="subtitle">
+                Kliknij — efekt fali (Material Design ripple).
+            </p>
+            <div class="demo-row">
+                <button class="btn-ripple">Primary</button>
+                <button class="btn-ripple btn-ripple--secondary">
+                    Secondary
+                </button>
+                <button class="btn-ripple btn-ripple--success">Success</button>
+                <button class="btn-ripple btn-ripple--danger">Danger</button>
+                <button class="btn-ripple btn-ripple--outline">Outline</button>
+                <button class="btn-ripple btn-ripple--pill">Pill</button>
+            </div>
+        </section>
+
+        <!-- Gradient -->
+        <section class="demo-section" id="buttons-gradient">
+            <h2>🌈 Gradient Buttons</h2>
+            <p class="subtitle">Dynamiczne gradienty z animacją kolorów.</p>
+            <div class="demo-row">
+                <button class="btn-gradient">Default</button>
+                <button class="btn-gradient btn-gradient--sunset">
+                    Sunset
+                </button>
+                <button class="btn-gradient btn-gradient--ocean">Ocean</button>
+                <button class="btn-gradient btn-gradient--forest">
+                    Forest
+                </button>
+                <button class="btn-gradient btn-gradient--fire">Fire</button>
+                <button
+                    class="btn-gradient btn-gradient--candy btn-gradient--animated"
+                >
+                    Candy
+                </button>
+            </div>
+            <div class="demo-row">
+                <button class="btn-gradient btn-gradient--outline">
+                    Outline gradient
+                </button>
+            </div>
+        </section>
+
+        <!-- Magnetic -->
+        <section class="demo-section" id="buttons-magnetic">
+            <h2>🧲 Magnetic Buttons</h2>
+            <p class="subtitle">
+                Najedź kursorem — przycisk podąży za Twoim ruchem.
+            </p>
+            <div class="demo-row" style="gap: 2rem">
+                <button class="btn-magnetic">Primary</button>
+                <button class="btn-magnetic btn-magnetic--secondary">
+                    Secondary
+                </button>
+                <button class="btn-magnetic btn-magnetic--dark">Dark</button>
+                <button class="btn-magnetic btn-magnetic--outline">
+                    Outline
+                </button>
+            </div>
+        </section>
+
+        <!-- Animated Border -->
+        <section class="demo-section" id="buttons-border">
+            <h2>🔲 Animated Border Buttons</h2>
+            <p class="subtitle">
+                Obracający się gradient na obramowaniu przycisku.
+            </p>
+            <div class="demo-row">
+                <button class="btn-border-anim">Rotating</button>
+                <button class="btn-border-anim btn-border-anim--pulse">
+                    Pulse
+                </button>
+                <button class="btn-border-anim btn-border-anim--thick">
+                    Thick
+                </button>
+                <button class="btn-border-anim btn-border-anim--pill">
+                    Pill
+                </button>
+            </div>
+        </section>
+
+        <!-- Text Animation -->
+        <section class="demo-section" id="buttons-text">
+            <h2>✍️ Text Animation Buttons</h2>
+            <p class="subtitle">Animacje tekstu: glitch, slide, typewriter.</p>
+            <div class="demo-row">
+                <button
+                    class="btn-text-anim btn-text-anim--glitch"
+                    data-text="GLITCH"
+                >
+                    GLITCH
+                </button>
+                <button class="btn-text-anim btn-text-anim--slide">
+                    <span class="btn-text">Hover me</span>
+                    <span class="btn-text-alt">✨ Surprise!</span>
+                </button>
+                <button class="btn-text-anim btn-text-anim--typewriter">
+                    <span class="btn-text">typewriter_</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Micro Interactions -->
+        <section class="demo-section" id="buttons-micro">
+            <h2>⚡ Micro-Interaction Buttons</h2>
+            <p class="subtitle">
+                Hover lift, press spring, loading spinner, success checkmark.
+            </p>
+            <div class="demo-row">
+                <button class="btn-micro">
+                    <span class="btn-icon">🚀</span> Launch
+                </button>
+                <button class="btn-micro btn-micro--secondary">
+                    <span class="btn-icon">❤️</span> Like
+                </button>
+                <button class="btn-micro btn-micro--danger">
+                    <span class="btn-icon">🗑️</span> Delete
+                </button>
+            </div>
+            <div class="demo-row">
+                <span class="demo-row-label"
+                    >Click for loading → success demo:</span
+                >
+                <button class="btn-micro" data-loading-demo>Submit</button>
+                <button class="btn-micro btn-micro--pill" data-loading-demo>
+                    Send
+                </button>
+            </div>
+        </section>
+
+        <!-- Parallax -->
+        <section class="demo-section" id="buttons-parallax">
+            <h2>🎯 Parallax Buttons</h2>
+            <p class="subtitle">Efekt 3D tilt reagujący na ruch kursora.</p>
+            <div class="demo-row" style="gap: 2rem">
+                <button class="btn-parallax">Primary</button>
+                <button class="btn-parallax btn-parallax--pink">Pink</button>
+                <button class="btn-parallax btn-parallax--cyan">Cyan</button>
+                <button class="btn-parallax btn-parallax--dark">Dark</button>
+            </div>
+        </section>
+
+        <!-- ═══════════════════════════════════════════════════ -->
+        <!--                  UI COMPONENTS                     -->
+        <!-- ═══════════════════════════════════════════════════ -->
+
+        <!-- Cards -->
+        <section class="demo-section" id="cards">
+            <h2>🎴 Cards</h2>
+            <p class="subtitle">Karty z hover-efektami, glassmorphism, flip.</p>
+            <div class="demo-grid">
+                <div class="bc-card">
+                    <div class="bc-card__body">
+                        <h3 class="bc-card__title">Standard Card</h3>
+                        <p class="bc-card__text">
+                            Karta z tytułem i opisem. Hover podnosi kartę w
+                            górę.
+                        </p>
+                    </div>
+                </div>
+                <div class="bc-card bc-card--glass">
+                    <div class="bc-card__body">
+                        <h3 class="bc-card__title">Glass Card</h3>
+                        <p class="bc-card__text">
+                            Efekt glassmorphism — rozmyte tło.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div
+                style="display: flex; justify-content: center; margin-top: 2rem"
+            >
+                <div class="bc-card-flip">
+                    <div class="bc-card-flip__inner">
+                        <div class="bc-card-flip__front">
+                            <h3>Front</h3>
+                            <p>Hover to flip →</p>
+                        </div>
+                        <div class="bc-card-flip__back">
+                            <h3>Back</h3>
+                            <p>Tył karty.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forms -->
+        <section class="demo-section" id="forms">
+            <h2>📝 Forms</h2>
+            <p class="subtitle">
+                Floating labels, walidacja, select, textarea.
+            </p>
+            <div
+                style="
+                    max-width: 480px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                "
+            >
+                <div class="bc-field">
+                    <input
+                        class="bc-input"
+                        type="text"
+                        placeholder=" "
+                        id="demo-name"
+                    />
+                    <label class="bc-label" for="demo-name"
+                        >Imię i nazwisko</label
+                    >
+                </div>
+                <div class="bc-field">
+                    <input
+                        class="bc-input"
+                        type="email"
+                        placeholder=" "
+                        id="demo-email"
+                    />
+                    <label class="bc-label" for="demo-email">E-mail</label>
+                </div>
+                <select class="bc-input bc-select">
+                    <option>Wybierz opcję...</option>
+                    <option>Opcja A</option>
+                    <option>Opcja B</option>
+                </select>
+                <textarea
+                    class="bc-input bc-textarea"
+                    placeholder="Wiadomość..."
+                ></textarea>
+                <input class="bc-input bc-input--error" value="Error state" />
+                <input
+                    class="bc-input bc-input--success"
+                    value="Success state"
+                />
+            </div>
+        </section>
+
+        <!-- Toggles -->
+        <section class="demo-section" id="toggles">
+            <h2>🔀 Toggles</h2>
+            <p class="subtitle">Animowane przełączniki (toggle switches).</p>
+            <div style="display: flex; flex-direction: column; gap: 1.25rem">
+                <label class="bc-toggle">
+                    <input class="bc-toggle__input" type="checkbox" checked />
+                    <span class="bc-toggle__track"
+                        ><span class="bc-toggle__thumb"></span
+                    ></span>
+                    Notifications
+                </label>
+                <label class="bc-toggle bc-toggle--success">
+                    <input class="bc-toggle__input" type="checkbox" />
+                    <span class="bc-toggle__track"
+                        ><span class="bc-toggle__thumb"></span
+                    ></span>
+                    Dark Mode
+                </label>
+                <label class="bc-toggle bc-toggle--danger">
+                    <input class="bc-toggle__input" type="checkbox" checked />
+                    <span class="bc-toggle__track"
+                        ><span class="bc-toggle__thumb"></span
+                    ></span>
+                    Danger
+                </label>
+            </div>
+        </section>
+
+        <!-- Tooltips -->
+        <section class="demo-section" id="tooltips" style="padding-top: 4rem">
+            <h2>💬 Tooltips</h2>
+            <p class="subtitle">CSS-only tooltipy. Najedź na element.</p>
+            <div class="demo-row" style="gap: 2rem">
+                <span
+                    data-tooltip="Tooltip u góry"
+                    style="
+                        padding: 0.5rem 1rem;
+                        background: var(--bc-surface);
+                        border: 1px solid var(--bc-border);
+                        border-radius: 0.5rem;
+                        cursor: default;
+                    "
+                    >Top</span
+                >
+                <span
+                    data-tooltip="Tooltip na dole"
+                    data-tooltip-pos="bottom"
+                    style="
+                        padding: 0.5rem 1rem;
+                        background: var(--bc-surface);
+                        border: 1px solid var(--bc-border);
+                        border-radius: 0.5rem;
+                        cursor: default;
+                    "
+                    >Bottom</span
+                >
+                <span
+                    data-tooltip="Lewy tooltip"
+                    data-tooltip-pos="left"
+                    style="
+                        padding: 0.5rem 1rem;
+                        background: var(--bc-surface);
+                        border: 1px solid var(--bc-border);
+                        border-radius: 0.5rem;
+                        cursor: default;
+                    "
+                    >Left</span
+                >
+                <span
+                    data-tooltip="Prawy tooltip"
+                    data-tooltip-pos="right"
+                    style="
+                        padding: 0.5rem 1rem;
+                        background: var(--bc-surface);
+                        border: 1px solid var(--bc-border);
+                        border-radius: 0.5rem;
+                        cursor: default;
+                    "
+                    >Right</span
+                >
+            </div>
+        </section>
+
+        <!-- Modals & Alerts -->
+        <section class="demo-section" id="modals">
+            <h2>🪟 Modals & Alerts</h2>
+            <p class="subtitle">Okna modalne i alerty inline.</p>
+            <div class="demo-row">
+                <button class="btn-ripple" data-modal-open="demo-modal">
+                    Otwórz modal
+                </button>
+            </div>
+            <div style="max-width: 600px; margin-top: 1rem">
+                <div class="bc-alert bc-alert--info">
+                    ℹ️ To jest alert informacyjny.
+                </div>
+                <div class="bc-alert bc-alert--success">
+                    ✅ Sukces — operacja zakończona.
+                </div>
+                <div class="bc-alert bc-alert--warning">
+                    ⚠️ Uwaga — coś wymaga uwagi.
+                </div>
+                <div class="bc-alert bc-alert--danger">
+                    ❌ Błąd — wystąpił problem.
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal instance -->
+        <div class="bc-modal-overlay" id="demo-modal">
+            <div class="bc-modal">
+                <div class="bc-modal__header">
+                    <h2 class="bc-modal__title">Demo Modal</h2>
+                    <button class="bc-modal__close">&times;</button>
+                </div>
+                <div class="bc-modal__body">
+                    <p>
+                        To jest okno modalne z biblioteki ButtonCraft UI.
+                        Kliknij tło, X lub ESC aby zamknąć.
+                    </p>
+                </div>
+                <div class="bc-modal__footer">
+                    <button
+                        class="btn-ripple btn-ripple--outline"
+                        data-modal-close
+                    >
+                        Anuluj
+                    </button>
+                    <button class="btn-ripple" data-modal-close>
+                        Potwierdź
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loaders -->
+        <section class="demo-section" id="loaders">
+            <h2>⏳ Animated Loaders</h2>
+            <p class="subtitle">Kolekcja animowanych wskaźników ładowania.</p>
+            <div class="loader-row">
+                <div class="loader-box">
+                    <div class="bc-loader-spin"></div>
+                    Spinner
+                </div>
+                <div class="loader-box">
+                    <div class="bc-loader-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    Dots
+                </div>
+                <div class="loader-box">
+                    <div class="bc-loader-bars">
+                        <span></span><span></span><span></span><span></span
+                        ><span></span>
+                    </div>
+                    Bars
+                </div>
+                <div class="loader-box">
+                    <div class="bc-loader-pulse"></div>
+                    Pulse
+                </div>
+                <div class="loader-box">
+                    <div class="bc-loader-gradient"></div>
+                    Gradient
+                </div>
+            </div>
+        </section>
+
+        <!-- Animations -->
+        <section class="demo-section" id="animations">
+            <h2>✨ Animations</h2>
+            <p class="subtitle">Animacje wejścia, tła i SVG.</p>
+
+            <span class="demo-row-label">Entrance Animations</span>
+            <div class="demo-grid" style="margin-bottom: 2rem">
+                <div
+                    class="bc-card bc-fade-in"
+                    style="text-align: center; padding: 1.5rem"
+                >
+                    fade-in
+                </div>
+                <div
+                    class="bc-card bc-fade-in-up bc-delay-100"
+                    style="text-align: center; padding: 1.5rem"
+                >
+                    fade-in-up
+                </div>
+                <div
+                    class="bc-card bc-zoom-in bc-delay-200"
+                    style="text-align: center; padding: 1.5rem"
+                >
+                    zoom-in
+                </div>
+                <div
+                    class="bc-card bc-bounce-in bc-delay-300"
+                    style="text-align: center; padding: 1.5rem"
+                >
+                    bounce-in
+                </div>
+            </div>
+
+            <span class="demo-row-label">Background Animations</span>
+            <div class="demo-grid" style="margin-bottom: 2rem">
+                <div class="demo-bg-box bc-bg-gradient-anim">
+                    Gradient Shift
+                </div>
+                <div
+                    class="demo-bg-box bc-bg-aurora"
+                    style="background: #0f172a"
+                >
+                    Aurora
+                </div>
+                <div class="demo-bg-box bc-bg-wave" style="background: #0f172a">
+                    Waves
+                </div>
+            </div>
+
+            <span class="demo-row-label">SVG Animations</span>
+            <div class="demo-row" style="gap: 2rem">
+                <svg
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#6366f1"
+                    stroke-width="2"
+                >
+                    <circle class="bc-svg-draw" cx="12" cy="12" r="10" />
+                    <path
+                        class="bc-svg-draw"
+                        d="M8 12l2.5 2.5L16 9"
+                        style="animation-delay: 0.5s"
+                    />
+                </svg>
+                <svg
+                    class="bc-svg-rotate"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#ec4899"
+                    stroke-width="2"
+                >
+                    <path
+                        d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07l-2.83 2.83M9.76 14.24l-2.83 2.83m11.14 0l-2.83-2.83M9.76 9.76L6.93 6.93"
+                    />
+                </svg>
+                <svg
+                    class="bc-svg-pulse"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="#22c55e"
+                >
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                </svg>
+                <svg
+                    class="bc-svg-bounce"
+                    width="48"
+                    height="48"
+                    viewBox="0 0 24 24"
+                    fill="#f59e0b"
+                >
+                    <path
+                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"
+                    />
+                </svg>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>
+                ButtonCraft UI Library — &copy; 2026
+                <a href="https://github.com/0xR3TRO" target="_blank">0xR3TRO</a
+                >. Licencja MIT.
+            </p>
+        </footer>
+
+        <!-- Theme toggle FAB -->
+        <button class="theme-toggle" id="themeToggle" title="Toggle theme">
+            🌓
+        </button>
+
+        <!-- ─── Scripts ─────────────────────────────────────── -->
+        <script src="../src/components/buttons/btn-3d/btn-3d.js"></script>
+        <script src="../src/components/buttons/btn-neon/btn-neon.js"></script>
+        <script src="../src/components/buttons/btn-glass/btn-glass.js"></script>
+        <script src="../src/components/buttons/btn-ripple/btn-ripple.js"></script>
+        <script src="../src/components/buttons/btn-gradient/btn-gradient.js"></script>
+        <script src="../src/components/buttons/btn-magnetic/btn-magnetic.js"></script>
+        <script src="../src/components/buttons/btn-animated-border/btn-animated-border.js"></script>
+        <script src="../src/components/buttons/btn-text-anim/btn-text-anim.js"></script>
+        <script src="../src/components/buttons/btn-micro/btn-micro.js"></script>
+        <script src="../src/components/buttons/btn-parallax/btn-parallax.js"></script>
+        <script src="../src/components/forms/forms.js"></script>
+        <script src="../src/components/modals/modals.js"></script>
+        <script src="../src/modules/scroll-reveal/scroll-reveal.js"></script>
+
+        <script>
+            // Theme toggle
+            const btn = document.getElementById("themeToggle");
+            const stored = localStorage.getItem("bc-theme");
+            if (stored)
+                document.documentElement.setAttribute("data-theme", stored);
+
+            btn.addEventListener("click", () => {
+                const current =
+                    document.documentElement.getAttribute("data-theme") ||
+                    "light";
+                const next = current === "light" ? "dark" : "light";
+                document.documentElement.setAttribute("data-theme", next);
+                localStorage.setItem("bc-theme", next);
+            });
+        </script>
+    </body>
+</html>

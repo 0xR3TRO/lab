@@ -1,0 +1,529 @@
+/* ================================================================
+   AccessPoint — Styles
+   Modern, minimalist, mobile-first auth UI.
+   ================================================================ */
+
+/* ── Custom Properties ─────────────────────────────── */
+
+:root {
+    /* palette */
+    --c-bg: #f4f6f9;
+    --c-surface: #ffffff;
+    --c-primary: #4f46e5;
+    --c-primary-hover: #4338ca;
+    --c-primary-light: #e0e7ff;
+    --c-text: #1e293b;
+    --c-text-muted: #64748b;
+    --c-border: #e2e8f0;
+    --c-border-focus: #a5b4fc;
+    --c-error: #ef4444;
+    --c-error-bg: #fef2f2;
+    --c-success: #22c55e;
+    --c-success-bg: #f0fdf4;
+    --c-warning: #f59e0b;
+
+    /* spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+    /* radii */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.625rem;
+    --radius-lg: 1rem;
+
+    /* shadows */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.12);
+
+    /* transitions */
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    --dur: 0.25s;
+}
+
+/* ── Reset / Base ──────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family:
+        "Inter",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    color: var(--c-text);
+    background: var(--c-bg);
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+a {
+    color: var(--c-primary);
+    text-decoration: none;
+    transition: color var(--dur) var(--ease);
+}
+a:hover {
+    color: var(--c-primary-hover);
+}
+
+/* ── Layout ────────────────────────────────────────── */
+
+.app {
+    width: 100%;
+    max-width: 420px;
+    padding: var(--space-md);
+}
+
+/* ── Card ──────────────────────────────────────────── */
+
+.card {
+    background: var(--c-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    padding: var(--space-2xl) var(--space-xl);
+    width: 100%;
+}
+
+/* ── Views ─────────────────────────────────────────── */
+
+.view {
+    display: none;
+    animation: fadeSlideIn var(--dur) var(--ease) both;
+}
+
+.view--active {
+    display: block;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ── Heading ───────────────────────────────────────── */
+
+.card__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.card__logo svg {
+    width: 32px;
+    height: 32px;
+    color: var(--c-primary);
+}
+
+.card__logo-text {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    letter-spacing: -0.02em;
+}
+
+.card__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: var(--space-xs);
+    letter-spacing: -0.02em;
+}
+
+.card__subtitle {
+    font-size: 0.875rem;
+    color: var(--c-text-muted);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+/* ── Form / Fields ─────────────────────────────────── */
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.field__label {
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--c-text);
+}
+
+.field__input-wrap {
+    position: relative;
+}
+
+.field__input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 0.9375rem;
+    font-family: inherit;
+    color: var(--c-text);
+    background: var(--c-bg);
+    border: 1.5px solid var(--c-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    transition:
+        border-color var(--dur) var(--ease),
+        box-shadow var(--dur) var(--ease);
+}
+
+.field__input::placeholder {
+    color: var(--c-text-muted);
+}
+
+.field__input:focus {
+    border-color: var(--c-border-focus);
+    box-shadow: 0 0 0 3px var(--c-primary-light);
+}
+
+.field__input--error {
+    border-color: var(--c-error);
+}
+
+.field__input--error:focus {
+    box-shadow: 0 0 0 3px var(--c-error-bg);
+}
+
+.field__icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--c-text-muted);
+    pointer-events: none;
+    width: 18px;
+    height: 18px;
+}
+
+.field__toggle-pw {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--c-text-muted);
+    padding: 0;
+    display: flex;
+    align-items: center;
+}
+
+.field__toggle-pw:hover {
+    color: var(--c-text);
+}
+
+.field__toggle-pw svg {
+    width: 18px;
+    height: 18px;
+}
+
+.field__error {
+    font-size: 0.75rem;
+    color: var(--c-error);
+    min-height: 1rem;
+    line-height: 1rem;
+}
+
+.field__input:has(~ .field__toggle-pw),
+.field__input--has-toggle {
+    padding-right: 2.75rem;
+}
+
+/* ── Password Strength ─────────────────────────────── */
+
+.strength {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-xs);
+}
+
+.strength__bar {
+    display: flex;
+    gap: 3px;
+    flex: 1;
+}
+
+.strength__segment {
+    height: 4px;
+    flex: 1;
+    border-radius: 2px;
+    background: var(--c-border);
+    transition: background var(--dur) var(--ease);
+}
+
+.strength__label {
+    font-size: 0.6875rem;
+    font-weight: 600;
+    min-width: 50px;
+    text-align: right;
+    transition: color var(--dur) var(--ease);
+}
+
+/* ── Buttons ───────────────────────────────────────── */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition:
+        background var(--dur) var(--ease),
+        transform 0.1s var(--ease),
+        opacity var(--dur) var(--ease);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn--primary {
+    background: var(--c-primary);
+    color: #fff;
+    width: 100%;
+}
+
+.btn--primary:hover {
+    background: var(--c-primary-hover);
+}
+
+.btn--primary:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.btn--ghost {
+    background: transparent;
+    color: var(--c-primary);
+    padding: 0.5rem 1rem;
+}
+
+.btn--ghost:hover {
+    background: var(--c-primary-light);
+}
+
+.btn--danger {
+    background: var(--c-error);
+    color: #fff;
+}
+
+.btn--danger:hover {
+    background: #dc2626;
+}
+
+/* Loading spinner on buttons */
+.btn--loading {
+    pointer-events: none;
+    position: relative;
+    color: transparent !important;
+}
+
+.btn--loading::after {
+    content: "";
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Messages ──────────────────────────────────────── */
+
+.message {
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeSlideIn var(--dur) var(--ease);
+}
+
+.message[hidden] {
+    display: none;
+}
+
+.message--error {
+    background: var(--c-error-bg);
+    color: var(--c-error);
+}
+
+.message--success {
+    background: var(--c-success-bg);
+    color: var(--c-success);
+}
+
+/* ── Links / Footer ────────────────────────────────── */
+
+.card__footer {
+    text-align: center;
+    margin-top: var(--space-lg);
+    font-size: 0.8125rem;
+    color: var(--c-text-muted);
+}
+
+.card__footer a {
+    font-weight: 600;
+}
+
+/* ── Dashboard ─────────────────────────────────────── */
+
+.dashboard__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-xl);
+}
+
+.dashboard__greeting {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.dashboard__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin-bottom: var(--space-xl);
+}
+
+.dashboard__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+    border-bottom: 1px solid var(--c-border);
+    font-size: 0.875rem;
+}
+
+.dashboard__label {
+    color: var(--c-text-muted);
+    font-weight: 500;
+}
+
+.dashboard__value {
+    font-weight: 600;
+    color: var(--c-text);
+    text-align: right;
+    word-break: break-all;
+}
+
+.dashboard__actions {
+    display: flex;
+    justify-content: center;
+}
+
+/* ── Recovery Token Display (demo) ─────────────────── */
+
+.token-display {
+    margin-top: var(--space-md);
+    padding: var(--space-md);
+    background: var(--c-primary-light);
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    word-break: break-all;
+    text-align: center;
+    color: var(--c-primary);
+    font-family: "SF Mono", "Fira Code", monospace;
+}
+
+.token-display__label {
+    display: block;
+    font-family: inherit;
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ── Responsive ────────────────────────────────────── */
+
+@media (min-width: 480px) {
+    .app {
+        padding: var(--space-xl);
+    }
+
+    .card {
+        padding: var(--space-2xl);
+    }
+}
+
+@media (min-width: 768px) {
+    .card__title {
+        font-size: 1.75rem;
+    }
+}
+
+/* ── Accessibility ─────────────────────────────────── */
+
+:focus-visible {
+    outline: 2px solid var(--c-primary);
+    outline-offset: 2px;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}

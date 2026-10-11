@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Forms</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="forms.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                margin: 0;
+                padding: 2rem;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                min-height: 100vh;
+            }
+            .form-demo {
+                max-width: 480px;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            h1 {
+                margin-bottom: 2rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>📝 Forms</h1>
+
+        <div class="form-demo">
+            <!-- Floating label -->
+            <div class="bc-field">
+                <input class="bc-input" type="text" placeholder=" " id="name" />
+                <label class="bc-label" for="name">Imię i nazwisko</label>
+            </div>
+
+            <div class="bc-field">
+                <input
+                    class="bc-input"
+                    type="email"
+                    placeholder=" "
+                    id="email"
+                />
+                <label class="bc-label" for="email">Adres e-mail</label>
+            </div>
+
+            <!-- Standard input -->
+            <input class="bc-input" type="text" placeholder="Standard input" />
+
+            <!-- Select -->
+            <select class="bc-input bc-select">
+                <option value="">Wybierz opcję...</option>
+                <option value="1">Opcja 1</option>
+                <option value="2">Opcja 2</option>
+                <option value="3">Opcja 3</option>
+            </select>
+
+            <!-- Textarea -->
+            <textarea
+                class="bc-input bc-textarea"
+                placeholder="Twoja wiadomość..."
+            ></textarea>
+
+            <!-- Validation -->
+            <input
+                class="bc-input bc-input--error"
+                type="text"
+                value="Niepoprawna wartość"
+            />
+            <span class="bc-hint bc-hint--error">To pole jest wymagane.</span>
+
+            <input
+                class="bc-input bc-input--success"
+                type="text"
+                value="Poprawna wartość"
+            />
+            <span class="bc-hint bc-hint--success">Wygląda dobrze!</span>
+
+            <!-- Checkbox / Radio -->
+            <label class="bc-checkbox"
+                ><input type="checkbox" /> Zgadzam się z regulaminem</label
+            >
+            <label class="bc-radio"
+                ><input type="radio" name="opt" checked /> Opcja A</label
+            >
+            <label class="bc-radio"
+                ><input type="radio" name="opt" /> Opcja B</label
+            >
+        </div>
+
+        <script src="forms.js"></script>
+    </body>
+</html>

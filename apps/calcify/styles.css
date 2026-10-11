@@ -1,0 +1,343 @@
+/* ==========================================================================
+   Calcify — Styles
+   Modern, responsive calculator with light/dark theme support.
+   ========================================================================== */
+
+/* ---------- Custom Properties ---------- */
+:root {
+    /* Light theme (default) */
+    --clr-bg: #f0f4f8;
+    --clr-surface: #ffffff;
+    --clr-display-bg: #e8edf2;
+    --clr-text: #1e293b;
+    --clr-text-muted: #64748b;
+    --clr-btn: #e2e8f0;
+    --clr-btn-hover: #cbd5e1;
+    --clr-btn-active: #b0bec5;
+    --clr-operator: #6366f1;
+    --clr-operator-hover: #4f46e5;
+    --clr-operator-text: #ffffff;
+    --clr-action: #f1f5f9;
+    --clr-action-text: #475569;
+    --clr-equals: #6366f1;
+    --clr-equals-hover: #4f46e5;
+    --clr-equals-text: #ffffff;
+    --clr-shadow: rgba(0, 0, 0, 0.06);
+    --clr-footer: #94a3b8;
+    --clr-link: #6366f1;
+    --radius: 14px;
+    --transition: 0.2s ease;
+}
+
+[data-theme="dark"] {
+    --clr-bg: #0f172a;
+    --clr-surface: #1e293b;
+    --clr-display-bg: #162032;
+    --clr-text: #f1f5f9;
+    --clr-text-muted: #94a3b8;
+    --clr-btn: #334155;
+    --clr-btn-hover: #475569;
+    --clr-btn-active: #64748b;
+    --clr-operator: #818cf8;
+    --clr-operator-hover: #6366f1;
+    --clr-operator-text: #ffffff;
+    --clr-action: #1e293b;
+    --clr-action-text: #94a3b8;
+    --clr-equals: #818cf8;
+    --clr-equals-hover: #6366f1;
+    --clr-equals-text: #ffffff;
+    --clr-shadow: rgba(0, 0, 0, 0.25);
+    --clr-footer: #64748b;
+    --clr-link: #818cf8;
+}
+
+/* ---------- Reset ---------- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- Base ---------- */
+html {
+    font-size: 16px;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family:
+        "Inter",
+        "SF Pro Display",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Helvetica,
+        Arial,
+        sans-serif;
+    background: var(--clr-bg);
+    color: var(--clr-text);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+/* ---------- App Wrapper ---------- */
+.app {
+    width: 100%;
+    max-width: 380px;
+    padding: 20px;
+}
+
+/* ---------- Header ---------- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.header__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--clr-text);
+}
+
+/* ---------- Theme Toggle ---------- */
+.theme-toggle {
+    background: var(--clr-btn);
+    border: none;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        transform var(--transition);
+    box-shadow: 0 2px 8px var(--clr-shadow);
+}
+
+.theme-toggle:hover {
+    background: var(--clr-btn-hover);
+    transform: rotate(15deg);
+}
+
+.theme-toggle:focus-visible {
+    outline: 2px solid var(--clr-operator);
+    outline-offset: 2px;
+}
+
+.theme-toggle__icon {
+    font-size: 1.25rem;
+    line-height: 1;
+    color: var(--clr-text);
+    transition: color var(--transition);
+}
+
+/* ---------- Calculator ---------- */
+.calculator {
+    background: var(--clr-surface);
+    border-radius: calc(var(--radius) + 6px);
+    box-shadow: 0 8px 30px var(--clr-shadow);
+    overflow: hidden;
+    transition:
+        background var(--transition),
+        box-shadow var(--transition);
+}
+
+/* ---------- Display ---------- */
+.display {
+    background: var(--clr-display-bg);
+    padding: 24px 24px 20px;
+    text-align: right;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: background var(--transition);
+}
+
+.display__equation {
+    font-size: 0.9rem;
+    color: var(--clr-text-muted);
+    min-height: 1.4em;
+    word-break: break-all;
+    transition: color var(--transition);
+}
+
+.display__value {
+    font-size: 2.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    word-break: break-all;
+    color: var(--clr-text);
+    transition: color var(--transition);
+}
+
+/* ---------- Buttons Grid ---------- */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 16px;
+}
+
+/* ---------- Base Button ---------- */
+.btn {
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: none;
+    border-radius: var(--radius);
+    background: var(--clr-btn);
+    color: var(--clr-text);
+    padding: 18px 0;
+    cursor: pointer;
+    user-select: none;
+    transition:
+        background var(--transition),
+        transform 0.1s ease,
+        box-shadow var(--transition),
+        color var(--transition);
+}
+
+.btn:hover {
+    background: var(--clr-btn-hover);
+}
+
+.btn:active {
+    transform: scale(0.93);
+    background: var(--clr-btn-active);
+}
+
+.btn:focus-visible {
+    outline: 2px solid var(--clr-operator);
+    outline-offset: 2px;
+}
+
+/* Click animation class applied via JS */
+.btn--pop {
+    animation: btnPop 0.15s ease;
+}
+
+@keyframes btnPop {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* ---------- Action Buttons (C, DEL) ---------- */
+.btn--action {
+    background: var(--clr-action);
+    color: var(--clr-action-text);
+    font-weight: 600;
+}
+
+.btn--action:hover {
+    background: var(--clr-btn-hover);
+}
+
+/* ---------- Operator Buttons ---------- */
+.btn--operator {
+    background: var(--clr-operator);
+    color: var(--clr-operator-text);
+}
+
+.btn--operator:hover {
+    background: var(--clr-operator-hover);
+}
+
+.btn--operator:active {
+    background: var(--clr-operator-hover);
+}
+
+/* ---------- Equals Button ---------- */
+.btn--equals {
+    grid-row: span 2;
+    background: var(--clr-equals);
+    color: var(--clr-equals-text);
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+.btn--equals:hover {
+    background: var(--clr-equals-hover);
+}
+
+.btn--equals:active {
+    background: var(--clr-equals-hover);
+}
+
+/* ---------- Zero Button (spans two columns) ---------- */
+.btn--zero {
+    grid-column: span 2;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 0.75rem;
+    color: var(--clr-footer);
+    transition: color var(--transition);
+}
+
+.footer a {
+    color: var(--clr-link);
+    text-decoration: none;
+    transition: color var(--transition);
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 420px) {
+    .app {
+        padding: 12px;
+        max-width: 100%;
+    }
+
+    .display {
+        padding: 18px 16px 14px;
+        min-height: 100px;
+    }
+
+    .display__value {
+        font-size: 2rem;
+    }
+
+    .buttons {
+        gap: 8px;
+        padding: 12px;
+    }
+
+    .btn {
+        padding: 15px 0;
+        font-size: 1.05rem;
+        border-radius: 12px;
+    }
+}
+
+@media (min-width: 600px) {
+    .display__value {
+        font-size: 3rem;
+    }
+}

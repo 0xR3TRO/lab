@@ -1,0 +1,24 @@
+{
+    "id": "classic",
+    "name": "Classic",
+    "description": "Timeless elegance with warm tones",
+    "colors": {
+        "background": "#f5f0e8",
+        "dialFace": "#fffef9",
+        "dialBorder": "#8b7355",
+        "hourHand": "#2c2c2c",
+        "minuteHand": "#2c2c2c",
+        "secondHand": "#c0392b",
+        "centerDot": "#2c2c2c",
+        "hourMarkers": "#2c2c2c",
+        "minuteMarkers": "#999999",
+        "numbers": "#333333",
+        "shadow": "rgba(0, 0, 0, 0.15)",
+        "accent": "#c0392b",
+        "digitalText": "#333333"
+    },
+    "meta": {
+        "category": "light",
+        "author": "TempoDial"
+    }
+}

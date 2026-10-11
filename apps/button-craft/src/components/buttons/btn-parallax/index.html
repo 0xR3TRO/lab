@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Parallax Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-parallax.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 2rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🎯 Parallax Buttons</h1>
+        <p>Najedź kursorem — efekt 3D tilt z blask wewnętrznym.</p>
+
+        <div class="demo-row">
+            <button class="btn-parallax">Primary</button>
+            <button class="btn-parallax btn-parallax--pink">Pink</button>
+            <button class="btn-parallax btn-parallax--cyan">Cyan</button>
+            <button class="btn-parallax btn-parallax--dark">Dark</button>
+        </div>
+
+        <script src="btn-parallax.js"></script>
+    </body>
+</html>

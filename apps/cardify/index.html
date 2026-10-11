@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en" data-ui-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cardify Creator</title>
+  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="../../shared/fonts/fonts.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand-block">
+      <span class="brand-mark" aria-hidden="true">◈</span>
+      <div>
+        <p class="brand-kicker">Digital Personal Card Builder</p>
+        <h1 class="brand-title">Cardify Creator</h1>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button type="button" class="icon-button" id="theme-toggle" aria-label="Toggle light and dark mode">
+        Dark
+      </button>
+      <button type="button" class="icon-button mobile-only" id="mobile-panel-toggle" aria-label="Toggle editor panel">
+        Editor
+      </button>
+    </div>
+  </header>
+
+  <main class="app-shell">
+    <aside class="editor-panel" id="editor-panel" aria-label="Card editor">
+      <form id="cardify-form" class="editor-form" autocomplete="off">
+        <details class="panel-block" open>
+          <summary class="panel-title">Identity</summary>
+          <div class="panel-content">
+            <label class="field-label" for="first-name">First Name</label>
+            <input class="field-input" type="text" id="first-name" placeholder="Avery" />
+
+            <label class="field-label" for="last-name">Last Name</label>
+            <input class="field-input" type="text" id="last-name" placeholder="Stone" />
+
+            <label class="field-label" for="profession">Profession</label>
+            <input class="field-input" type="text" id="profession" placeholder="Product Engineer" />
+
+            <label class="field-label" for="bio">Bio</label>
+            <textarea class="field-input field-textarea" id="bio" rows="4" placeholder="Short profile summary"></textarea>
+
+            <div class="photo-row">
+              <label class="field-label" for="profile-photo">Profile Photo</label>
+              <input type="file" id="profile-photo" accept="image/*" hidden />
+              <div class="photo-actions">
+                <button type="button" class="secondary-button" id="upload-photo">Upload</button>
+                <button type="button" class="secondary-button" id="remove-photo">Remove</button>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <details class="panel-block" open>
+          <summary class="panel-title">Social Links</summary>
+          <div class="panel-content">
+            <div id="social-rows" class="social-rows" aria-live="polite"></div>
+            <button type="button" class="secondary-button" id="add-social">Add Social Link</button>
+          </div>
+        </details>
+
+        <details class="panel-block" open>
+          <summary class="panel-title">Appearance</summary>
+          <div class="panel-content">
+            <p class="field-label">Layout</p>
+            <div class="segmented-control" id="layout-control">
+              <button type="button" class="segment is-active" data-layout="vertical">Vertical</button>
+              <button type="button" class="segment" data-layout="horizontal">Horizontal</button>
+              <button type="button" class="segment" data-layout="compact">Compact</button>
+            </div>
+
+            <p class="field-label">Icon Style</p>
+            <div class="segmented-control" id="icon-style-control">
+              <button type="button" class="segment is-active" data-icon-style="filled">Filled</button>
+              <button type="button" class="segment" data-icon-style="outline">Outline</button>
+              <button type="button" class="segment" data-icon-style="minimal">Minimal</button>
+            </div>
+
+            <label class="field-label" for="font-family">Font</label>
+            <select class="field-input" id="font-family">
+              <option value="Space Grotesk">Space Grotesk</option>
+              <option value="Manrope">Manrope</option>
+              <option value="Sora">Sora</option>
+              <option value="Playfair Display">Playfair Display</option>
+              <option value="Libre Baskerville">Libre Baskerville</option>
+            </select>
+
+            <label class="field-label color-label" for="background-color">Card Background</label>
+            <input class="field-color" type="color" id="background-color" />
+
+            <label class="field-label color-label" for="text-color">Text Color</label>
+            <input class="field-color" type="color" id="text-color" />
+
+            <label class="field-label color-label" for="accent-color">Accent Color</label>
+            <input class="field-color" type="color" id="accent-color" />
+
+            <label class="field-label" for="border-radius">
+              Border Radius <span id="border-radius-value" class="value-chip">24px</span>
+            </label>
+            <input type="range" id="border-radius" min="0" max="48" value="24" />
+
+            <label class="field-label" for="shadow-level">
+              Shadow <span id="shadow-level-value" class="value-chip">Medium</span>
+            </label>
+            <input type="range" id="shadow-level" min="0" max="3" value="2" step="1" />
+
+            <label class="field-label" for="spacing-level">
+              Spacing <span id="spacing-level-value" class="value-chip">24px</span>
+            </label>
+            <input type="range" id="spacing-level" min="12" max="42" value="24" step="1" />
+          </div>
+        </details>
+
+        <details class="panel-block" open>
+          <summary class="panel-title">Templates</summary>
+          <div class="panel-content">
+            <p class="field-label">Starter Templates</p>
+            <div class="template-grid" id="starter-templates"></div>
+
+            <p class="field-label">Saved Templates</p>
+            <div class="template-grid" id="saved-templates"></div>
+
+            <div class="template-actions">
+              <button type="button" class="primary-button" id="save-template">Save Current Template</button>
+              <button type="button" class="secondary-button" id="export-templates">Export Templates JSON</button>
+              <button type="button" class="secondary-button" id="import-templates">Import Templates JSON</button>
+              <input type="file" id="import-templates-input" accept="application/json,.json" hidden />
+            </div>
+          </div>
+        </details>
+      </form>
+    </aside>
+
+    <section class="preview-panel" aria-label="Card preview and export">
+      <div class="preview-toolbar">
+        <h2>Live Preview</h2>
+        <div class="export-actions">
+          <button type="button" class="primary-button" id="export-png">PNG</button>
+          <button type="button" class="primary-button" id="export-svg">SVG</button>
+          <button type="button" class="primary-button" id="export-pdf">PDF</button>
+          <button type="button" class="primary-button" id="export-json">JSON</button>
+          <button type="button" class="primary-button" id="export-html">HTML</button>
+        </div>
+      </div>
+
+      <div class="preview-stage" id="preview-stage">
+        <div class="preview-frame" id="preview-frame">
+          <div class="preview-scale-layer" id="preview-scale-layer">
+            <article id="card-preview" class="cardify-card layout-vertical" aria-label="Personal card preview">
+              <div class="card-accent-strip" aria-hidden="true"></div>
+
+              <figure class="card-photo-slot">
+                <img id="preview-photo" class="card-photo" alt="Profile preview" />
+                <div id="preview-avatar-fallback" class="avatar-fallback" aria-hidden="true">A</div>
+              </figure>
+
+              <section class="card-content">
+                <h3 id="preview-name" class="card-name">Avery Stone</h3>
+                <p id="preview-profession" class="card-profession">Product Engineer</p>
+                <p id="preview-bio" class="card-bio">Building crisp interfaces and useful tooling for modern teams.</p>
+                <nav id="preview-social-links" class="card-social-links" aria-label="Social links"></nav>
+              </section>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <script src="assets/libs/html2canvas.min.js"></script>
+  <script src="assets/libs/jspdf.umd.min.js"></script>
+  <script type="module" src="js/main.js"></script>
+    <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

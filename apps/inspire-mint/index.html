@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8" />
+        <title>InspireMint — Motivational Quote Generator</title>
+        <meta
+            name="description"
+            content="A personalized motivational quote generator with category filtering, dark mode, and modern UI."
+        />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <a href="#" class="logo" aria-label="InspireMint home">
+                <img src="assets/logo.svg" alt="" class="logo-icon" />
+                <span class="logo-text">Inspire<span>Mint</span></span>
+            </a>
+            <button id="theme-toggle" aria-label="Toggle dark mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+        </nav>
+
+        <!-- Main -->
+        <main class="main-content">
+            <!-- Quote Card -->
+            <div id="quote-card" class="quote-card fade-in">
+                <p id="quote-text">Loading inspiration…</p>
+                <p id="quote-author"></p>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="actions">
+                <button id="btn-generate" class="btn btn-primary">
+                    &#x21bb; Generate New Quote
+                </button>
+                <button
+                    id="btn-customize-toggle"
+                    class="btn btn-secondary"
+                    aria-expanded="false"
+                    aria-controls="customize-panel"
+                >
+                    &#x2699; Customize
+                </button>
+            </div>
+
+            <!-- Customize Panel -->
+            <div
+                id="customize-panel"
+                class="customize-panel"
+                role="region"
+                aria-label="Customization options"
+            >
+                <div class="panel-section">
+                    <span class="panel-label">Category</span>
+                    <div id="category-options" class="chip-group"></div>
+                </div>
+
+                <div class="panel-section">
+                    <span class="panel-label">Tags / Themes</span>
+                    <div id="tag-options" class="chip-group"></div>
+                </div>
+
+                <div class="panel-section">
+                    <span class="panel-label">Keywords</span>
+                    <input
+                        id="keyword-input"
+                        class="keyword-input"
+                        type="text"
+                        placeholder="e.g. focus, growth, courage"
+                        autocomplete="off"
+                    />
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            Built with &#x1F331; by
+            <a href="https://github.com/0xR3TRO" target="_blank" rel="noopener"
+                >0xR3TRO</a
+            >
+        </footer>
+
+        <script type="module" src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

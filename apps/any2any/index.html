@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Any2Any Converter – Universal Format Toolkit</title>
+        <meta
+            name="description"
+            content="Convert between JSON, YAML, XML, CSV, Base64, URL encoding, Markdown, HTML and image formats – all in your browser."
+        />
+        <meta name="author" content="0xR3TRO" />
+        <meta name="copyright" content="Copyright (c) 2026 0xR3TRO" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <!-- ═══ HEADER ═══ -->
+        <header class="app-header">
+            <div class="logo">
+                <span class="logo-icon">⚡</span>
+                <span>Any2Any Converter</span>
+                <span class="subtitle">— Universal Format Toolkit</span>
+            </div>
+            <div class="header-actions">
+                <button
+                    id="theme-toggle"
+                    class="theme-toggle"
+                    title="Toggle theme"
+                >
+                    ☀️
+                </button>
+                <button id="menu-toggle" class="menu-toggle" title="Menu">
+                    ☰
+                </button>
+            </div>
+        </header>
+
+        <!-- ═══ BODY ═══ -->
+        <div class="app-body">
+            <!-- ── Sidebar ── -->
+            <aside id="sidebar" class="sidebar">
+                <div class="sidebar-section-label">Categories</div>
+                <nav id="sidebar-categories"></nav>
+            </aside>
+
+            <!-- ── Main Content ── -->
+            <main class="main-content">
+                <!-- Toolbar -->
+                <div class="toolbar">
+                    <select
+                        id="converter-select"
+                        class="converter-select"
+                        aria-label="Select converter"
+                    ></select>
+                    <button id="btn-convert" class="btn btn-primary">
+                        <span class="btn-icon">▶</span> Convert
+                    </button>
+                    <button
+                        id="btn-swap"
+                        class="btn"
+                        title="Swap input/output direction"
+                    >
+                        <span class="btn-icon">⇄</span> Swap
+                    </button>
+                    <button id="btn-clear" class="btn">
+                        <span class="btn-icon">✕</span> Clear
+                    </button>
+                    <button id="btn-upload" class="btn">
+                        <span class="btn-icon">📂</span> Upload
+                    </button>
+                    <input
+                        type="file"
+                        id="file-input"
+                        class="file-input-hidden"
+                    />
+                </div>
+
+                <!-- ── Text Panels ── -->
+                <div id="text-panel">
+                    <div class="panels">
+                        <!-- INPUT -->
+                        <div class="panel">
+                            <div class="panel-header">
+                                <span id="input-label">Input</span>
+                            </div>
+                            <textarea
+                                id="input-area"
+                                class="code-area"
+                                spellcheck="false"
+                                placeholder="Paste or type your input here…"
+                            ></textarea>
+                        </div>
+                        <!-- OUTPUT -->
+                        <div class="panel">
+                            <div class="panel-header">
+                                <span id="output-label">Output</span>
+                                <div class="panel-actions">
+                                    <button
+                                        id="btn-copy"
+                                        class="btn btn-sm"
+                                        title="Copy result"
+                                    >
+                                        📋 Copy
+                                    </button>
+                                    <button
+                                        id="btn-download"
+                                        class="btn btn-sm"
+                                        title="Download result"
+                                    >
+                                        💾 Download
+                                    </button>
+                                </div>
+                            </div>
+                            <textarea
+                                id="output-area"
+                                class="code-area"
+                                readonly
+                                spellcheck="false"
+                                placeholder="Converted output will appear here…"
+                            ></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Image Panel ── -->
+                <div id="image-panel" class="image-panel">
+                    <div id="image-upload-area" class="image-upload-area">
+                        <div class="upload-icon">🖼️</div>
+                        <p>
+                            <strong>Drop an image here</strong> or click to
+                            browse
+                        </p>
+                        <p
+                            style="
+                                font-size: 0.75rem;
+                                margin-top: 0.35rem;
+                                color: var(--text-muted);
+                            "
+                        >
+                            Supports PNG, JPG, WebP, GIF, BMP
+                        </p>
+                        <input
+                            type="file"
+                            id="image-file-input"
+                            class="file-input-hidden"
+                            accept="image/*"
+                        />
+                    </div>
+
+                    <div class="image-controls">
+                        <label
+                            >Width:
+                            <input
+                                type="number"
+                                id="img-width"
+                                min="1"
+                                max="10000"
+                                placeholder="auto"
+                        /></label>
+                        <label
+                            >Height:
+                            <input
+                                type="number"
+                                id="img-height"
+                                min="1"
+                                max="10000"
+                                placeholder="auto"
+                        /></label>
+                        <label
+                            >Quality:
+                            <input
+                                type="number"
+                                id="img-quality"
+                                min="1"
+                                max="100"
+                                value="92"
+                                placeholder="92"
+                            />%</label
+                        >
+                        <button id="btn-img-convert" class="btn btn-primary">
+                            <span class="btn-icon">▶</span> Convert
+                        </button>
+                        <button id="btn-img-download" class="btn" disabled>
+                            <span class="btn-icon">💾</span> Download
+                        </button>
+                    </div>
+
+                    <div class="image-grid">
+                        <div class="image-box">
+                            <div class="image-box-label">Original</div>
+                            <div id="image-preview" class="image-box-content">
+                                <span class="placeholder-text"
+                                    >No image loaded</span
+                                >
+                            </div>
+                        </div>
+                        <div class="image-box">
+                            <div class="image-box-label">Result</div>
+                            <div id="image-result" class="image-box-content">
+                                <span class="placeholder-text"
+                                    >Result will appear here</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ── Status Bar ── -->
+                <div id="status-bar" class="status-bar"></div>
+            </main>
+        </div>
+
+        <!-- ═══ SCRIPTS ═══ -->
+        <script src="js/converters/jsonYamlConverter.js"></script>
+        <script src="js/converters/jsonXmlConverter.js"></script>
+        <script src="js/converters/csvJsonConverter.js"></script>
+        <script src="js/converters/base64Converter.js"></script>
+        <script src="js/converters/urlConverter.js"></script>
+        <script src="js/converters/htmlEntityConverter.js"></script>
+        <script src="js/converters/markdownHtmlConverter.js"></script>
+        <script src="js/converters/imageConverter.js"></script>
+        <script src="app.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+    <!-- Copyright (c) 2026 0xR3TRO – MIT License -->
+</html>

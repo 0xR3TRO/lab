@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Cards</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="cards.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                margin: 0;
+                padding: 2rem;
+            }
+            h1 {
+                text-align: center;
+                margin-bottom: 2rem;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 2rem;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+            .section-title {
+                text-align: center;
+                margin: 3rem 0 1.5rem;
+                color: var(--bc-text-secondary);
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🎴 Cards</h1>
+
+        <h2 class="section-title">Standard Cards</h2>
+        <div class="grid">
+            <div class="bc-card">
+                <img
+                    class="bc-card__image"
+                    src="demo-image.svg"
+                    alt="Demo"
+                />
+                <div class="bc-card__body">
+                    <h3 class="bc-card__title">Standard Card</h3>
+                    <p class="bc-card__text">
+                        Karta z obrazem, tytułem i opisem. Hover podnosi kartę w
+                        górę.
+                    </p>
+                </div>
+            </div>
+
+            <div class="bc-card bc-card--glass">
+                <div class="bc-card__body">
+                    <h3 class="bc-card__title">Glass Card</h3>
+                    <p class="bc-card__text">
+                        Efekt glassmorphism — rozmyte tło, przezroczystość.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">Flip Card (hover)</h2>
+        <div style="display: flex; justify-content: center">
+            <div class="bc-card-flip">
+                <div class="bc-card-flip__inner">
+                    <div class="bc-card-flip__front">
+                        <h3>Front</h3>
+                        <p>Najedź kursorem aby obrócić</p>
+                    </div>
+                    <div class="bc-card-flip__back">
+                        <h3>Back</h3>
+                        <p>Tył karty z dodatkowymi informacjami.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="cards.js"></script>
+    </body>
+</html>

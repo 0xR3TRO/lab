@@ -1,0 +1,98 @@
+[
+    {
+        "date": "2024-10-01",
+        "totalOutput": 4200,
+        "targetOutput": 4500,
+        "efficiency": 93.3,
+        "defectRate": 1.2,
+        "downtime": 3.5,
+        "energyConsumption": 1250,
+        "laborHours": 480,
+        "ordersCompleted": 12,
+        "materialWaste": 2.8
+    },
+    {
+        "date": "2024-10-08",
+        "totalOutput": 4600,
+        "targetOutput": 4500,
+        "efficiency": 102.2,
+        "defectRate": 0.8,
+        "downtime": 1.2,
+        "energyConsumption": 1180,
+        "laborHours": 500,
+        "ordersCompleted": 14,
+        "materialWaste": 1.9
+    },
+    {
+        "date": "2024-10-15",
+        "totalOutput": 3900,
+        "targetOutput": 4500,
+        "efficiency": 86.7,
+        "defectRate": 2.1,
+        "downtime": 8.0,
+        "energyConsumption": 1320,
+        "laborHours": 460,
+        "ordersCompleted": 10,
+        "materialWaste": 4.1
+    },
+    {
+        "date": "2024-10-22",
+        "totalOutput": 4400,
+        "targetOutput": 4500,
+        "efficiency": 97.8,
+        "defectRate": 1.0,
+        "downtime": 2.0,
+        "energyConsumption": 1200,
+        "laborHours": 490,
+        "ordersCompleted": 13,
+        "materialWaste": 2.2
+    },
+    {
+        "date": "2024-10-29",
+        "totalOutput": 4700,
+        "targetOutput": 4500,
+        "efficiency": 104.4,
+        "defectRate": 0.6,
+        "downtime": 0.5,
+        "energyConsumption": 1150,
+        "laborHours": 510,
+        "ordersCompleted": 15,
+        "materialWaste": 1.5
+    },
+    {
+        "date": "2024-11-05",
+        "totalOutput": 4100,
+        "targetOutput": 4500,
+        "efficiency": 91.1,
+        "defectRate": 1.5,
+        "downtime": 4.0,
+        "energyConsumption": 1280,
+        "laborHours": 475,
+        "ordersCompleted": 11,
+        "materialWaste": 3.3
+    },
+    {
+        "date": "2024-11-12",
+        "totalOutput": 4500,
+        "targetOutput": 4500,
+        "efficiency": 100.0,
+        "defectRate": 0.9,
+        "downtime": 1.8,
+        "energyConsumption": 1190,
+        "laborHours": 495,
+        "ordersCompleted": 13,
+        "materialWaste": 2.0
+    },
+    {
+        "date": "2024-11-19",
+        "totalOutput": 4350,
+        "targetOutput": 4500,
+        "efficiency": 96.7,
+        "defectRate": 1.1,
+        "downtime": 2.5,
+        "energyConsumption": 1220,
+        "laborHours": 488,
+        "ordersCompleted": 12,
+        "materialWaste": 2.5
+    }
+]

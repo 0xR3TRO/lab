@@ -1,0 +1,127 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Gradient Button
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Przyciski z dynamicznymi gradientami i animacją kolorów.
+ * ============================================================
+ */
+
+.btn-gradient {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-family: var(--bc-font-family, sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    border: none;
+    border-radius: var(--bc-radius, 0.5rem);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(135deg, #6366f1, #ec4899, #06b6d4);
+    background-size: 200% 200%;
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.btn-gradient:hover {
+    animation: gradient-shift 3s ease infinite;
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-gradient:active {
+    transform: scale(0.97);
+}
+
+@keyframes gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* Wariant — zawsze animowany */
+.btn-gradient--animated {
+    animation: gradient-shift 4s ease infinite;
+}
+
+/* Warianty kolorystyczne */
+.btn-gradient--sunset {
+    background: linear-gradient(135deg, #f97316, #ef4444, #ec4899);
+    background-size: 200% 200%;
+}
+
+.btn-gradient--ocean {
+    background: linear-gradient(135deg, #06b6d4, #3b82f6, #8b5cf6);
+    background-size: 200% 200%;
+}
+
+.btn-gradient--forest {
+    background: linear-gradient(135deg, #22c55e, #06b6d4, #10b981);
+    background-size: 200% 200%;
+}
+
+.btn-gradient--fire {
+    background: linear-gradient(135deg, #ef4444, #f59e0b, #ef4444);
+    background-size: 200% 200%;
+}
+
+.btn-gradient--candy {
+    background: linear-gradient(135deg, #ec4899, #a855f7, #6366f1, #ec4899);
+    background-size: 300% 300%;
+}
+
+/* Outline gradient */
+.btn-gradient--outline {
+    background: transparent;
+    color: var(--bc-text, #fff);
+    border: 2px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+.btn-gradient--outline::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    background: linear-gradient(135deg, #6366f1, #ec4899, #06b6d4);
+    background-size: 200% 200%;
+    z-index: -1;
+    animation: gradient-shift 4s ease infinite;
+}
+.btn-gradient--outline::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: var(--bc-bg, #0f172a);
+    z-index: -1;
+}
+
+.btn-gradient--sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+}
+.btn-gradient--lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+}
+.btn-gradient--pill {
+    border-radius: 9999px;
+}
+.btn-gradient--pill.btn-gradient--outline::before,
+.btn-gradient--pill.btn-gradient--outline::after {
+    border-radius: 9999px;
+}

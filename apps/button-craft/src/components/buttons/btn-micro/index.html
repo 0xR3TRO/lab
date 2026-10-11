@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Micro-Interaction Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-micro.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 2rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>⚡ Micro-Interaction Buttons</h1>
+        <p>Hover, press, loading, success — pełna mikrointerakcja.</p>
+
+        <div class="demo-row">
+            <button class="btn-micro">
+                <span class="btn-icon">🚀</span> Launch
+            </button>
+            <button class="btn-micro btn-micro--secondary">
+                <span class="btn-icon">❤️</span> Like
+            </button>
+            <button class="btn-micro btn-micro--danger">
+                <span class="btn-icon">🗑️</span> Delete
+            </button>
+        </div>
+
+        <div class="demo-row">
+            <button class="btn-micro" data-loading-demo>
+                Click me (loading demo)
+            </button>
+            <button class="btn-micro btn-micro--pill" data-loading-demo>
+                Submit
+            </button>
+        </div>
+
+        <script src="btn-micro.js"></script>
+    </body>
+</html>

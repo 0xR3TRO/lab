@@ -1,0 +1,24 @@
+{
+    "id": "dark",
+    "name": "Dark",
+    "description": "Sleek dark mode for low-light environments",
+    "colors": {
+        "background": "#1a1a2e",
+        "dialFace": "#16213e",
+        "dialBorder": "#0f3460",
+        "hourHand": "#e0e0e0",
+        "minuteHand": "#cccccc",
+        "secondHand": "#e94560",
+        "centerDot": "#e0e0e0",
+        "hourMarkers": "#e0e0e0",
+        "minuteMarkers": "#3a3a5e",
+        "numbers": "#c0c0c0",
+        "shadow": "rgba(0, 0, 0, 0.4)",
+        "accent": "#e94560",
+        "digitalText": "#e0e0e0"
+    },
+    "meta": {
+        "category": "dark",
+        "author": "TempoDial"
+    }
+}

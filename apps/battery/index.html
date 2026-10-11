@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Battery Detector — live battery level, charging state and time estimates from the Battery Status API. Part of web-lab." />
+        <title>Battery Detector · web-lab</title>
+        <link rel="stylesheet" href="../../shared/module.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="module">
+            <header class="module-head">
+                <h1>Battery Detector</h1>
+                <p>Live battery level and charging state, read straight from your browser.</p>
+            </header>
+
+            <section class="card battery-card">
+                <div class="battery" id="battery" aria-hidden="true">
+                    <div class="battery-fill" id="fill"></div>
+                    <div class="battery-bolt" id="bolt">
+                        <svg viewBox="0 0 24 24"><path d="M13 2L4 14h7l-1 8 9-12h-7z" fill="currentColor" /></svg>
+                    </div>
+                </div>
+                <div class="battery-info">
+                    <p class="level" id="level" role="status">—</p>
+                    <p class="state" id="state">Checking…</p>
+                </div>
+            </section>
+
+            <section class="card">
+                <div class="grid">
+                    <div class="metric"><small>Status</small><b id="m-status">—</b></div>
+                    <div class="metric"><small>Time to full</small><b id="m-full">—</b></div>
+                    <div class="metric"><small>Time left</small><b id="m-left">—</b></div>
+                    <div class="metric"><small>Last change</small><b id="m-updated">—</b></div>
+                </div>
+                <p class="note" id="support-note">
+                    The Battery Status API is available in Chromium-based browsers (Chrome, Edge, Opera, Brave). Safari and Firefox
+                    do not expose it, to protect your privacy. Nothing is stored or sent anywhere.
+                </p>
+            </section>
+        </main>
+
+        <script src="app.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

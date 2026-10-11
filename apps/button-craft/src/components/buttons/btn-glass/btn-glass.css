@@ -1,0 +1,109 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Glass Button (Glassmorphism)
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Przyciski z efektem glassmorphism — rozmyte tło,
+ *  subtelne obramowanie, przezroczystość.
+ * ============================================================
+ */
+
+.btn-glass {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-family: var(--bc-font-family, sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--bc-radius-md, 0.75rem);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-glass:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    transform: translateY(-1px);
+}
+
+.btn-glass:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* Refleksja świetlna (błysk przesuwający się) */
+.btn-glass::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        to bottom right,
+        rgba(255, 255, 255, 0.15) 0%,
+        rgba(255, 255, 255, 0) 50%,
+        transparent 100%
+    );
+    transform: rotate(30deg);
+    pointer-events: none;
+}
+
+/* ── Warianty kolorystyczne ─────────────────────────────── */
+.btn-glass--blue {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: rgba(99, 102, 241, 0.35);
+}
+.btn-glass--blue:hover {
+    background: rgba(99, 102, 241, 0.35);
+}
+
+.btn-glass--pink {
+    background: rgba(236, 72, 153, 0.2);
+    border-color: rgba(236, 72, 153, 0.35);
+}
+.btn-glass--pink:hover {
+    background: rgba(236, 72, 153, 0.35);
+}
+
+.btn-glass--green {
+    background: rgba(34, 197, 94, 0.2);
+    border-color: rgba(34, 197, 94, 0.35);
+}
+.btn-glass--green:hover {
+    background: rgba(34, 197, 94, 0.35);
+}
+
+.btn-glass--dark {
+    background: rgba(0, 0, 0, 0.25);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+}
+.btn-glass--dark:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+/* ── Rozmiary ───────────────────────────────────────────── */
+.btn-glass--sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+}
+.btn-glass--lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+}
+
+/* ── Pill ───────────────────────────────────────────────── */
+.btn-glass--pill {
+    border-radius: 9999px;
+}

@@ -1,0 +1,128 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Micro-Interaction Button
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Przyciski z mikrointerakcjami: hover, press, loading.
+ * ============================================================
+ */
+
+.btn-micro {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-family: var(--bc-font-family, sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--bc-color-primary, #6366f1);
+    border: none;
+    border-radius: var(--bc-radius, 0.5rem);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.3s ease;
+}
+
+/* Hover — gentle lift + glow */
+.btn-micro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
+}
+
+/* Press — spring down */
+.btn-micro:active {
+    transform: translateY(1px) scale(0.97);
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    transition-duration: 0.08s;
+}
+
+/* Success state */
+.btn-micro--success {
+    background: var(--bc-color-success, #22c55e);
+    pointer-events: none;
+}
+
+.btn-micro--success::after {
+    content: "✓";
+    margin-left: 0.4rem;
+    animation: micro-check 0.3s ease forwards;
+}
+
+@keyframes micro-check {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Loading state */
+.btn-micro--loading {
+    color: transparent;
+    pointer-events: none;
+}
+
+.btn-micro--loading::after {
+    content: "";
+    position: absolute;
+    width: 1.2rem;
+    height: 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: micro-spin 0.6s linear infinite;
+}
+
+@keyframes micro-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Icon bounce on hover */
+.btn-micro .btn-icon {
+    display: inline-block;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.btn-micro:hover .btn-icon {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+/* Warianty */
+.btn-micro--secondary {
+    background: var(--bc-color-secondary, #ec4899);
+}
+.btn-micro--secondary:hover {
+    box-shadow: 0 6px 20px rgba(236, 72, 153, 0.4);
+}
+
+.btn-micro--danger {
+    background: var(--bc-color-danger, #ef4444);
+}
+.btn-micro--danger:hover {
+    box-shadow: 0 6px 20px rgba(239, 68, 68, 0.4);
+}
+
+/* Rozmiary */
+.btn-micro--sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+}
+.btn-micro--lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+}
+.btn-micro--pill {
+    border-radius: 9999px;
+}

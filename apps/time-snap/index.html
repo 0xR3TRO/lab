@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="TimeSnap — a precise, modern online stopwatch with lap tracking, keyboard shortcuts, and theme support."
+        />
+        <title>TimeSnap — Online Stopwatch</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    </head>
+    <body>
+        <div id="app" class="app">
+            <!-- Header -->
+            <header class="header">
+                <div class="header__brand">
+                    <img
+                        src="assets/icon-stopwatch.svg"
+                        alt=""
+                        class="header__icon"
+                        width="32"
+                        height="32"
+                    />
+                    <h1 class="header__title">TimeSnap</h1>
+                </div>
+                <p class="header__tagline">Precise time, zero distractions.</p>
+                <button
+                    id="theme-toggle"
+                    class="theme-toggle"
+                    type="button"
+                    aria-label="Toggle dark mode"
+                >
+                    <span
+                        class="theme-toggle__icon theme-toggle__icon--light"
+                        aria-hidden="true"
+                        >☀️</span
+                    >
+                    <span
+                        class="theme-toggle__icon theme-toggle__icon--dark"
+                        aria-hidden="true"
+                        >🌙</span
+                    >
+                </button>
+            </header>
+
+            <!-- Main display -->
+            <main class="main">
+                <section class="display" aria-live="polite" aria-atomic="true">
+                    <time id="time-display" class="display__time"
+                        >00:00.00</time
+                    >
+                </section>
+
+                <!-- Controls -->
+                <section class="controls" aria-label="Stopwatch controls">
+                    <button id="btn-start" class="btn btn--start" type="button">
+                        Start
+                    </button>
+                    <button
+                        id="btn-pause"
+                        class="btn btn--pause hidden"
+                        type="button"
+                    >
+                        Pause
+                    </button>
+                    <button
+                        id="btn-resume"
+                        class="btn btn--resume hidden"
+                        type="button"
+                    >
+                        Resume
+                    </button>
+                    <button
+                        id="btn-lap"
+                        class="btn btn--lap"
+                        type="button"
+                        disabled
+                    >
+                        Lap
+                    </button>
+                    <button
+                        id="btn-reset"
+                        class="btn btn--reset"
+                        type="button"
+                        disabled
+                    >
+                        Reset
+                    </button>
+                </section>
+
+                <!-- Laps -->
+                <section class="laps" aria-label="Lap times">
+                    <div class="laps__header" id="laps-header">
+                        <span class="laps__col">#</span>
+                        <span class="laps__col">Lap Time</span>
+                        <span class="laps__col">Total Time</span>
+                        <span class="laps__col"></span>
+                    </div>
+                    <ul id="laps-list" class="laps__list"></ul>
+                </section>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>
+                    TimeSnap &mdash; open-source stopwatch.
+                    <a
+                        href="https://github.com/0xR3TRO/TimeSnap"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >GitHub</a
+                    >
+                </p>
+                <p class="footer__shortcuts">
+                    <kbd>Space</kbd> Start / Pause &nbsp; <kbd>L</kbd> Lap
+                    &nbsp; <kbd>R</kbd> Reset
+                </p>
+            </footer>
+        </div>
+
+        <script src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

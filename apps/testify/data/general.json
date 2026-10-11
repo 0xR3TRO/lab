@@ -1,0 +1,57 @@
+[
+    {
+        "question": "What is the capital of France?",
+        "options": ["Paris", "Berlin", "Madrid", "Rome"],
+        "answer": 0
+    },
+    {
+        "question": "Which is the largest ocean on Earth?",
+        "options": [
+            "Atlantic Ocean",
+            "Indian Ocean",
+            "Pacific Ocean",
+            "Arctic Ocean"
+        ],
+        "answer": 2
+    },
+    {
+        "question": "How many continents are there on Earth?",
+        "options": ["5", "6", "7", "8"],
+        "answer": 2
+    },
+    {
+        "question": "What is the smallest country in the world by area?",
+        "options": ["Monaco", "Vatican City", "San Marino", "Liechtenstein"],
+        "answer": 1
+    },
+    {
+        "question": "Which planet is known as the Red Planet?",
+        "options": ["Venus", "Jupiter", "Mars", "Saturn"],
+        "answer": 2
+    },
+    {
+        "question": "What is the longest river in the world?",
+        "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+        "answer": 1
+    },
+    {
+        "question": "Which language has the most native speakers worldwide?",
+        "options": ["English", "Hindi", "Spanish", "Mandarin Chinese"],
+        "answer": 3
+    },
+    {
+        "question": "What year did World War II end?",
+        "options": ["1943", "1944", "1945", "1946"],
+        "answer": 2
+    },
+    {
+        "question": "Which desert is the largest in the world?",
+        "options": ["Sahara", "Gobi", "Kalahari", "Antarctica"],
+        "answer": 3
+    },
+    {
+        "question": "What is the currency of Japan?",
+        "options": ["Yuan", "Won", "Yen", "Ringgit"],
+        "answer": 2
+    }
+]

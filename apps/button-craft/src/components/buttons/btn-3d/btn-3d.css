@@ -1,0 +1,95 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — 3D Button
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Przyciski z efektem trójwymiarowej głębi, cieniem i animacją
+ *  wciskania (press). Dostępne warianty kolorystyczne.
+ * ============================================================
+ */
+
+.btn-3d {
+    --btn-color: var(--bc-color-primary, #6366f1);
+    --btn-shadow: var(--bc-color-primary-dark, #4f46e5);
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-family: var(--bc-font-family, sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--btn-color);
+    border: none;
+    border-radius: var(--bc-radius, 0.5rem);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    transform: translateY(0);
+    box-shadow:
+        0 6px 0 var(--btn-shadow),
+        0 8px 12px rgba(0, 0, 0, 0.15);
+    transition:
+        transform 150ms ease,
+        box-shadow 150ms ease;
+}
+
+.btn-3d:hover {
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 0 var(--btn-shadow),
+        0 12px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-3d:active {
+    transform: translateY(4px);
+    box-shadow:
+        0 2px 0 var(--btn-shadow),
+        0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+/* Warianty kolorystyczne */
+.btn-3d--secondary {
+    --btn-color: var(--bc-color-secondary, #ec4899);
+    --btn-shadow: #d63384;
+}
+
+.btn-3d--success {
+    --btn-color: var(--bc-color-success, #22c55e);
+    --btn-shadow: #16a34a;
+}
+
+.btn-3d--danger {
+    --btn-color: var(--bc-color-danger, #ef4444);
+    --btn-shadow: #dc2626;
+}
+
+.btn-3d--warning {
+    --btn-color: var(--bc-color-warning, #f59e0b);
+    --btn-shadow: #d97706;
+    color: #1a1a1a;
+}
+
+.btn-3d--dark {
+    --btn-color: #1e293b;
+    --btn-shadow: #0f172a;
+}
+
+/* Rozmiary */
+.btn-3d--sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    box-shadow:
+        0 4px 0 var(--btn-shadow),
+        0 6px 10px rgba(0, 0, 0, 0.12);
+}
+
+.btn-3d--lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+    box-shadow:
+        0 8px 0 var(--btn-shadow),
+        0 12px 16px rgba(0, 0, 0, 0.18);
+}

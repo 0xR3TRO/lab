@@ -1,0 +1,631 @@
+/* ============================================================
+   Testify — Interactive Quiz System
+   Modern, mobile-first, light/dark theme
+   ============================================================ */
+
+/* ─── CSS VARIABLES ─── */
+:root,
+[data-theme="light"] {
+    --bg-primary: #f0f2f5;
+    --bg-secondary: #ffffff;
+    --bg-card: #ffffff;
+    --text-primary: #1a1a2e;
+    --text-secondary: #555770;
+    --accent: #6c5ce7;
+    --accent-hover: #5a4bd1;
+    --accent-light: rgba(108, 92, 231, 0.1);
+    --correct: #00b894;
+    --correct-bg: rgba(0, 184, 148, 0.12);
+    --incorrect: #d63031;
+    --incorrect-bg: rgba(214, 48, 49, 0.12);
+    --border: #e0e0e0;
+    --shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.1);
+    --ring-bg: #e0e0e0;
+    --ring-fg: #6c5ce7;
+    --radius: 14px;
+    --radius-sm: 10px;
+    --transition: 0.25s ease;
+    --timer-warning: #fdcb6e;
+}
+
+[data-theme="dark"] {
+    --bg-primary: #0f0f1a;
+    --bg-secondary: #1a1a2e;
+    --bg-card: #1e1e36;
+    --text-primary: #e8e8f0;
+    --text-secondary: #9999b3;
+    --accent: #a29bfe;
+    --accent-hover: #8c83f7;
+    --accent-light: rgba(162, 155, 254, 0.12);
+    --border: #2d2d50;
+    --shadow: 0 2px 16px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --ring-bg: #2d2d50;
+    --ring-fg: #a29bfe;
+}
+
+/* ─── RESET & BASE ─── */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family:
+        -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue",
+        Arial, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+/* ─── TOP BAR ─── */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    transition:
+        background var(--transition),
+        border-color var(--transition);
+}
+
+.top-bar-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.top-bar-logo {
+    border-radius: 6px;
+}
+
+.top-bar-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.theme-btn {
+    background: var(--accent-light);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    transition:
+        background var(--transition),
+        transform 0.15s ease;
+}
+
+.theme-btn:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.08);
+}
+
+/* ─── MAIN ─── */
+#app {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 24px 16px 40px;
+}
+
+/* ─── ANIMATIONS ─── */
+.fade-in {
+    animation: fadeIn 0.3s ease forwards;
+}
+
+.fade-out {
+    animation: fadeOut 0.25s ease forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-12px);
+    }
+}
+
+/* ─── SCREENS ─── */
+.screen {
+    width: 100%;
+    max-width: 640px;
+}
+
+/* ─── HOME SCREEN ─── */
+.home-header {
+    text-align: center;
+    margin-bottom: 28px;
+}
+
+.home-header .logo {
+    border-radius: 16px;
+    box-shadow: var(--shadow);
+    margin-bottom: 12px;
+}
+
+.home-header h1 {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+}
+
+.home-header .subtitle {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 4px;
+}
+
+/* Timer toggle */
+.timer-toggle {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: center;
+}
+
+.toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    user-select: none;
+}
+
+.toggle-label input[type="checkbox"] {
+    display: none;
+}
+
+.toggle-slider {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    background: var(--border);
+    border-radius: 12px;
+    transition: background var(--transition);
+}
+
+.toggle-slider::after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    transition: transform var(--transition);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.toggle-label input:checked + .toggle-slider {
+    background: var(--accent);
+}
+
+.toggle-label input:checked + .toggle-slider::after {
+    transform: translateX(20px);
+}
+
+/* Category grid */
+.category-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+}
+
+@media (min-width: 480px) {
+    .category-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.category-card {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius);
+    padding: 24px 20px;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition),
+        transform 0.15s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.category-card:hover {
+    border-color: var(--accent);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-2px);
+}
+
+.category-card:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.category-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.category-card h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: var(--text-primary);
+}
+
+.category-card p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+.high-score-badge {
+    display: inline-block;
+    margin-top: 10px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background: var(--accent-light);
+    color: var(--accent);
+    padding: 3px 10px;
+    border-radius: 20px;
+}
+
+/* ─── QUIZ SCREEN ─── */
+.quiz-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quiz-category {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+}
+
+.quiz-progress {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.4s ease;
+}
+
+.timer {
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 16px;
+    transition: color 0.3s ease;
+}
+
+.timer.timer-warning {
+    color: var(--incorrect);
+    animation: pulse 0.6s infinite;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.question-text {
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    color: var(--text-primary);
+}
+
+.options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.option-btn {
+    background: var(--bg-card);
+    border: 2px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 14px 18px;
+    font-size: 1rem;
+    text-align: left;
+    cursor: pointer;
+    color: var(--text-primary);
+    transition:
+        border-color var(--transition),
+        background var(--transition),
+        transform 0.1s ease;
+}
+
+.option-btn:hover:not(:disabled) {
+    border-color: var(--accent);
+    background: var(--accent-light);
+}
+
+.option-btn:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+.option-btn.selected {
+    border-color: var(--accent);
+    background: var(--accent-light);
+}
+
+.option-btn.correct {
+    border-color: var(--correct);
+    background: var(--correct-bg);
+    color: var(--correct);
+    font-weight: 600;
+}
+
+.option-btn.incorrect {
+    border-color: var(--incorrect);
+    background: var(--incorrect-bg);
+    color: var(--incorrect);
+    font-weight: 600;
+}
+
+.option-btn:disabled {
+    cursor: default;
+    opacity: 0.85;
+}
+
+.quiz-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.score-display {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* ─── BUTTONS ─── */
+.btn-next,
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        transform 0.1s ease;
+}
+
+.btn-next:hover:not(:disabled),
+.btn-primary:hover {
+    background: var(--accent-hover);
+}
+
+.btn-next:active:not(:disabled),
+.btn-primary:active {
+    transform: scale(0.97);
+}
+
+.btn-next:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid var(--accent);
+    color: var(--accent);
+    border-radius: var(--radius-sm);
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        color var(--transition),
+        transform 0.1s ease;
+}
+
+.btn-secondary:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-secondary:active {
+    transform: scale(0.97);
+}
+
+/* ─── RESULTS SCREEN ─── */
+.results-screen {
+    text-align: center;
+}
+
+.results-header {
+    margin-bottom: 24px;
+}
+
+.results-emoji {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 8px;
+}
+
+.results-header h2 {
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--text-primary);
+}
+
+.results-category {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+.results-score-ring {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    margin: 0 auto 24px;
+}
+
+.score-ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(0deg);
+}
+
+.score-ring circle {
+    transition: stroke-dashoffset 1s ease;
+}
+
+.score-ring-text {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-ring-percent {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--accent);
+}
+
+.score-ring-detail {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.high-score-info {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 8px;
+}
+
+.new-high-score {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 8px;
+    animation: pulse 1s infinite;
+}
+
+.results-actions {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+/* ─── FOOTER ─── */
+.footer {
+    text-align: center;
+    padding: 16px;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--border);
+    transition: border-color var(--transition);
+}
+
+/* ─── RESPONSIVE ─── */
+@media (min-width: 640px) {
+    #app {
+        padding: 40px 24px 60px;
+    }
+
+    .question-text {
+        font-size: 1.35rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .home-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .results-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+    }
+}

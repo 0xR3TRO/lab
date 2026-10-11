@@ -1,0 +1,671 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>AccessPoint — Secure Authentication</title>
+        <meta
+            name="description"
+            content="A seamless login, registration, and account recovery system."
+        />
+
+        <!-- Fonts -->
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="styles.css" />
+
+        <!-- Favicon -->
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="../../shared/fonts/fonts.css" />
+    </head>
+    <body>
+        <div class="app" id="app">
+            <!-- ════════════════════════════════════════════════
+         LOGIN VIEW
+         ════════════════════════════════════════════════ -->
+            <section
+                class="view view--active card"
+                id="view-login"
+                aria-labelledby="login-title"
+            >
+                <div class="card__logo">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4l3 3" />
+                    </svg>
+                    <span class="card__logo-text">AccessPoint</span>
+                </div>
+                <h1 class="card__title" id="login-title">Welcome back</h1>
+                <p class="card__subtitle">Sign in to your account</p>
+
+                <div id="login-message" class="message" hidden></div>
+
+                <form class="form" id="form-login" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="login-email"
+                            >Email</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input"
+                                id="login-email"
+                                type="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            />
+                        </div>
+                        <span
+                            class="field__error"
+                            id="login-email-error"
+                        ></span>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="login-password"
+                            >Password</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input field__input--has-toggle"
+                                id="login-password"
+                                type="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                required
+                            />
+                            <button
+                                type="button"
+                                class="field__toggle-pw"
+                                data-target="login-password"
+                                aria-label="Toggle password visibility"
+                            >
+                                <svg
+                                    class="icon-eye"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                    />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg
+                                    class="icon-eye-off"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    style="display: none"
+                                >
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                                    />
+                                    <path
+                                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                                    />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span
+                            class="field__error"
+                            id="login-password-error"
+                        ></span>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary">
+                        Sign in
+                    </button>
+                </form>
+
+                <div class="card__footer">
+                    <p>
+                        <a href="#" id="link-to-recovery"
+                            >Forgot your password?</a
+                        >
+                    </p>
+                    <p>
+                        Don't have an account?
+                        <a href="#" id="link-to-register">Create one</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════════
+         REGISTER VIEW
+         ════════════════════════════════════════════════ -->
+            <section
+                class="view card"
+                id="view-register"
+                aria-labelledby="register-title"
+            >
+                <div class="card__logo">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4l3 3" />
+                    </svg>
+                    <span class="card__logo-text">AccessPoint</span>
+                </div>
+                <h1 class="card__title" id="register-title">Create account</h1>
+                <p class="card__subtitle">Get started in seconds</p>
+
+                <div id="register-message" class="message" hidden></div>
+
+                <form class="form" id="form-register" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="register-name"
+                            >Full name</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input"
+                                id="register-name"
+                                type="text"
+                                placeholder="Jane Doe"
+                                autocomplete="name"
+                                required
+                            />
+                        </div>
+                        <span
+                            class="field__error"
+                            id="register-name-error"
+                        ></span>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="register-email"
+                            >Email</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input"
+                                id="register-email"
+                                type="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            />
+                        </div>
+                        <span
+                            class="field__error"
+                            id="register-email-error"
+                        ></span>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="register-password"
+                            >Password</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input field__input--has-toggle"
+                                id="register-password"
+                                type="password"
+                                placeholder="Create a strong password"
+                                autocomplete="new-password"
+                                required
+                            />
+                            <button
+                                type="button"
+                                class="field__toggle-pw"
+                                data-target="register-password"
+                                aria-label="Toggle password visibility"
+                            >
+                                <svg
+                                    class="icon-eye"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                    />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg
+                                    class="icon-eye-off"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    style="display: none"
+                                >
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                                    />
+                                    <path
+                                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                                    />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span
+                            class="field__error"
+                            id="register-password-error"
+                        ></span>
+                        <div class="strength" id="password-strength">
+                            <div class="strength__bar">
+                                <div class="strength__segment"></div>
+                                <div class="strength__segment"></div>
+                                <div class="strength__segment"></div>
+                                <div class="strength__segment"></div>
+                                <div class="strength__segment"></div>
+                            </div>
+                            <span class="strength__label"></span>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="register-confirm"
+                            >Confirm password</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input field__input--has-toggle"
+                                id="register-confirm"
+                                type="password"
+                                placeholder="Re-enter your password"
+                                autocomplete="new-password"
+                                required
+                            />
+                            <button
+                                type="button"
+                                class="field__toggle-pw"
+                                data-target="register-confirm"
+                                aria-label="Toggle password visibility"
+                            >
+                                <svg
+                                    class="icon-eye"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                    />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg
+                                    class="icon-eye-off"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    style="display: none"
+                                >
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                                    />
+                                    <path
+                                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                                    />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span
+                            class="field__error"
+                            id="register-confirm-error"
+                        ></span>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary">
+                        Create account
+                    </button>
+                </form>
+
+                <div class="card__footer">
+                    <p>
+                        Already have an account?
+                        <a href="#" id="link-to-login-from-register">Sign in</a>
+                    </p>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════════
+         RECOVERY VIEW (request reset)
+         ════════════════════════════════════════════════ -->
+            <section
+                class="view card"
+                id="view-recovery"
+                aria-labelledby="recovery-title"
+            >
+                <div class="card__logo">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4l3 3" />
+                    </svg>
+                    <span class="card__logo-text">AccessPoint</span>
+                </div>
+                <h1 class="card__title" id="recovery-title">Reset password</h1>
+                <p class="card__subtitle">
+                    Enter your email and we'll send you a reset link
+                </p>
+
+                <div id="recovery-message" class="message" hidden></div>
+
+                <form class="form" id="form-recovery" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="recovery-email"
+                            >Email</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input"
+                                id="recovery-email"
+                                type="email"
+                                placeholder="you@example.com"
+                                autocomplete="email"
+                                required
+                            />
+                        </div>
+                        <span
+                            class="field__error"
+                            id="recovery-email-error"
+                        ></span>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary">
+                        Send reset link
+                    </button>
+                </form>
+
+                <div id="recovery-token-display" class="token-display" hidden>
+                    <span class="token-display__label"
+                        >Demo — your reset token:</span
+                    >
+                    <span id="recovery-token-value"></span>
+                </div>
+
+                <div class="card__footer">
+                    <p>
+                        <a href="#" id="link-to-login-from-recovery"
+                            >Back to sign in</a
+                        >
+                    </p>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════════
+         RESET VIEW (set new password)
+         ════════════════════════════════════════════════ -->
+            <section
+                class="view card"
+                id="view-reset"
+                aria-labelledby="reset-title"
+            >
+                <div class="card__logo">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <circle cx="12" cy="12" r="10" />
+                        <path d="M12 8v4l3 3" />
+                    </svg>
+                    <span class="card__logo-text">AccessPoint</span>
+                </div>
+                <h1 class="card__title" id="reset-title">New password</h1>
+                <p class="card__subtitle">Choose a strong new password</p>
+
+                <div id="reset-message" class="message" hidden></div>
+
+                <form class="form" id="form-reset" novalidate>
+                    <div class="field">
+                        <label class="field__label" for="reset-token"
+                            >Reset token</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input"
+                                id="reset-token"
+                                type="text"
+                                placeholder="Paste your reset token"
+                                required
+                            />
+                        </div>
+                        <span
+                            class="field__error"
+                            id="reset-token-error"
+                        ></span>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="reset-password"
+                            >New password</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input field__input--has-toggle"
+                                id="reset-password"
+                                type="password"
+                                placeholder="Create a new password"
+                                autocomplete="new-password"
+                                required
+                            />
+                            <button
+                                type="button"
+                                class="field__toggle-pw"
+                                data-target="reset-password"
+                                aria-label="Toggle password visibility"
+                            >
+                                <svg
+                                    class="icon-eye"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                    />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg
+                                    class="icon-eye-off"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    style="display: none"
+                                >
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                                    />
+                                    <path
+                                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                                    />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span
+                            class="field__error"
+                            id="reset-password-error"
+                        ></span>
+                    </div>
+
+                    <div class="field">
+                        <label class="field__label" for="reset-confirm"
+                            >Confirm new password</label
+                        >
+                        <div class="field__input-wrap">
+                            <input
+                                class="field__input field__input--has-toggle"
+                                id="reset-confirm"
+                                type="password"
+                                placeholder="Re-enter new password"
+                                autocomplete="new-password"
+                                required
+                            />
+                            <button
+                                type="button"
+                                class="field__toggle-pw"
+                                data-target="reset-confirm"
+                                aria-label="Toggle password visibility"
+                            >
+                                <svg
+                                    class="icon-eye"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                >
+                                    <path
+                                        d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"
+                                    />
+                                    <circle cx="12" cy="12" r="3" />
+                                </svg>
+                                <svg
+                                    class="icon-eye-off"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    style="display: none"
+                                >
+                                    <path
+                                        d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"
+                                    />
+                                    <path
+                                        d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"
+                                    />
+                                    <line x1="1" y1="1" x2="23" y2="23" />
+                                </svg>
+                            </button>
+                        </div>
+                        <span
+                            class="field__error"
+                            id="reset-confirm-error"
+                        ></span>
+                    </div>
+
+                    <button type="submit" class="btn btn--primary">
+                        Reset password
+                    </button>
+                </form>
+
+                <div class="card__footer">
+                    <p>
+                        <a href="#" id="link-to-login-from-reset"
+                            >Back to sign in</a
+                        >
+                    </p>
+                </div>
+            </section>
+
+            <!-- ════════════════════════════════════════════════
+         DASHBOARD VIEW
+         ════════════════════════════════════════════════ -->
+            <section
+                class="view card"
+                id="view-dashboard"
+                aria-labelledby="dashboard-title"
+            >
+                <div class="dashboard__header">
+                    <h1 class="dashboard__greeting" id="dashboard-title">
+                        Hello, <span id="dashboard-name"></span>
+                    </h1>
+                </div>
+
+                <div class="dashboard__info">
+                    <div class="dashboard__row">
+                        <span class="dashboard__label">Email</span>
+                        <span
+                            class="dashboard__value"
+                            id="dashboard-email"
+                        ></span>
+                    </div>
+                    <div class="dashboard__row">
+                        <span class="dashboard__label">Member since</span>
+                        <span
+                            class="dashboard__value"
+                            id="dashboard-date"
+                        ></span>
+                    </div>
+                </div>
+
+                <div class="dashboard__actions">
+                    <button class="btn btn--danger" id="btn-logout">
+                        Sign out
+                    </button>
+                </div>
+            </section>
+        </div>
+
+        <!-- Scripts (order matters: utilities first, then domain, then UI, then main) -->
+        <script src="src/utils.js"></script>
+        <script src="src/storage.js"></script>
+        <script src="src/validator.js"></script>
+        <script src="src/session.js"></script>
+        <script src="src/recovery.js"></script>
+        <script src="src/auth-controller.js"></script>
+        <script src="src/ui-controller.js"></script>
+        <script src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

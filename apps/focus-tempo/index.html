@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>FocusTempo — Pomodoro Timer</title>
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="app">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="logo">FocusTempo</h1>
+                <div class="header-actions">
+                    <button
+                        class="btn-icon"
+                        id="settingsToggle"
+                        aria-label="Settings"
+                    >
+                        ⚙️
+                    </button>
+                    <button
+                        class="btn-icon"
+                        id="themeToggle"
+                        aria-label="Toggle theme"
+                    >
+                        🌙
+                    </button>
+                </div>
+            </header>
+
+            <!-- Main Timer -->
+            <main class="main">
+                <div class="timer-section">
+                    <div
+                        class="session-label session-label--work"
+                        id="sessionLabel"
+                    >
+                        Work
+                    </div>
+
+                    <div class="progress-ring-container">
+                        <svg class="progress-ring" viewBox="0 0 200 200">
+                            <circle
+                                class="progress-ring__bg"
+                                cx="100"
+                                cy="100"
+                                r="90"
+                            />
+                            <circle
+                                class="progress-ring__progress"
+                                id="progressRing"
+                                cx="100"
+                                cy="100"
+                                r="90"
+                            />
+                        </svg>
+                        <div class="timer-display" id="timerDisplay">25:00</div>
+                    </div>
+
+                    <div class="controls">
+                        <button class="btn btn-primary" id="startBtn">
+                            Start
+                        </button>
+                        <button
+                            class="btn btn-secondary hidden"
+                            id="pauseBtn"
+                            disabled
+                        >
+                            Pause
+                        </button>
+                        <button class="btn btn-outline" id="resetBtn">
+                            Reset
+                        </button>
+                    </div>
+
+                    <div class="session-info">
+                        <span class="session-count"
+                            >Sessions completed:
+                            <strong id="sessionCount">0</strong></span
+                        >
+                    </div>
+                </div>
+            </main>
+
+            <!-- Settings Panel (slide-up) -->
+            <div class="settings-panel" id="settingsPanel">
+                <div class="settings-overlay" id="settingsOverlay"></div>
+                <div class="settings-content">
+                    <h2>Settings</h2>
+
+                    <div class="setting-group">
+                        <label
+                            >Work Duration:
+                            <span id="workDurationValue">25</span> min</label
+                        >
+                        <input
+                            type="range"
+                            id="workDuration"
+                            min="1"
+                            max="90"
+                            value="25"
+                        />
+                    </div>
+
+                    <div class="setting-group">
+                        <label
+                            >Short Break:
+                            <span id="shortBreakValue">5</span> min</label
+                        >
+                        <input
+                            type="range"
+                            id="shortBreak"
+                            min="1"
+                            max="30"
+                            value="5"
+                        />
+                    </div>
+
+                    <div class="setting-group">
+                        <label
+                            >Long Break:
+                            <span id="longBreakValue">15</span> min</label
+                        >
+                        <input
+                            type="range"
+                            id="longBreak"
+                            min="5"
+                            max="45"
+                            value="15"
+                        />
+                    </div>
+
+                    <div class="setting-group">
+                        <label
+                            >Long Break After:
+                            <span id="longBreakIntervalValue">4</span>
+                            sessions</label
+                        >
+                        <input
+                            type="range"
+                            id="longBreakInterval"
+                            min="2"
+                            max="8"
+                            value="4"
+                        />
+                    </div>
+
+                    <div class="setting-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="autoStart" />
+                            Auto-start next session
+                        </label>
+                    </div>
+
+                    <div class="setting-group">
+                        <label>Notification Sound</label>
+                        <select id="soundSelect">
+                            <option value="bell">Bell</option>
+                            <option value="chime">Chime</option>
+                            <option value="beep">Beep</option>
+                        </select>
+                        <button class="btn-small" id="testSound">Test</button>
+                    </div>
+
+                    <button
+                        class="btn btn-primary"
+                        id="closeSettings"
+                        style="width: 100%; margin-top: 0.75rem"
+                    >
+                        Save &amp; Close
+                    </button>
+                </div>
+            </div>
+
+            <!-- History -->
+            <section class="history-section" id="historySection">
+                <h2>Session History</h2>
+                <div class="history-list" id="historyList">
+                    <p class="history-empty">No sessions completed yet.</p>
+                </div>
+            </section>
+        </div>
+
+        <script type="module" src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

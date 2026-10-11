@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="TipEase — A fast and simple tip calculator. Calculate tips, split bills, and get instant results."
+        />
+        <title>TipEase — Fast &amp; Simple Tip Calculator</title>
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+        <link rel="stylesheet" href="styles.css" />
+    </head>
+    <body>
+        <div class="app">
+            <!-- Header -->
+            <header class="header">
+                <h1 class="header__title">TipEase</h1>
+                <p class="header__tagline">Fast &amp; simple tip calculator</p>
+            </header>
+
+            <!-- Main content -->
+            <main class="main">
+                <!-- Error message -->
+                <p id="error-message" class="error-message" hidden></p>
+
+                <!-- Bill amount -->
+                <section class="input-group">
+                    <label for="bill-input" class="label">Bill Amount</label>
+                    <div class="input-wrapper input-wrapper--currency">
+                        <span class="input-prefix">$</span>
+                        <input
+                            type="number"
+                            id="bill-input"
+                            class="input"
+                            placeholder="0.00"
+                            min="0"
+                            step="0.01"
+                            inputmode="decimal"
+                            autocomplete="off"
+                        />
+                    </div>
+                </section>
+
+                <!-- Tip selection -->
+                <section class="input-group">
+                    <label class="label">Select Tip %</label>
+                    <div class="tip-grid">
+                        <button type="button" class="tip-btn" data-tip="10">
+                            10%
+                        </button>
+                        <button type="button" class="tip-btn" data-tip="12">
+                            12%
+                        </button>
+                        <button type="button" class="tip-btn" data-tip="15">
+                            15%
+                        </button>
+                        <button type="button" class="tip-btn" data-tip="20">
+                            20%
+                        </button>
+                        <input
+                            type="number"
+                            id="custom-tip-input"
+                            class="input input--custom-tip"
+                            placeholder="Custom"
+                            min="0"
+                            max="100"
+                            step="1"
+                            inputmode="decimal"
+                            autocomplete="off"
+                        />
+                    </div>
+                </section>
+
+                <!-- Number of people -->
+                <section class="input-group">
+                    <label for="split-input" class="label"
+                        >Number of People</label
+                    >
+                    <div class="split-control">
+                        <button
+                            type="button"
+                            id="split-decrement"
+                            class="split-btn"
+                            aria-label="Decrease number of people"
+                        >
+                            &minus;
+                        </button>
+                        <input
+                            type="number"
+                            id="split-input"
+                            class="input input--split"
+                            value="1"
+                            min="1"
+                            max="100"
+                            step="1"
+                            inputmode="numeric"
+                            autocomplete="off"
+                        />
+                        <button
+                            type="button"
+                            id="split-increment"
+                            class="split-btn"
+                            aria-label="Increase number of people"
+                        >
+                            +
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Results -->
+                <section class="results">
+                    <div class="result-row">
+                        <div class="result-label">
+                            <span class="result-label__title">Tip Amount</span>
+                            <span class="result-label__sub">/ person</span>
+                        </div>
+                        <span id="tip-amount" class="result-value">$0.00</span>
+                    </div>
+                    <div class="result-row">
+                        <div class="result-label">
+                            <span class="result-label__title">Total</span>
+                            <span class="result-label__sub">/ person</span>
+                        </div>
+                        <span id="per-person" class="result-value">$0.00</span>
+                    </div>
+                    <hr class="result-divider" />
+                    <div class="result-row result-row--grand">
+                        <span class="result-label__title">Grand Total</span>
+                        <span
+                            id="total-amount"
+                            class="result-value result-value--grand"
+                            >$0.00</span
+                        >
+                    </div>
+                </section>
+
+                <!-- Reset button -->
+                <button type="button" id="reset-btn" class="reset-btn">
+                    Reset
+                </button>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer">
+                <p>
+                    &copy; 2026 TipEase &mdash; An open-source tip calculator.
+                </p>
+            </footer>
+        </div>
+
+        <script type="module" src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

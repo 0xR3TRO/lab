@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="640" viewBox="0 0 1280 640" fill="none">
+  <rect width="1280" height="640" rx="16" fill="#0f1117"/>
+  <!-- Stopwatch icon -->
+  <circle cx="540" cy="320" r="100" stroke="#6c63ff" stroke-width="6"/>
+  <circle cx="540" cy="320" r="82" fill="#1a1b26" stroke="#6c63ff" stroke-width="3"/>
+  <line x1="540" y1="320" x2="540" y2="258" stroke="#818cf8" stroke-width="5" stroke-linecap="round"/>
+  <line x1="540" y1="320" x2="590" y2="320" stroke="#6c63ff" stroke-width="3" stroke-linecap="round"/>
+  <rect x="530" y="200" width="20" height="24" rx="6" fill="#6c63ff"/>
+  <circle cx="540" cy="320" r="6" fill="#6c63ff"/>
+  <!-- Title -->
+  <text x="680" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="72" font-weight="700" fill="#e5e7eb">TimeSnap</text>
+  <text x="680" y="365" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#9ca3af">Precise time, zero distractions.</text>
+</svg>

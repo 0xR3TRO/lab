@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Neon Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-neon.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: #0a0a1a;
+                color: #f1f5f9;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 2rem;
+            }
+            h1 {
+                margin-bottom: 0.5rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+                max-width: 900px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>💡 Neon Buttons</h1>
+        <p>Świecące przyciski neonowe z animowanym glow.</p>
+
+        <div class="demo-row">
+            <button class="btn-neon btn-neon--cyan">Cyan</button>
+            <button class="btn-neon btn-neon--pink">Pink</button>
+            <button class="btn-neon btn-neon--green">Green</button>
+            <button class="btn-neon btn-neon--red">Red</button>
+            <button class="btn-neon btn-neon--yellow">Yellow</button>
+            <button class="btn-neon btn-neon--orange">Orange</button>
+            <button class="btn-neon btn-neon--violet">Violet</button>
+            <button class="btn-neon btn-neon--white">White</button>
+        </div>
+
+        <div class="demo-row">
+            <button class="btn-neon btn-neon--cyan btn-neon--pulse">
+                Pulsating
+            </button>
+            <button class="btn-neon btn-neon--pink btn-neon--pill">
+                Pill shape
+            </button>
+            <button class="btn-neon btn-neon--green btn-neon--sm">Small</button>
+            <button class="btn-neon btn-neon--red btn-neon--lg">Large</button>
+        </div>
+
+        <script src="btn-neon.js"></script>
+    </body>
+</html>

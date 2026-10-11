@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-layout="default">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>WindowSync</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
+    </head>
+    <body>
+        <!-- ============================================================= -->
+        <!--  Header                                                        -->
+        <!-- ============================================================= -->
+        <header class="app-header">
+            <h1>
+                <img class="logo" src="assets/logo.svg" alt="WindowSync logo" />
+                WindowSync
+            </h1>
+            <div class="header-meta">
+                <span
+                    >Window <span class="badge" id="window-id">---</span></span
+                >
+                <span
+                    >Active windows: <strong id="window-count">1</strong></span
+                >
+                <span>Channel: <strong id="channel-type">---</strong></span>
+                <button class="btn btn-primary" id="theme-toggle">
+                    Dark Mode
+                </button>
+            </div>
+        </header>
+
+        <!-- ============================================================= -->
+        <!--  Body: sidebar + content                                       -->
+        <!-- ============================================================= -->
+        <div class="app-body">
+            <!-- Sidebar navigation -->
+            <nav class="sidebar">
+                <div class="sidebar-section">
+                    <h3>Navigation</h3>
+                    <button class="sidebar-btn active" data-panel="home">
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <path d="M3 12l9-9 9 9" />
+                            <path
+                                d="M5 10v10a1 1 0 001 1h3v-6h6v6h3a1 1 0 001-1V10"
+                            />
+                        </svg>
+                        Home
+                    </button>
+                    <button class="sidebar-btn" data-panel="settings">
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 01-2.83 2.83l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-4 0v-.09a1.65 1.65 0 00-1.08-1.51 1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 010-4h.09a1.65 1.65 0 001.51-1.08 1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 012.83-2.83l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 014 0v.09a1.65 1.65 0 001.08 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9c.26.604.852.997 1.51 1H21a2 2 0 010 4h-.09a1.65 1.65 0 00-1.51 1.08z"
+                            />
+                        </svg>
+                        Settings
+                    </button>
+                    <button class="sidebar-btn" data-panel="data">
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <rect x="3" y="3" width="7" height="7" />
+                            <rect x="14" y="3" width="7" height="7" />
+                            <rect x="3" y="14" width="7" height="7" />
+                            <rect x="14" y="14" width="7" height="7" />
+                        </svg>
+                        Data
+                    </button>
+                    <button class="sidebar-btn" data-panel="about">
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                        >
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="16" x2="12" y2="12" />
+                            <line x1="12" y1="8" x2="12.01" y2="8" />
+                        </svg>
+                        About
+                    </button>
+                </div>
+
+                <div class="sidebar-section" style="margin-top: auto">
+                    <h3>Connected Windows</h3>
+                    <ul class="window-list" id="window-list"></ul>
+                    <button
+                        class="btn btn-outline"
+                        id="open-window"
+                        style="margin-top: 12px; width: 100%"
+                    >
+                        + Open New Window
+                    </button>
+                </div>
+            </nav>
+
+            <!-- Main content area -->
+            <main class="content">
+                <!-- ======== Home Panel ======== -->
+                <section class="panel-content active" id="panel-home">
+                    <div class="card">
+                        <h2>Synchronized Text</h2>
+                        <p>
+                            Type below and watch it update in all connected
+                            windows instantly.
+                        </p>
+                        <textarea
+                            class="input-field"
+                            id="shared-text"
+                            placeholder="Start typing..."
+                        ></textarea>
+                    </div>
+
+                    <div class="card">
+                        <h2>Synchronized Counter</h2>
+                        <p>
+                            Increment or decrement the shared counter across all
+                            windows.
+                        </p>
+                        <div class="counter-group">
+                            <button class="btn-icon" id="counter-dec">
+                                &minus;
+                            </button>
+                            <span class="counter-value" id="counter-value"
+                                >0</span
+                            >
+                            <button class="btn-icon" id="counter-inc">+</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======== Settings Panel ======== -->
+                <section class="panel-content" id="panel-settings">
+                    <div class="card">
+                        <h2>Theme</h2>
+                        <p>
+                            Toggle between light and dark themes. The change
+                            synchronizes across all windows.
+                        </p>
+                        <button
+                            class="btn btn-primary"
+                            onclick="
+                                document.getElementById('theme-toggle').click()
+                            "
+                        >
+                            Toggle Theme
+                        </button>
+                    </div>
+
+                    <div class="card">
+                        <h2>Layout Mode</h2>
+                        <p>
+                            Switch the content layout. All windows will follow.
+                        </p>
+                        <div class="layout-group">
+                            <button
+                                class="btn btn-outline active"
+                                data-layout="default"
+                            >
+                                Default
+                            </button>
+                            <button
+                                class="btn btn-outline"
+                                data-layout="compact"
+                            >
+                                Compact
+                            </button>
+                            <button class="btn btn-outline" data-layout="wide">
+                                Wide
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- ======== Data Panel ======== -->
+                <section class="panel-content" id="panel-data">
+                    <div class="card">
+                        <h2>Synchronized State Snapshot</h2>
+                        <p>A live view of the current shared state object.</p>
+                        <pre
+                            class="input-field"
+                            id="state-snapshot"
+                            style="
+                                white-space: pre-wrap;
+                                font-family: monospace;
+                                min-height: 120px;
+                            "
+                        ></pre>
+                    </div>
+                </section>
+
+                <!-- ======== About Panel ======== -->
+                <section class="panel-content" id="panel-about">
+                    <div class="card">
+                        <h2>About WindowSync</h2>
+                        <p>
+                            WindowSync is a JavaScript-powered system that
+                            synchronizes multiple browser windows into a
+                            unified, coordinated interface. Each window shares
+                            state, UI interactions, and updates in real time.
+                        </p>
+                        <div class="feature-grid">
+                            <div class="feature-item">
+                                <strong>BroadcastChannel</strong>
+                                High-performance same-origin messaging with
+                                automatic fallback to localStorage events.
+                            </div>
+                            <div class="feature-item">
+                                <strong>Window Registry</strong>
+                                Every window is tracked with heartbeats and
+                                stale-window pruning.
+                            </div>
+                            <div class="feature-item">
+                                <strong>Last-Write-Wins</strong>
+                                Timestamp-based conflict resolution ensures
+                                deterministic state convergence.
+                            </div>
+                            <div class="feature-item">
+                                <strong>Real-Time UI</strong>
+                                All connected windows reflect changes the
+                                instant they happen.
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+
+        <!-- Last-update floating badge -->
+        <div id="last-update"></div>
+
+        <!-- Entry script -->
+        <script type="module" src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

@@ -1,0 +1,378 @@
+/* ==========================================================================
+   TipEase — Styles
+   Modern, clean, mobile-first tip calculator.
+   ========================================================================== */
+
+/* ---------- Reset & Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --clr-bg: #f4f5f7;
+    --clr-surface: #ffffff;
+    --clr-primary: #2d9f7f;
+    --clr-primary-hover: #238a6d;
+    --clr-primary-light: #e8f6f1;
+    --clr-text: #2c3e50;
+    --clr-text-muted: #7b8d9e;
+    --clr-border: #dce1e8;
+    --clr-error: #e74c3c;
+    --clr-shadow: rgba(0, 0, 0, 0.06);
+    --radius: 12px;
+    --radius-sm: 8px;
+    --font: "Segoe UI", system-ui, -apple-system, sans-serif;
+    --transition: 0.2s ease;
+}
+
+html {
+    font-size: 16px;
+    -webkit-text-size-adjust: 100%;
+}
+
+body {
+    font-family: var(--font);
+    background: var(--clr-bg);
+    color: var(--clr-text);
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1rem;
+    line-height: 1.5;
+}
+
+/* ---------- App Container ---------- */
+
+.app {
+    width: 100%;
+    max-width: 440px;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.header__title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--clr-primary);
+    letter-spacing: -0.02em;
+}
+
+.header__tagline {
+    font-size: 0.95rem;
+    color: var(--clr-text-muted);
+    margin-top: 0.25rem;
+}
+
+/* ---------- Main Card ---------- */
+
+.main {
+    background: var(--clr-surface);
+    border-radius: var(--radius);
+    padding: 1.75rem 1.5rem;
+    box-shadow: 0 4px 24px var(--clr-shadow);
+}
+
+/* ---------- Input Groups ---------- */
+
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.label {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--clr-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.5rem;
+}
+
+/* Shared input style */
+.input {
+    width: 100%;
+    height: 48px;
+    border: 2px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    padding: 0 0.875rem;
+    font-size: 1.1rem;
+    font-family: var(--font);
+    color: var(--clr-text);
+    background: var(--clr-surface);
+    transition:
+        border-color var(--transition),
+        box-shadow var(--transition);
+    outline: none;
+    -moz-appearance: textfield;
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.input::placeholder {
+    color: var(--clr-text-muted);
+    opacity: 0.6;
+}
+
+.input:focus {
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 3px var(--clr-primary-light);
+}
+
+/* Currency wrapper */
+.input-wrapper--currency {
+    position: relative;
+}
+
+.input-prefix {
+    position: absolute;
+    left: 0.875rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    color: var(--clr-text-muted);
+    pointer-events: none;
+    font-weight: 500;
+}
+
+.input-wrapper--currency .input {
+    padding-left: 1.75rem;
+}
+
+/* ---------- Tip Grid ---------- */
+
+.tip-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.625rem;
+}
+
+.tip-btn {
+    height: 48px;
+    border: 2px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    background: var(--clr-surface);
+    color: var(--clr-text);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+}
+
+.tip-btn:hover {
+    border-color: var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.tip-btn:focus-visible {
+    outline: none;
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 3px var(--clr-primary-light);
+}
+
+.tip-btn.active {
+    background: var(--clr-primary);
+    border-color: var(--clr-primary);
+    color: #fff;
+}
+
+.input--custom-tip {
+    grid-column: span 2;
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ---------- Split Control ---------- */
+
+.split-control {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.split-btn {
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border: 2px solid var(--clr-border);
+    border-radius: var(--radius-sm);
+    background: var(--clr-surface);
+    color: var(--clr-text);
+    font-size: 1.25rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background var(--transition),
+        color var(--transition),
+        border-color var(--transition),
+        box-shadow var(--transition);
+    user-select: none;
+}
+
+.split-btn:hover {
+    border-color: var(--clr-primary);
+    color: var(--clr-primary);
+}
+
+.split-btn:focus-visible {
+    outline: none;
+    border-color: var(--clr-primary);
+    box-shadow: 0 0 0 3px var(--clr-primary-light);
+}
+
+.split-btn:active {
+    background: var(--clr-primary-light);
+}
+
+.input--split {
+    text-align: center;
+    font-weight: 600;
+}
+
+/* ---------- Results ---------- */
+
+.results {
+    background: var(--clr-primary);
+    border-radius: var(--radius);
+    padding: 1.25rem 1.25rem;
+    margin-top: 1.5rem;
+    color: #fff;
+}
+
+.result-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+}
+
+.result-label__title {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.result-label__sub {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+.result-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.result-divider {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin: 0.375rem 0;
+}
+
+.result-row--grand {
+    padding-top: 0.625rem;
+}
+
+.result-value--grand {
+    font-size: 1.75rem;
+}
+
+/* ---------- Error Message ---------- */
+
+.error-message {
+    background: #fef2f2;
+    color: var(--clr-error);
+    font-size: 0.875rem;
+    font-weight: 500;
+    padding: 0.625rem 1rem;
+    border-radius: var(--radius-sm);
+    margin-bottom: 1rem;
+    border: 1px solid #fecaca;
+}
+
+/* ---------- Reset Button ---------- */
+
+.reset-btn {
+    display: block;
+    width: 100%;
+    height: 48px;
+    margin-top: 1.25rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    background: var(--clr-primary-light);
+    color: var(--clr-primary);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: var(--font);
+    cursor: pointer;
+    transition:
+        background var(--transition),
+        color var(--transition);
+}
+
+.reset-btn:hover {
+    background: var(--clr-primary);
+    color: #fff;
+}
+
+.reset-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px var(--clr-primary-light);
+}
+
+/* ---------- Footer ---------- */
+
+.footer {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.8rem;
+    color: var(--clr-text-muted);
+}
+
+/* ---------- Media Queries ---------- */
+
+@media (min-width: 480px) {
+    .main {
+        padding: 2rem;
+    }
+
+    .tip-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .input--custom-tip {
+        grid-column: span 1;
+    }
+}
+
+@media (min-width: 640px) {
+    .tip-grid {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .input--custom-tip {
+        grid-column: span 1;
+    }
+}

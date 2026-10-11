@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="CoinPulse — live prices and 24h change for popular cryptocurrencies. Part of web-lab." />
+        <title>CoinPulse · web-lab</title>
+        <link rel="stylesheet" href="../../shared/module.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="module">
+            <header class="module-head">
+                <h1>CoinPulse</h1>
+                <p>Live prices and 24-hour change for popular cryptocurrencies. Refreshes every minute.</p>
+            </header>
+
+            <section class="card">
+                <div class="row toolbar">
+                    <label class="field small">
+                        <span>Currency</span>
+                        <select id="currency">
+                            <option value="usd">USD</option>
+                            <option value="eur">EUR</option>
+                            <option value="pln">PLN</option>
+                            <option value="gbp">GBP</option>
+                        </select>
+                    </label>
+                    <button class="btn" id="refresh" type="button">Refresh</button>
+                    <p class="updated muted" id="updated" role="status"></p>
+                </div>
+                <ul class="coins" id="coins" aria-live="polite"></ul>
+                <p class="note">
+                    Price data by <a href="https://www.coingecko.com/" rel="noopener">CoinGecko</a>. For information only — not
+                    financial advice. Your currency choice is remembered in this browser only.
+                </p>
+            </section>
+        </main>
+
+        <script src="app.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

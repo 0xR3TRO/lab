@@ -1,0 +1,95 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — SVG Animations
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Klasy CSS do animowania ikon SVG (stroke draw, morph, spin).
+ * ============================================================
+ */
+
+/* ── Stroke draw (line-draw animation) ──────────────────── */
+.bc-svg-draw {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: bc-svg-stroke-draw 2s ease forwards;
+}
+
+@keyframes bc-svg-stroke-draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+/* ── Fill fade-in ───────────────────────────────────────── */
+.bc-svg-fill-in {
+    fill-opacity: 0;
+    animation: bc-svg-fill 1s ease 1.5s forwards;
+}
+
+@keyframes bc-svg-fill {
+    to {
+        fill-opacity: 1;
+    }
+}
+
+/* ── Rotate (continuous) ────────────────────────────────── */
+.bc-svg-rotate {
+    animation: bc-svg-spin 2s linear infinite;
+    transform-origin: center;
+}
+
+@keyframes bc-svg-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Pulse scale ────────────────────────────────────────── */
+.bc-svg-pulse {
+    animation: bc-svg-pulse 1.5s ease-in-out infinite;
+    transform-origin: center;
+}
+
+@keyframes bc-svg-pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+/* ── Bounce ─────────────────────────────────────────────── */
+.bc-svg-bounce {
+    animation: bc-svg-bounce 0.6s ease infinite alternate;
+    transform-origin: center bottom;
+}
+
+@keyframes bc-svg-bounce {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-6px);
+    }
+}
+
+/* ── Shake ──────────────────────────────────────────────── */
+.bc-svg-shake {
+    animation: bc-svg-shake 0.5s ease-in-out;
+    transform-origin: center;
+}
+
+@keyframes bc-svg-shake {
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-4px);
+    }
+    75% {
+        transform: translateX(4px);
+    }
+}

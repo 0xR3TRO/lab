@@ -1,0 +1,24 @@
+{
+    "id": "minimal",
+    "name": "Minimal",
+    "description": "Ultra-clean with maximum whitespace",
+    "colors": {
+        "background": "#ffffff",
+        "dialFace": "#ffffff",
+        "dialBorder": "#e8e8e8",
+        "hourHand": "#222222",
+        "minuteHand": "#444444",
+        "secondHand": "#ff4444",
+        "centerDot": "#222222",
+        "hourMarkers": "#222222",
+        "minuteMarkers": "#dddddd",
+        "numbers": "#222222",
+        "shadow": "rgba(0, 0, 0, 0.06)",
+        "accent": "#ff4444",
+        "digitalText": "#222222"
+    },
+    "meta": {
+        "category": "light",
+        "author": "TempoDial"
+    }
+}

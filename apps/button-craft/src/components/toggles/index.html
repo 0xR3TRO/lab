@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Toggles</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="toggles.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 1.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🔀 Toggles</h1>
+
+        <label class="bc-toggle">
+            <input class="bc-toggle__input" type="checkbox" checked />
+            <span class="bc-toggle__track"
+                ><span class="bc-toggle__thumb"></span
+            ></span>
+            Notifications
+        </label>
+
+        <label class="bc-toggle bc-toggle--success">
+            <input class="bc-toggle__input" type="checkbox" />
+            <span class="bc-toggle__track"
+                ><span class="bc-toggle__thumb"></span
+            ></span>
+            Dark Mode
+        </label>
+
+        <label class="bc-toggle bc-toggle--danger">
+            <input class="bc-toggle__input" type="checkbox" />
+            <span class="bc-toggle__track"
+                ><span class="bc-toggle__thumb"></span
+            ></span>
+            Danger toggle
+        </label>
+
+        <label class="bc-toggle bc-toggle--sm">
+            <input class="bc-toggle__input" type="checkbox" checked />
+            <span class="bc-toggle__track"
+                ><span class="bc-toggle__thumb"></span
+            ></span>
+            Small
+        </label>
+
+        <label class="bc-toggle bc-toggle--lg">
+            <input class="bc-toggle__input" type="checkbox" checked />
+            <span class="bc-toggle__track"
+                ><span class="bc-toggle__thumb"></span
+            ></span>
+            Large
+        </label>
+    </body>
+</html>

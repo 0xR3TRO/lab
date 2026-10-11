@@ -1,0 +1,76 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Parallax / Tilt Button
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Przycisk z efektem 3D tilt (parallax) reagującym na ruch
+ *  kursora. Przesuwa perspektywę elementu.
+ * ============================================================
+ */
+
+.btn-parallax {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2.5rem;
+    font-family: var(--bc-font-family, sans-serif);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    border: none;
+    border-radius: var(--bc-radius-md, 0.75rem);
+    cursor: pointer;
+    user-select: none;
+    transform-style: preserve-3d;
+    will-change: transform;
+    transition: box-shadow 0.3s ease;
+    perspective: 600px;
+}
+
+.btn-parallax:hover {
+    box-shadow:
+        0 20px 40px rgba(99, 102, 241, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Warianty */
+.btn-parallax--pink {
+    background: linear-gradient(135deg, #ec4899, #f472b6);
+}
+.btn-parallax--cyan {
+    background: linear-gradient(135deg, #06b6d4, #22d3ee);
+}
+.btn-parallax--dark {
+    background: linear-gradient(135deg, #1e293b, #334155);
+}
+
+/* Inner glow layer */
+.btn-parallax::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.15),
+        transparent 60%
+    );
+    pointer-events: none;
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+.btn-parallax:hover::before {
+    opacity: 1;
+}
+
+.btn-parallax--sm {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.875rem;
+}
+.btn-parallax--lg {
+    padding: 1.2rem 3rem;
+    font-size: 1.25rem;
+}

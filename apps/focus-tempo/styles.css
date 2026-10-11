@@ -1,0 +1,553 @@
+/* ============================================================
+   FocusTempo — styles.css
+   Modern Pomodoro Timer · Mobile-first · Light/Dark theming
+   ============================================================ */
+
+/* ---------- CSS Custom Properties ---------- */
+
+:root,
+[data-theme="light"] {
+    --bg: #f4f6f9;
+    --bg-card: #ffffff;
+    --text: #1e293b;
+    --text-muted: #64748b;
+    --accent: #e74c3c;
+    --accent-light: rgba(231, 76, 60, 0.12);
+    --accent-dark: #c0392b;
+    --border: #e2e8f0;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --ring-bg: #e2e8f0;
+    --input-bg: #f1f5f9;
+    --overlay: rgba(0, 0, 0, 0.35);
+    --work-color: #e74c3c;
+    --short-break-color: #27ae60;
+    --long-break-color: #2980b9;
+}
+
+[data-theme="dark"] {
+    --bg: #0f172a;
+    --bg-card: #1e293b;
+    --text: #e2e8f0;
+    --text-muted: #94a3b8;
+    --accent: #ef5350;
+    --accent-light: rgba(239, 83, 80, 0.15);
+    --accent-dark: #e53935;
+    --border: #334155;
+    --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    --ring-bg: #334155;
+    --input-bg: #0f172a;
+    --overlay: rgba(0, 0, 0, 0.6);
+    --work-color: #ef5350;
+    --short-break-color: #66bb6a;
+    --long-break-color: #42a5f5;
+}
+
+/* ---------- Reset & Base ---------- */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family:
+        "Segoe UI",
+        system-ui,
+        -apple-system,
+        sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    transition:
+        background 0.35s,
+        color 0.35s;
+}
+
+/* ---------- App Shell ---------- */
+
+.app {
+    width: 100%;
+    max-width: 480px;
+    padding: 1.25rem 1rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: -0.5px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-icon {
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 12px;
+    background: var(--accent-light);
+    font-size: 1.15rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition:
+        background 0.2s,
+        transform 0.15s;
+}
+
+.btn-icon:hover {
+    background: var(--accent);
+    color: #fff;
+    transform: scale(1.05);
+}
+
+/* ---------- Main Timer Section ---------- */
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-section {
+    background: var(--bg-card);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 2rem 1.5rem 1.75rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition:
+        background 0.35s,
+        box-shadow 0.35s;
+}
+
+/* Session label */
+
+.session-label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 1rem;
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    transition:
+        color 0.3s,
+        background 0.3s;
+}
+
+.session-label--work {
+    color: var(--work-color);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.session-label--shortBreak {
+    color: var(--short-break-color);
+    background: rgba(39, 174, 96, 0.1);
+}
+
+.session-label--longBreak {
+    color: var(--long-break-color);
+    background: rgba(41, 128, 185, 0.1);
+}
+
+/* ---------- Progress Ring ---------- */
+
+.progress-ring-container {
+    position: relative;
+    width: 220px;
+    height: 220px;
+    margin-bottom: 1.5rem;
+}
+
+.progress-ring {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+
+.progress-ring__bg {
+    fill: none;
+    stroke: var(--ring-bg);
+    stroke-width: 10;
+}
+
+.progress-ring__progress {
+    fill: none;
+    stroke: var(--accent);
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 0.4s ease;
+}
+
+.timer-display {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--text);
+    letter-spacing: 2px;
+}
+
+/* ---------- Controls ---------- */
+
+.controls {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.btn {
+    padding: 0.7rem 1.6rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition:
+        background 0.2s,
+        transform 0.15s,
+        box-shadow 0.2s;
+}
+
+.btn:active {
+    transform: scale(0.96);
+}
+
+.btn:disabled {
+    opacity: 0.45;
+    cursor: default;
+    transform: none;
+}
+
+.btn-primary {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-primary:hover:not(:disabled) {
+    background: var(--accent-dark);
+    box-shadow: 0 4px 14px rgba(231, 76, 60, 0.35);
+}
+
+.btn-secondary {
+    background: var(--accent-light);
+    color: var(--accent);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--accent);
+    color: #fff;
+}
+
+.btn-outline {
+    background: transparent;
+    color: var(--text-muted);
+    border: 2px solid var(--border);
+}
+
+.btn-outline:hover:not(:disabled) {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.btn-small {
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    background: var(--accent-light);
+    color: var(--accent);
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-small:hover {
+    background: var(--accent);
+    color: #fff;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* ---------- Session counter ---------- */
+
+.session-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.session-info strong {
+    color: var(--accent);
+    font-size: 1.1rem;
+}
+
+/* ---------- Settings Panel ---------- */
+
+.settings-panel {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.settings-panel.open {
+    pointer-events: auto;
+    opacity: 1;
+}
+
+.settings-overlay {
+    position: absolute;
+    inset: 0;
+    background: var(--overlay);
+}
+
+.settings-content {
+    position: relative;
+    z-index: 1;
+    background: var(--bg-card);
+    border-radius: 24px 24px 0 0;
+    padding: 2rem 1.5rem 2.5rem;
+    width: 100%;
+    max-width: 480px;
+    max-height: 85vh;
+    overflow-y: auto;
+    transform: translateY(100%);
+    transition: transform 0.35s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.settings-panel.open .settings-content {
+    transform: translateY(0);
+}
+
+.settings-content h2 {
+    font-size: 1.25rem;
+    margin-bottom: 1.25rem;
+    color: var(--text);
+}
+
+.setting-group {
+    margin-bottom: 1.15rem;
+}
+
+.setting-group label {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.setting-group label span {
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.setting-group select {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--input-bg);
+    color: var(--text);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+    appearance: none;
+}
+
+.checkbox-label {
+    display: flex !important;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: var(--text) !important;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+}
+
+/* ---------- Range input ---------- */
+
+input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 100px;
+    background: var(--ring-bg);
+    outline: none;
+    transition: background 0.2s;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 3px solid var(--bg-card);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: transform 0.15s;
+}
+
+input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.15);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    border: 3px solid var(--bg-card);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* ---------- History ---------- */
+
+.history-section {
+    width: 100%;
+    max-width: 480px;
+    margin-top: 1.5rem;
+}
+
+.history-section h2 {
+    font-size: 1.1rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-muted);
+}
+
+.history-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.history-empty {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding: 1rem 0;
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: var(--bg-card);
+    padding: 0.65rem 1rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    transition: background 0.35s;
+}
+
+.history-type {
+    font-weight: 600;
+    min-width: 90px;
+}
+
+.history-type--work {
+    color: var(--work-color);
+}
+.history-type--shortBreak {
+    color: var(--short-break-color);
+}
+.history-type--longBreak {
+    color: var(--long-break-color);
+}
+
+.history-duration {
+    color: var(--text-muted);
+}
+
+.history-date {
+    margin-left: auto;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+}
+
+/* ---------- Responsive (larger screens) ---------- */
+
+@media (min-width: 600px) {
+    .app {
+        padding-top: 3rem;
+    }
+
+    .progress-ring-container {
+        width: 260px;
+        height: 260px;
+    }
+
+    .timer-display {
+        font-size: 3.5rem;
+    }
+
+    .timer-section {
+        padding: 2.5rem 2rem 2rem;
+    }
+}
+
+/* ---------- Animations ---------- */
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+.timer-section.pulse {
+    animation: pulse 0.5s ease;
+}

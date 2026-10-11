@@ -1,0 +1,169 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Navigation Bar
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Responsywny pasek nawigacji + hamburger menu + dropdown.
+ * ============================================================
+ */
+
+.bc-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 2rem;
+    background: var(--bc-surface, #1e293b);
+    border-bottom: 1px solid var(--bc-border, #334155);
+    font-family: var(--bc-font-family, sans-serif);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.bc-nav__brand {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--bc-text, #f1f5f9);
+    text-decoration: none;
+}
+
+.bc-nav__links {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.bc-nav__link {
+    color: var(--bc-text-secondary, #cbd5e1);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.2s;
+    position: relative;
+}
+
+.bc-nav__link:hover,
+.bc-nav__link.is-active {
+    color: var(--bc-color-primary, #6366f1);
+}
+
+/* Underline on hover */
+.bc-nav__link::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 0;
+    height: 2px;
+    background: var(--bc-color-primary, #6366f1);
+    transition: width 0.3s ease;
+}
+
+.bc-nav__link:hover::after,
+.bc-nav__link.is-active::after {
+    width: 100%;
+}
+
+/* ── Dropdown ───────────────────────────────────────────── */
+.bc-dropdown {
+    position: relative;
+}
+
+.bc-dropdown__menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 180px;
+    background: var(--bc-surface, #1e293b);
+    border: 1px solid var(--bc-border, #334155);
+    border-radius: var(--bc-radius, 0.5rem);
+    box-shadow: var(--bc-shadow-lg);
+    padding: 0.5rem 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all 0.2s ease;
+    z-index: 200;
+    list-style: none;
+}
+
+.bc-dropdown.is-open .bc-dropdown__menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.bc-dropdown__item {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--bc-text-secondary, #cbd5e1);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition:
+        background 0.15s,
+        color 0.15s;
+}
+
+.bc-dropdown__item:hover {
+    background: var(--bc-surface-hover, #334155);
+    color: var(--bc-text, #f1f5f9);
+}
+
+/* ── Hamburger ──────────────────────────────────────────── */
+.bc-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 4px;
+}
+
+.bc-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--bc-text, #f1f5f9);
+    border-radius: 2px;
+    transition:
+        transform 0.3s ease,
+        opacity 0.3s ease;
+}
+
+.bc-hamburger.is-active span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.bc-hamburger.is-active span:nth-child(2) {
+    opacity: 0;
+}
+.bc-hamburger.is-active span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .bc-hamburger {
+        display: flex;
+    }
+    .bc-nav__links {
+        position: fixed;
+        top: 56px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        flex-direction: column;
+        background: var(--bc-surface, #1e293b);
+        padding: 2rem;
+        gap: 1.5rem;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease;
+        z-index: 99;
+    }
+    .bc-nav__links.is-open {
+        transform: translateX(0);
+    }
+}

@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TempoDial — Analog Clock</title>
+        <meta
+            name="description"
+            content="A modern, interactive analog clock widget built with pure HTML, CSS, and JavaScript."
+        />
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    </head>
+    <body>
+        <div id="app" class="app">
+            <!-- Controls Panel -->
+            <aside
+                class="controls"
+                role="complementary"
+                aria-label="Clock settings"
+            >
+                <div class="controls__header">
+                    <h1 class="controls__title">TempoDial</h1>
+                    <button
+                        class="controls__toggle"
+                        id="controlsToggle"
+                        aria-label="Toggle settings panel"
+                        aria-expanded="true"
+                    >
+                        <svg
+                            width="20"
+                            height="20"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <circle cx="12" cy="12" r="3" />
+                            <path
+                                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"
+                            />
+                        </svg>
+                    </button>
+                </div>
+
+                <div class="controls__body" id="controlsBody">
+                    <!-- Theme -->
+                    <div class="control-group">
+                        <label class="control-label" for="themeSelect"
+                            >Theme</label
+                        >
+                        <select
+                            class="control-select"
+                            id="themeSelect"
+                            aria-label="Select color theme"
+                        >
+                            <option value="classic">Classic</option>
+                            <option value="neon">Neon</option>
+                            <option value="pastel">Pastel</option>
+                            <option value="dark">Dark</option>
+                            <option value="minimal">Minimal</option>
+                        </select>
+                    </div>
+
+                    <!-- Dark/Light Mode -->
+                    <div class="control-group">
+                        <label class="control-label">Mode</label>
+                        <button
+                            class="control-btn"
+                            id="modeToggle"
+                            aria-label="Toggle dark/light mode"
+                        >
+                            <span class="mode-icon" id="modeIcon">🌙</span>
+                            <span id="modeLabel">Dark</span>
+                        </button>
+                    </div>
+
+                    <!-- Dial Style -->
+                    <div class="control-group">
+                        <label class="control-label" for="dialStyle"
+                            >Dial Style</label
+                        >
+                        <select
+                            class="control-select"
+                            id="dialStyle"
+                            aria-label="Select dial style"
+                        >
+                            <option value="indices">Indices</option>
+                            <option value="numbers">Numbers</option>
+                            <option value="roman">Roman Numerals</option>
+                            <option value="none">No Markings</option>
+                        </select>
+                    </div>
+
+                    <!-- Hand Style -->
+                    <div class="control-group">
+                        <label class="control-label" for="handStyle"
+                            >Hand Style</label
+                        >
+                        <select
+                            class="control-select"
+                            id="handStyle"
+                            aria-label="Select hand style"
+                        >
+                            <option value="classic">Classic</option>
+                            <option value="modern">Modern</option>
+                            <option value="slim">Slim</option>
+                            <option value="bold">Bold</option>
+                        </select>
+                    </div>
+
+                    <!-- Digital Display -->
+                    <div class="control-group">
+                        <label class="control-label">Digital Time</label>
+                        <button
+                            class="control-btn"
+                            id="digitalToggle"
+                            aria-label="Toggle digital time display"
+                        >
+                            <span id="digitalLabel">Show</span>
+                        </button>
+                    </div>
+
+                    <!-- Second Hand -->
+                    <div class="control-group">
+                        <label class="control-label">Second Hand</label>
+                        <button
+                            class="control-btn"
+                            id="secondHandToggle"
+                            aria-label="Toggle second hand"
+                        >
+                            <span id="secondHandLabel">On</span>
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Clock Container -->
+            <main class="clock-container" role="main" aria-label="Analog clock">
+                <div
+                    class="clock"
+                    id="clock"
+                    role="img"
+                    aria-live="polite"
+                    aria-label="Current time"
+                >
+                    <svg
+                        class="clock__face"
+                        id="clockFace"
+                        viewBox="0 0 400 400"
+                        xmlns="http://www.w3.org/2000/svg"
+                    >
+                        <defs>
+                            <filter
+                                id="clockShadow"
+                                x="-20%"
+                                y="-20%"
+                                width="140%"
+                                height="140%"
+                            >
+                                <feDropShadow
+                                    dx="0"
+                                    dy="4"
+                                    stdDeviation="8"
+                                    flood-opacity="0.15"
+                                />
+                            </filter>
+                            <filter id="handShadow">
+                                <feDropShadow
+                                    dx="1"
+                                    dy="1"
+                                    stdDeviation="1"
+                                    flood-opacity="0.3"
+                                />
+                            </filter>
+                        </defs>
+
+                        <!-- Background circle -->
+                        <circle
+                            class="clock__bg"
+                            cx="200"
+                            cy="200"
+                            r="190"
+                            filter="url(#clockShadow)"
+                        />
+                        <circle
+                            class="clock__border"
+                            cx="200"
+                            cy="200"
+                            r="190"
+                            fill="none"
+                            stroke-width="3"
+                        />
+
+                        <!-- Markers group - generated by JS -->
+                        <g id="markers"></g>
+
+                        <!-- Hands -->
+                        <g id="handsGroup" filter="url(#handShadow)">
+                            <line
+                                class="clock__hand clock__hand--hour"
+                                id="hourHand"
+                                x1="200"
+                                y1="200"
+                                x2="200"
+                                y2="90"
+                                stroke-linecap="round"
+                            />
+                            <line
+                                class="clock__hand clock__hand--minute"
+                                id="minuteHand"
+                                x1="200"
+                                y1="200"
+                                x2="200"
+                                y2="55"
+                                stroke-linecap="round"
+                            />
+                            <line
+                                class="clock__hand clock__hand--second"
+                                id="secondHand"
+                                x1="200"
+                                y1="230"
+                                x2="200"
+                                y2="45"
+                                stroke-linecap="round"
+                            />
+                        </g>
+
+                        <!-- Center dot -->
+                        <circle class="clock__center" cx="200" cy="200" r="6" />
+                    </svg>
+                </div>
+
+                <!-- Digital Display -->
+                <div
+                    class="digital-display"
+                    id="digitalDisplay"
+                    aria-label="Digital time"
+                    hidden
+                >
+                    <span class="digital-time" id="digitalTime">00:00:00</span>
+                    <span class="digital-date" id="digitalDate"></span>
+                </div>
+            </main>
+        </div>
+
+        <script src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

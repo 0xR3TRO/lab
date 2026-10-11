@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="SkyPulse - Advanced Weather Dashboard with forecasts, charts and air quality"
+        />
+
+        <!-- Font Awesome Icons -->
+        <link rel="stylesheet" href="../../shared/vendor/fontawesome/css/all.min.css" />
+
+        <!-- Chart.js -->
+        <script src="../../shared/vendor/chartjs/chart.umd.js"></script>
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="Directories/style.css" />
+
+        <title>SkyPulse — Weather Dashboard</title>
+        <link rel="stylesheet" href="../../shared/fonts/fonts.css" />
+    </head>
+    <body>
+        <!-- ===== HEADER / NAVBAR ===== -->
+        <header class="header">
+            <div class="header__brand">
+                <i class="fa-solid fa-cloud-sun-rain"></i>
+                <span>SkyPulse</span>
+            </div>
+
+            <div class="header__search">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search city..."
+                    spellcheck="false"
+                    autocomplete="off"
+                />
+                <div id="searchHistory" class="search-history"></div>
+            </div>
+
+            <div class="header__actions">
+                <button id="geoBtn" class="btn-icon" title="Use my location">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                </button>
+                <button id="unitToggle" class="btn-icon" title="Toggle °C / °F">
+                    <span class="unit-label">°C</span>
+                </button>
+                <button id="themeToggle" class="btn-icon" title="Toggle theme">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="dashboard">
+            <!-- Error Banner -->
+            <div id="errorBanner" class="error-banner hidden">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <span id="errorMsg">City not found. Please try again.</span>
+                <button id="errorClose" class="btn-icon-sm">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Loading Spinner -->
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <p>Fetching weather data...</p>
+            </div>
+
+            <!-- ===== WEATHER CONTENT (hidden until data loads) ===== -->
+            <div id="weatherContent" class="weather-content hidden">
+                <!-- ROW 1: Current Weather + Details -->
+                <section class="grid-row grid-row--top">
+                    <!-- Current Weather Card -->
+                    <article class="card card--current">
+                        <div class="card__header">
+                            <span class="card__label">Current Weather</span>
+                            <span id="currentDate" class="card__date"></span>
+                        </div>
+                        <div class="current-main">
+                            <div class="current-main__left">
+                                <h1 id="currentCity" class="current-city"></h1>
+                                <p
+                                    id="currentCountry"
+                                    class="current-country"
+                                ></p>
+                                <div class="current-temp-wrap">
+                                    <span
+                                        id="currentTemp"
+                                        class="current-temp"
+                                    ></span>
+                                </div>
+                                <p id="currentDesc" class="current-desc"></p>
+                                <p class="current-feels">
+                                    Feels like <span id="feelsLike"></span>
+                                </p>
+                                <div class="current-minmax">
+                                    <span
+                                        ><i class="fa-solid fa-arrow-up"></i>
+                                        <span id="tempMax"></span
+                                    ></span>
+                                    <span
+                                        ><i class="fa-solid fa-arrow-down"></i>
+                                        <span id="tempMin"></span
+                                    ></span>
+                                </div>
+                            </div>
+                            <div class="current-main__right">
+                                <i
+                                    id="currentIcon"
+                                    class="weather-icon-large"
+                                ></i>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Details Grid -->
+                    <article class="card card--details">
+                        <div class="card__header">
+                            <span class="card__label">Weather Details</span>
+                        </div>
+                        <div class="details-grid">
+                            <div class="detail-item">
+                                <i class="fa-solid fa-droplet"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="humidity"
+                                    ></span>
+                                    <span class="detail-label">Humidity</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-wind"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="windSpeed"
+                                    ></span>
+                                    <span class="detail-label">Wind Speed</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-compass"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="windDir"
+                                    ></span>
+                                    <span class="detail-label"
+                                        >Wind Direction</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-gauge-high"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="pressure"
+                                    ></span>
+                                    <span class="detail-label">Pressure</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-eye"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="visibility"
+                                    ></span>
+                                    <span class="detail-label">Visibility</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-temperature-half"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="dewPoint"
+                                    ></span>
+                                    <span class="detail-label">Dew Point</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-cloud"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="cloudiness"
+                                    ></span>
+                                    <span class="detail-label">Cloudiness</span>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fa-solid fa-wind"></i>
+                                <div>
+                                    <span
+                                        class="detail-value"
+                                        id="windGust"
+                                    ></span>
+                                    <span class="detail-label">Wind Gust</span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- ROW 2: Sun & Air Quality -->
+                <section class="grid-row grid-row--mid">
+                    <!-- Sun / Moon Card -->
+                    <article class="card card--sun">
+                        <div class="card__header">
+                            <span class="card__label">Sun & Atmosphere</span>
+                        </div>
+                        <div class="sun-grid">
+                            <div class="sun-item">
+                                <i class="fa-solid fa-sun sun-rise-icon"></i>
+                                <div>
+                                    <span class="detail-label">Sunrise</span>
+                                    <span
+                                        class="detail-value"
+                                        id="sunrise"
+                                    ></span>
+                                </div>
+                            </div>
+                            <div class="sun-item">
+                                <i class="fa-regular fa-sun sun-set-icon"></i>
+                                <div>
+                                    <span class="detail-label">Sunset</span>
+                                    <span
+                                        class="detail-value"
+                                        id="sunset"
+                                    ></span>
+                                </div>
+                            </div>
+                            <div class="sun-item">
+                                <i class="fa-solid fa-hourglass-half"></i>
+                                <div>
+                                    <span class="detail-label">Day Length</span>
+                                    <span
+                                        class="detail-value"
+                                        id="dayLength"
+                                    ></span>
+                                </div>
+                            </div>
+                            <div class="sun-item">
+                                <i class="fa-solid fa-clock"></i>
+                                <div>
+                                    <span class="detail-label">Local Time</span>
+                                    <span
+                                        class="detail-value"
+                                        id="localTime"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Air Quality Card -->
+                    <article class="card card--aqi">
+                        <div class="card__header">
+                            <span class="card__label">Air Quality Index</span>
+                        </div>
+                        <div class="aqi-content">
+                            <div class="aqi-gauge">
+                                <div id="aqiCircle" class="aqi-circle">
+                                    <span
+                                        id="aqiValue"
+                                        class="aqi-value"
+                                    ></span>
+                                    <span
+                                        id="aqiLabel"
+                                        class="aqi-label"
+                                    ></span>
+                                </div>
+                            </div>
+                            <div class="aqi-pollutants">
+                                <div class="pollutant">
+                                    <span class="pollutant-name">PM2.5</span>
+                                    <div class="pollutant-bar-wrap">
+                                        <div
+                                            id="pm25Bar"
+                                            class="pollutant-bar"
+                                        ></div>
+                                    </div>
+                                    <span
+                                        id="pm25Val"
+                                        class="pollutant-val"
+                                    ></span>
+                                </div>
+                                <div class="pollutant">
+                                    <span class="pollutant-name">PM10</span>
+                                    <div class="pollutant-bar-wrap">
+                                        <div
+                                            id="pm10Bar"
+                                            class="pollutant-bar"
+                                        ></div>
+                                    </div>
+                                    <span
+                                        id="pm10Val"
+                                        class="pollutant-val"
+                                    ></span>
+                                </div>
+                                <div class="pollutant">
+                                    <span class="pollutant-name">O₃</span>
+                                    <div class="pollutant-bar-wrap">
+                                        <div
+                                            id="o3Bar"
+                                            class="pollutant-bar"
+                                        ></div>
+                                    </div>
+                                    <span
+                                        id="o3Val"
+                                        class="pollutant-val"
+                                    ></span>
+                                </div>
+                                <div class="pollutant">
+                                    <span class="pollutant-name">NO₂</span>
+                                    <div class="pollutant-bar-wrap">
+                                        <div
+                                            id="no2Bar"
+                                            class="pollutant-bar"
+                                        ></div>
+                                    </div>
+                                    <span
+                                        id="no2Val"
+                                        class="pollutant-val"
+                                    ></span>
+                                </div>
+                                <div class="pollutant">
+                                    <span class="pollutant-name">SO₂</span>
+                                    <div class="pollutant-bar-wrap">
+                                        <div
+                                            id="so2Bar"
+                                            class="pollutant-bar"
+                                        ></div>
+                                    </div>
+                                    <span
+                                        id="so2Val"
+                                        class="pollutant-val"
+                                    ></span>
+                                </div>
+                                <div class="pollutant">
+                                    <span class="pollutant-name">CO</span>
+                                    <div class="pollutant-bar-wrap">
+                                        <div
+                                            id="coBar"
+                                            class="pollutant-bar"
+                                        ></div>
+                                    </div>
+                                    <span
+                                        id="coVal"
+                                        class="pollutant-val"
+                                    ></span>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- ROW 3: Hourly Forecast Chart -->
+                <section class="grid-row grid-row--chart">
+                    <article class="card card--chart-full">
+                        <div class="card__header">
+                            <span class="card__label">24-Hour Forecast</span>
+                            <div class="chart-tabs">
+                                <button
+                                    class="chart-tab active"
+                                    data-chart="temp"
+                                >
+                                    Temperature
+                                </button>
+                                <button class="chart-tab" data-chart="humidity">
+                                    Humidity
+                                </button>
+                                <button class="chart-tab" data-chart="wind">
+                                    Wind
+                                </button>
+                                <button class="chart-tab" data-chart="pop">
+                                    Rain Chance
+                                </button>
+                            </div>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="hourlyChart"></canvas>
+                        </div>
+                    </article>
+                </section>
+
+                <!-- ROW 4: Hourly Scroll -->
+                <section class="grid-row grid-row--hourly">
+                    <article class="card card--hourly">
+                        <div class="card__header">
+                            <span class="card__label">Hourly Breakdown</span>
+                        </div>
+                        <div id="hourlyScroll" class="hourly-scroll"></div>
+                    </article>
+                </section>
+
+                <!-- ROW 5: 5-Day Forecast -->
+                <section class="grid-row grid-row--forecast">
+                    <article class="card card--forecast">
+                        <div class="card__header">
+                            <span class="card__label">5-Day Forecast</span>
+                        </div>
+                        <div id="forecastList" class="forecast-list"></div>
+                    </article>
+                </section>
+
+                <!-- ROW 6: Temperature Range Chart + Comfort Analysis -->
+                <section class="grid-row grid-row--bottom">
+                    <article class="card card--chart-half">
+                        <div class="card__header">
+                            <span class="card__label"
+                                >5-Day Temperature Range</span
+                            >
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="tempRangeChart"></canvas>
+                        </div>
+                    </article>
+                    <article class="card card--comfort">
+                        <div class="card__header">
+                            <span class="card__label"
+                                >Comfort & Activity Analysis</span
+                            >
+                        </div>
+                        <div id="comfortAnalysis" class="comfort-grid"></div>
+                    </article>
+                </section>
+            </div>
+            <!-- /weatherContent -->
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>SkyPulse &copy; 2024–2026 0xR3TRO · <a href="https://open-meteo.com/">Weather data by Open-Meteo.com</a> (<a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>)</p>
+        </footer>
+
+        <!-- Scripts -->
+        <script src="Directories/script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

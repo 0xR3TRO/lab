@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Gradient Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-gradient.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 2rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🌈 Gradient Buttons</h1>
+        <p>Przyciski z dynamicznymi gradientami i animacją kolorów.</p>
+
+        <div class="demo-row">
+            <button class="btn-gradient">Default</button>
+            <button class="btn-gradient btn-gradient--sunset">Sunset</button>
+            <button class="btn-gradient btn-gradient--ocean">Ocean</button>
+            <button class="btn-gradient btn-gradient--forest">Forest</button>
+            <button class="btn-gradient btn-gradient--fire">Fire</button>
+            <button
+                class="btn-gradient btn-gradient--candy btn-gradient--animated"
+            >
+                Candy (animated)
+            </button>
+        </div>
+
+        <div class="demo-row">
+            <button class="btn-gradient btn-gradient--outline">
+                Outline gradient
+            </button>
+            <button class="btn-gradient btn-gradient--pill">Pill</button>
+        </div>
+
+        <script src="btn-gradient.js"></script>
+    </body>
+</html>

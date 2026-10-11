@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="DateSpan — time between two dates, your exact age and date arithmetic. Part of web-lab." />
+        <title>DateSpan · web-lab</title>
+        <link rel="stylesheet" href="../../shared/module.css" />
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <main class="module">
+            <header class="module-head">
+                <h1>DateSpan</h1>
+                <p>Time between dates, exact age and date arithmetic — calculated in your browser.</p>
+            </header>
+
+            <section class="card" aria-labelledby="between-title">
+                <h2 id="between-title">Between two dates</h2>
+                <div class="row">
+                    <label class="field"><span>From</span><input type="date" id="from" /></label>
+                    <label class="field"><span>To</span><input type="date" id="to" /></label>
+                    <label class="check"><input type="checkbox" id="include-end" /> Include end date</label>
+                    <button class="btn ghost" id="swap" type="button">Swap</button>
+                </div>
+                <p class="headline" id="between-headline"></p>
+                <div class="grid" id="between-metrics"></div>
+            </section>
+
+            <section class="card" aria-labelledby="age-title">
+                <h2 id="age-title">Age</h2>
+                <div class="row">
+                    <label class="field"><span>Date of birth</span><input type="date" id="birth" /></label>
+                    <label class="field"><span>On</span><input type="date" id="age-on" /></label>
+                </div>
+                <p class="headline" id="age-headline"></p>
+                <div class="grid" id="age-metrics"></div>
+            </section>
+
+            <section class="card" aria-labelledby="add-title">
+                <h2 id="add-title">Add or subtract</h2>
+                <div class="row">
+                    <label class="field"><span>Start</span><input type="date" id="base" /></label>
+                    <label class="field small"><span>Amount</span><input type="number" id="amount" value="30" step="1" /></label>
+                    <label class="field small">
+                        <span>Unit</span>
+                        <select id="unit">
+                            <option value="days">days</option>
+                            <option value="weeks">weeks</option>
+                            <option value="months">months</option>
+                            <option value="years">years</option>
+                            <option value="workdays">working days (Mon–Fri)</option>
+                        </select>
+                    </label>
+                </div>
+                <p class="headline" id="add-headline"></p>
+            </section>
+
+            <p class="note">Dates are calendar dates without time zones. Months and years are counted on the calendar (Jan 31 + 1 month = Feb 28/29).</p>
+        </main>
+
+        <script src="app.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

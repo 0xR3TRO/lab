@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Text Animation Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-text-anim.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 2rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>✍️ Text Animation Buttons</h1>
+        <p>Animacje tekstu: glitch, slide, typewriter. Najedź kursorem!</p>
+
+        <div class="demo-row">
+            <button
+                class="btn-text-anim btn-text-anim--glitch"
+                data-text="GLITCH"
+            >
+                GLITCH
+            </button>
+
+            <button class="btn-text-anim btn-text-anim--slide">
+                <span class="btn-text">Hover me</span>
+                <span class="btn-text-alt">✨ Surprise!</span>
+            </button>
+
+            <button class="btn-text-anim btn-text-anim--typewriter">
+                <span class="btn-text">typewriter_</span>
+            </button>
+        </div>
+
+        <script src="btn-text-anim.js"></script>
+    </body>
+</html>

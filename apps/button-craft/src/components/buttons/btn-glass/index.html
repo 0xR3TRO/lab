@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Glass Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-glass.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: linear-gradient(135deg, #1a1a3e, #6366f1, #ec4899);
+                color: #fff;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 2rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🪟 Glass Buttons</h1>
+        <p>Przyciski z efektem glassmorphism — rozmyte tło, przezroczystość.</p>
+
+        <div class="demo-row">
+            <button class="btn-glass">Default</button>
+            <button class="btn-glass btn-glass--blue">Blue</button>
+            <button class="btn-glass btn-glass--pink">Pink</button>
+            <button class="btn-glass btn-glass--green">Green</button>
+            <button class="btn-glass btn-glass--dark">Dark</button>
+        </div>
+
+        <div class="demo-row">
+            <button class="btn-glass btn-glass--sm">Small</button>
+            <button class="btn-glass btn-glass--pill">Pill</button>
+            <button class="btn-glass btn-glass--lg">Large</button>
+        </div>
+
+        <script src="btn-glass.js"></script>
+    </body>
+</html>

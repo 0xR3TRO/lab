@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Loaders</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="loaders.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 3rem;
+            }
+            .demo-row {
+                display: flex;
+                gap: 3rem;
+                align-items: center;
+            }
+            .label {
+                text-align: center;
+                font-size: 0.8rem;
+                color: var(--bc-text-muted);
+                margin-top: 0.5rem;
+            }
+            .loader-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>⏳ Animated Loaders</h1>
+
+        <div class="demo-row">
+            <div class="loader-box">
+                <div class="bc-loader-spin"></div>
+                <div class="label">Spinner</div>
+            </div>
+            <div class="loader-box">
+                <div class="bc-loader-dots">
+                    <span></span><span></span><span></span>
+                </div>
+                <div class="label">Dots</div>
+            </div>
+            <div class="loader-box">
+                <div class="bc-loader-bars">
+                    <span></span><span></span><span></span><span></span
+                    ><span></span>
+                </div>
+                <div class="label">Bars</div>
+            </div>
+            <div class="loader-box">
+                <div class="bc-loader-pulse"></div>
+                <div class="label">Pulse</div>
+            </div>
+            <div class="loader-box">
+                <div class="bc-loader-gradient"></div>
+                <div class="label">Gradient</div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,77 @@
+[
+    {
+        "text": "Success is not final, failure is not fatal: it is the courage to continue that counts.",
+        "author": "Winston Churchill",
+        "tags": ["success", "courage", "perseverance"]
+    },
+    {
+        "text": "Success usually comes to those who are too busy to be looking for it.",
+        "author": "Henry David Thoreau",
+        "tags": ["success", "discipline", "work"]
+    },
+    {
+        "text": "Don't be afraid to give up the good to go for the great.",
+        "author": "John D. Rockefeller",
+        "tags": ["ambition", "success", "courage"]
+    },
+    {
+        "text": "I find that the harder I work, the more luck I seem to have.",
+        "author": "Thomas Jefferson",
+        "tags": ["discipline", "success", "work"]
+    },
+    {
+        "text": "Success is walking from failure to failure with no loss of enthusiasm.",
+        "author": "Winston Churchill",
+        "tags": ["resilience", "success", "perseverance"]
+    },
+    {
+        "text": "The road to success and the road to failure are almost exactly the same.",
+        "author": "Colin R. Davis",
+        "tags": ["success", "perseverance", "motivation"]
+    },
+    {
+        "text": "Opportunities don't happen. You create them.",
+        "author": "Chris Grosser",
+        "tags": ["success", "action", "ambition"]
+    },
+    {
+        "text": "Don't let yesterday take up too much of today.",
+        "author": "Will Rogers",
+        "tags": ["focus", "success", "positivity"]
+    },
+    {
+        "text": "It's not whether you get knocked down, it's whether you get up.",
+        "author": "Vince Lombardi",
+        "tags": ["resilience", "success", "perseverance"]
+    },
+    {
+        "text": "People who are crazy enough to think they can change the world are the ones who do.",
+        "author": "Rob Siltanen",
+        "tags": ["ambition", "success", "confidence"]
+    },
+    {
+        "text": "If you really look closely, most overnight successes took a long time.",
+        "author": "Steve Jobs",
+        "tags": ["patience", "success", "discipline"]
+    },
+    {
+        "text": "The only place where success comes before work is in the dictionary.",
+        "author": "Vidal Sassoon",
+        "tags": ["discipline", "work", "success"]
+    },
+    {
+        "text": "Try not to become a man of success. Rather become a man of value.",
+        "author": "Albert Einstein",
+        "tags": ["success", "growth", "self-improvement"]
+    },
+    {
+        "text": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure.",
+        "author": "Colin Powell",
+        "tags": ["success", "discipline", "resilience"]
+    },
+    {
+        "text": "I never dreamed about success. I worked for it.",
+        "author": "Estee Lauder",
+        "tags": ["success", "discipline", "work"]
+    }
+]

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — 3D Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-3d.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 2rem;
+            }
+            h1 {
+                margin-bottom: 0.5rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                justify-content: center;
+                max-width: 800px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🎲 3D Buttons</h1>
+        <p>Przyciski z efektem trójwymiarowej głębi i animacją wciskania.</p>
+
+        <div class="demo-row">
+            <button class="btn-3d">Primary</button>
+            <button class="btn-3d btn-3d--secondary">Secondary</button>
+            <button class="btn-3d btn-3d--success">Success</button>
+            <button class="btn-3d btn-3d--danger">Danger</button>
+            <button class="btn-3d btn-3d--warning">Warning</button>
+            <button class="btn-3d btn-3d--dark">Dark</button>
+        </div>
+
+        <div class="demo-row">
+            <button class="btn-3d btn-3d--sm">Small</button>
+            <button class="btn-3d">Medium</button>
+            <button class="btn-3d btn-3d--lg">Large</button>
+        </div>
+
+        <script src="btn-3d.js"></script>
+    </body>
+</html>

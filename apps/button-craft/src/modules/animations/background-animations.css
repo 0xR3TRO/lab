@@ -1,0 +1,170 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Background Animations
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Animacje tła: gradient shift, particles, waves.
+ * ============================================================
+ */
+
+/* ── Animated gradient background ───────────────────────── */
+.bc-bg-gradient-anim {
+    background: linear-gradient(-45deg, #6366f1, #ec4899, #06b6d4, #22c55e);
+    background-size: 400% 400%;
+    animation: bc-bg-gradient 10s ease infinite;
+}
+
+@keyframes bc-bg-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ── Wave background ────────────────────────────────────── */
+.bc-bg-wave {
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-bg-wave::before,
+.bc-bg-wave::after {
+    content: "";
+    position: absolute;
+    bottom: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    border-radius: 40%;
+    opacity: 0.1;
+}
+
+.bc-bg-wave::before {
+    background: var(--bc-color-primary, #6366f1);
+    animation: bc-wave-rotate 12s linear infinite;
+}
+
+.bc-bg-wave::after {
+    background: var(--bc-color-secondary, #ec4899);
+    animation: bc-wave-rotate 15s linear infinite reverse;
+}
+
+@keyframes bc-wave-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Aurora / northern lights ───────────────────────────── */
+.bc-bg-aurora {
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-bg-aurora::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background:
+        radial-gradient(
+            ellipse at 20% 50%,
+            rgba(99, 102, 241, 0.3),
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 80% 50%,
+            rgba(236, 72, 153, 0.3),
+            transparent 50%
+        ),
+        radial-gradient(
+            ellipse at 50% 80%,
+            rgba(6, 182, 212, 0.2),
+            transparent 50%
+        );
+    animation: bc-aurora-move 8s ease-in-out infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes bc-aurora-move {
+    0% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate(5%, -3%) rotate(5deg);
+    }
+}
+
+/* ── Floating particles (CSS-only, using pseudo-elements on wrapper children) ── */
+.bc-particles {
+    position: relative;
+    overflow: hidden;
+}
+
+.bc-particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: var(--bc-color-primary, #6366f1);
+    border-radius: 50%;
+    opacity: 0;
+    animation: bc-float-up 4s ease-in-out infinite;
+}
+
+.bc-particle:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+}
+.bc-particle:nth-child(2) {
+    left: 25%;
+    animation-delay: 1s;
+    width: 4px;
+    height: 4px;
+}
+.bc-particle:nth-child(3) {
+    left: 40%;
+    animation-delay: 2s;
+}
+.bc-particle:nth-child(4) {
+    left: 60%;
+    animation-delay: 0.5s;
+    width: 8px;
+    height: 8px;
+}
+.bc-particle:nth-child(5) {
+    left: 75%;
+    animation-delay: 1.5s;
+}
+.bc-particle:nth-child(6) {
+    left: 90%;
+    animation-delay: 3s;
+    width: 5px;
+    height: 5px;
+}
+
+@keyframes bc-float-up {
+    0% {
+        bottom: -10%;
+        opacity: 0;
+    }
+    20% {
+        opacity: 0.6;
+    }
+    80% {
+        opacity: 0.4;
+    }
+    100% {
+        bottom: 110%;
+        opacity: 0;
+    }
+}

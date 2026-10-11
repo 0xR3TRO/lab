@@ -1,0 +1,57 @@
+[
+    {
+        "question": "What is the chemical symbol for water?",
+        "options": ["HO", "H2O", "OH2", "H2O2"],
+        "answer": 1
+    },
+    {
+        "question": "What planet is closest to the Sun?",
+        "options": ["Venus", "Earth", "Mercury", "Mars"],
+        "answer": 2
+    },
+    {
+        "question": "What gas do plants absorb from the atmosphere?",
+        "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+        "answer": 2
+    },
+    {
+        "question": "How many bones are in the adult human body?",
+        "options": ["196", "206", "216", "226"],
+        "answer": 1
+    },
+    {
+        "question": "What is the speed of light in a vacuum (approx.)?",
+        "options": [
+            "300,000 km/s",
+            "150,000 km/s",
+            "450,000 km/s",
+            "600,000 km/s"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "What is the powerhouse of the cell?",
+        "options": ["Nucleus", "Ribosome", "Mitochondria", "Golgi Apparatus"],
+        "answer": 2
+    },
+    {
+        "question": "What element does 'O' represent on the periodic table?",
+        "options": ["Osmium", "Oganesson", "Oxygen", "Gold"],
+        "answer": 2
+    },
+    {
+        "question": "Which force keeps us on the ground?",
+        "options": ["Magnetism", "Friction", "Gravity", "Inertia"],
+        "answer": 2
+    },
+    {
+        "question": "What is the boiling point of water at sea level in Celsius?",
+        "options": ["90°C", "100°C", "110°C", "120°C"],
+        "answer": 1
+    },
+    {
+        "question": "What type of animal is a dolphin?",
+        "options": ["Fish", "Reptile", "Mammal", "Amphibian"],
+        "answer": 2
+    }
+]

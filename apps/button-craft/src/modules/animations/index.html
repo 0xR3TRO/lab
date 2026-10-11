@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Animations</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="entrance-animations.css" />
+        <link rel="stylesheet" href="background-animations.css" />
+        <link rel="stylesheet" href="svg-animations.css" />
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                margin: 0;
+                padding: 2rem;
+            }
+            h1,
+            h2 {
+                text-align: center;
+            }
+            .section {
+                max-width: 900px;
+                margin: 2rem auto;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+                gap: 1.5rem;
+            }
+            .card {
+                padding: 2rem 1rem;
+                background: var(--bc-surface);
+                border: 1px solid var(--bc-border);
+                border-radius: 0.75rem;
+                text-align: center;
+                font-size: 0.85rem;
+                color: var(--bc-text-secondary);
+            }
+            .bg-demo {
+                height: 200px;
+                border-radius: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: #fff;
+                font-size: 1.25rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+            .svg-demo {
+                display: flex;
+                gap: 2rem;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+            .svg-demo svg {
+                width: 48px;
+                height: 48px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>✨ Animation Modules</h1>
+
+        <div class="section">
+            <h2>Entrance Animations</h2>
+            <p
+                style="
+                    text-align: center;
+                    color: var(--bc-text-muted);
+                    margin-bottom: 1.5rem;
+                "
+            >
+                Odśwież stronę aby zobaczyć animacje wejścia.
+            </p>
+            <div class="grid">
+                <div class="card bc-fade-in">fade-in</div>
+                <div class="card bc-fade-in-up bc-delay-100">fade-in-up</div>
+                <div class="card bc-fade-in-down bc-delay-200">
+                    fade-in-down
+                </div>
+                <div class="card bc-fade-in-left bc-delay-300">
+                    fade-in-left
+                </div>
+                <div class="card bc-fade-in-right bc-delay-500">
+                    fade-in-right
+                </div>
+                <div class="card bc-zoom-in bc-delay-200">zoom-in</div>
+                <div class="card bc-bounce-in bc-delay-300">bounce-in</div>
+                <div class="card bc-flip-in-x bc-delay-500">flip-in-x</div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Background Animations</h2>
+            <div class="bg-demo bc-bg-gradient-anim">Gradient Shift</div>
+            <div class="bg-demo bc-bg-aurora" style="background: #0f172a">
+                Aurora
+            </div>
+            <div class="bg-demo bc-bg-wave" style="background: #0f172a">
+                Waves
+            </div>
+            <div
+                class="bg-demo bc-particles"
+                style="background: #0f172a; position: relative"
+            >
+                <span class="bc-particle"></span>
+                <span class="bc-particle"></span>
+                <span class="bc-particle"></span>
+                <span class="bc-particle"></span>
+                <span class="bc-particle"></span>
+                <span class="bc-particle"></span>
+                Particles
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>SVG Animations</h2>
+            <div class="svg-demo">
+                <!-- Stroke draw -->
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#6366f1"
+                    stroke-width="2"
+                >
+                    <circle class="bc-svg-draw" cx="12" cy="12" r="10" />
+                    <path
+                        class="bc-svg-draw"
+                        d="M8 12l2.5 2.5L16 9"
+                        style="animation-delay: 0.5s"
+                    />
+                </svg>
+
+                <!-- Rotate -->
+                <svg
+                    class="bc-svg-rotate"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="#ec4899"
+                    stroke-width="2"
+                >
+                    <path
+                        d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.07-7.07l-2.83 2.83M9.76 14.24l-2.83 2.83m11.14 0l-2.83-2.83M9.76 9.76L6.93 6.93"
+                    />
+                </svg>
+
+                <!-- Pulse -->
+                <svg class="bc-svg-pulse" viewBox="0 0 24 24" fill="#22c55e">
+                    <path
+                        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                    />
+                </svg>
+
+                <!-- Bounce -->
+                <svg class="bc-svg-bounce" viewBox="0 0 24 24" fill="#f59e0b">
+                    <path
+                        d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2z"
+                    />
+                </svg>
+            </div>
+        </div>
+    </body>
+</html>

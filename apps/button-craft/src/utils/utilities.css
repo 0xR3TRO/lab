@@ -1,0 +1,289 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Utility Classes
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Tailwind-inspired utility classes for rapid prototyping.
+ * ============================================================
+ */
+
+/* ── Display ────────────────────────────────────────────── */
+.bc-block {
+    display: block;
+}
+.bc-inline {
+    display: inline;
+}
+.bc-hidden {
+    display: none;
+}
+.bc-flex {
+    display: flex;
+}
+.bc-grid {
+    display: grid;
+}
+
+/* ── Position ───────────────────────────────────────────── */
+.bc-relative {
+    position: relative;
+}
+.bc-absolute {
+    position: absolute;
+}
+.bc-fixed {
+    position: fixed;
+}
+.bc-sticky {
+    position: sticky;
+    top: 0;
+}
+
+/* ── Overflow ───────────────────────────────────────────── */
+.bc-overflow-hidden {
+    overflow: hidden;
+}
+.bc-overflow-auto {
+    overflow: auto;
+}
+
+/* ── Border radius ──────────────────────────────────────── */
+.bc-rounded-sm {
+    border-radius: var(--bc-radius-sm);
+}
+.bc-rounded {
+    border-radius: var(--bc-radius);
+}
+.bc-rounded-md {
+    border-radius: var(--bc-radius-md);
+}
+.bc-rounded-lg {
+    border-radius: var(--bc-radius-lg);
+}
+.bc-rounded-xl {
+    border-radius: var(--bc-radius-xl);
+}
+.bc-rounded-full {
+    border-radius: var(--bc-radius-full);
+}
+
+/* ── Text align ─────────────────────────────────────────── */
+.bc-text-left {
+    text-align: left;
+}
+.bc-text-center {
+    text-align: center;
+}
+.bc-text-right {
+    text-align: right;
+}
+
+/* ── Font size ──────────────────────────────────────────── */
+.bc-text-xs {
+    font-size: var(--bc-font-size-xs);
+}
+.bc-text-sm {
+    font-size: var(--bc-font-size-sm);
+}
+.bc-text-base {
+    font-size: var(--bc-font-size-base);
+}
+.bc-text-lg {
+    font-size: var(--bc-font-size-lg);
+}
+.bc-text-xl {
+    font-size: var(--bc-font-size-xl);
+}
+.bc-text-2xl {
+    font-size: var(--bc-font-size-2xl);
+}
+.bc-text-3xl {
+    font-size: var(--bc-font-size-3xl);
+}
+
+/* ── Font weight ────────────────────────────────────────── */
+.bc-font-normal {
+    font-weight: 400;
+}
+.bc-font-medium {
+    font-weight: 500;
+}
+.bc-font-semibold {
+    font-weight: 600;
+}
+.bc-font-bold {
+    font-weight: 700;
+}
+
+/* ── Colors ─────────────────────────────────────────────── */
+.bc-text-primary {
+    color: var(--bc-color-primary);
+}
+.bc-text-secondary {
+    color: var(--bc-text-secondary);
+}
+.bc-text-muted {
+    color: var(--bc-text-muted);
+}
+.bc-text-success {
+    color: var(--bc-color-success);
+}
+.bc-text-danger {
+    color: var(--bc-color-danger);
+}
+.bc-text-warning {
+    color: var(--bc-color-warning);
+}
+
+.bc-bg-primary {
+    background-color: var(--bc-color-primary);
+}
+.bc-bg-secondary {
+    background-color: var(--bc-bg-secondary);
+}
+.bc-bg-surface {
+    background-color: var(--bc-surface);
+}
+
+/* ── Margin ─────────────────────────────────────────────── */
+.bc-m-0 {
+    margin: 0;
+}
+.bc-m-1 {
+    margin: var(--bc-space-1);
+}
+.bc-m-2 {
+    margin: var(--bc-space-2);
+}
+.bc-m-4 {
+    margin: var(--bc-space-4);
+}
+.bc-m-8 {
+    margin: var(--bc-space-8);
+}
+.bc-mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+.bc-mb-2 {
+    margin-bottom: var(--bc-space-2);
+}
+.bc-mb-4 {
+    margin-bottom: var(--bc-space-4);
+}
+.bc-mb-8 {
+    margin-bottom: var(--bc-space-8);
+}
+.bc-mt-4 {
+    margin-top: var(--bc-space-4);
+}
+.bc-mt-8 {
+    margin-top: var(--bc-space-8);
+}
+
+/* ── Padding ────────────────────────────────────────────── */
+.bc-p-0 {
+    padding: 0;
+}
+.bc-p-1 {
+    padding: var(--bc-space-1);
+}
+.bc-p-2 {
+    padding: var(--bc-space-2);
+}
+.bc-p-4 {
+    padding: var(--bc-space-4);
+}
+.bc-p-6 {
+    padding: var(--bc-space-6);
+}
+.bc-p-8 {
+    padding: var(--bc-space-8);
+}
+.bc-px-4 {
+    padding-left: var(--bc-space-4);
+    padding-right: var(--bc-space-4);
+}
+.bc-py-2 {
+    padding-top: var(--bc-space-2);
+    padding-bottom: var(--bc-space-2);
+}
+.bc-py-4 {
+    padding-top: var(--bc-space-4);
+    padding-bottom: var(--bc-space-4);
+}
+
+/* ── Gap ────────────────────────────────────────────────── */
+.bc-gap-1 {
+    gap: var(--bc-space-1);
+}
+.bc-gap-2 {
+    gap: var(--bc-space-2);
+}
+.bc-gap-4 {
+    gap: var(--bc-space-4);
+}
+.bc-gap-6 {
+    gap: var(--bc-space-6);
+}
+.bc-gap-8 {
+    gap: var(--bc-space-8);
+}
+
+/* ── Width / Height ─────────────────────────────────────── */
+.bc-w-full {
+    width: 100%;
+}
+.bc-h-full {
+    height: 100%;
+}
+.bc-min-h-screen {
+    min-height: 100vh;
+}
+
+/* ── Cursor ─────────────────────────────────────────────── */
+.bc-cursor-pointer {
+    cursor: pointer;
+}
+.bc-cursor-default {
+    cursor: default;
+}
+.bc-select-none {
+    user-select: none;
+}
+
+/* ── Transitions ────────────────────────────────────────── */
+.bc-transition {
+    transition: all var(--bc-transition);
+}
+.bc-transition-fast {
+    transition: all var(--bc-transition-fast);
+}
+.bc-transition-slow {
+    transition: all var(--bc-transition-slow);
+}
+
+/* ── Opacity ────────────────────────────────────────────── */
+.bc-opacity-0 {
+    opacity: 0;
+}
+.bc-opacity-50 {
+    opacity: 0.5;
+}
+.bc-opacity-100 {
+    opacity: 1;
+}
+
+/* ── Z-index ────────────────────────────────────────────── */
+.bc-z-10 {
+    z-index: 10;
+}
+.bc-z-50 {
+    z-index: 50;
+}
+.bc-z-100 {
+    z-index: 100;
+}
+.bc-z-1000 {
+    z-index: 1000;
+}

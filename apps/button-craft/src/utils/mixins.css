@@ -1,0 +1,144 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — CSS Mixins & Helpers
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Reusable CSS patterns packaged as classes.
+ *  Use these as building blocks for custom components.
+ * ============================================================
+ */
+
+/* ── Glassmorphism ──────────────────────────────────────── */
+.bc-glass {
+    background: var(--bc-glass-bg);
+    backdrop-filter: blur(var(--bc-glass-blur));
+    -webkit-backdrop-filter: blur(var(--bc-glass-blur));
+    border: 1px solid var(--bc-glass-border);
+}
+
+/* ── Neumorphism ────────────────────────────────────────── */
+.bc-neumorphic {
+    background: var(--bc-bg-secondary);
+    border-radius: var(--bc-radius-lg);
+    box-shadow:
+        8px 8px 16px rgba(0, 0, 0, 0.1),
+        -8px -8px 16px rgba(255, 255, 255, 0.7);
+}
+
+[data-theme="dark"] .bc-neumorphic {
+    box-shadow:
+        8px 8px 16px rgba(0, 0, 0, 0.4),
+        -8px -8px 16px rgba(255, 255, 255, 0.03);
+}
+
+/* ── Card base ──────────────────────────────────────────── */
+.bc-card-base {
+    background: var(--bc-surface);
+    border: 1px solid var(--bc-border);
+    border-radius: var(--bc-radius-md);
+    box-shadow: var(--bc-shadow);
+    transition:
+        box-shadow var(--bc-transition),
+        transform var(--bc-transition);
+}
+
+.bc-card-base:hover {
+    box-shadow: var(--bc-shadow-lg);
+    transform: translateY(-2px);
+}
+
+/* ── Focus ring ─────────────────────────────────────────── */
+.bc-focus-ring:focus-visible {
+    outline: 2px solid var(--bc-color-primary);
+    outline-offset: 2px;
+}
+
+/* ── Truncate text ──────────────────────────────────────── */
+.bc-truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* ── Flex helpers ───────────────────────────────────────── */
+.bc-flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bc-flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.bc-flex-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ── Gradient text ──────────────────────────────────────── */
+.bc-gradient-text {
+    background: linear-gradient(
+        135deg,
+        var(--bc-color-primary),
+        var(--bc-color-secondary)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Animated gradient background ───────────────────────── */
+.bc-gradient-bg {
+    background: linear-gradient(-45deg, #6366f1, #ec4899, #06b6d4, #22c55e);
+    background-size: 400% 400%;
+    animation: bc-gradient-shift 8s ease infinite;
+}
+
+@keyframes bc-gradient-shift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ── Shimmer / skeleton ─────────────────────────────────── */
+.bc-shimmer {
+    background: linear-gradient(
+        90deg,
+        var(--bc-bg-tertiary) 25%,
+        var(--bc-bg-secondary) 50%,
+        var(--bc-bg-tertiary) 75%
+    );
+    background-size: 200% 100%;
+    animation: bc-shimmer 1.5s infinite;
+}
+
+@keyframes bc-shimmer {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ── Visually hidden (accessible) ───────────────────────── */
+.bc-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}

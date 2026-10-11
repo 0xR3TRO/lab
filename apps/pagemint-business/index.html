@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>PageMint Business</title>
+		<link rel="stylesheet" href="./style.css" />
+	</head>
+	<body>
+		<div class="app-shell" id="appShell">
+			<header class="topbar">
+				<div class="brand-block">
+					<h1>PageMint Business</h1>
+					<p>Create one-page business profiles in minutes.</p>
+				</div>
+				<button
+					type="button"
+					id="mobileEditorToggle"
+					class="mobile-toggle"
+					aria-controls="editorPanel"
+					aria-expanded="false"
+				>
+					Toggle Editor
+				</button>
+			</header>
+
+			<main class="workspace">
+				<aside class="editor-panel" id="editorPanel" aria-label="Business profile editor">
+					<form id="editorForm" class="editor-form" autocomplete="off">
+						<section class="panel-section">
+							<h2>Business Content</h2>
+							<label>
+								Company Name
+								<input type="text" id="companyName" maxlength="80" />
+							</label>
+							<label>
+								Tagline
+								<input type="text" id="companyTagline" maxlength="160" />
+							</label>
+							<label>
+								Business Description
+								<textarea id="companyDescription" rows="5" maxlength="1200"></textarea>
+							</label>
+						</section>
+
+						<section class="panel-section">
+							<div class="section-header-row">
+								<h2>Services</h2>
+								<button type="button" id="addServiceBtn" class="ghost-btn">Add Service</button>
+							</div>
+							<div id="servicesList" class="repeatable-list"></div>
+						</section>
+
+						<section class="panel-section">
+							<h2>Contact Details</h2>
+							<label>
+								Email
+								<input type="email" id="contactEmail" maxlength="120" />
+							</label>
+							<label>
+								Phone
+								<input type="text" id="contactPhone" maxlength="40" />
+							</label>
+							<label>
+								Address
+								<textarea id="contactAddress" rows="3" maxlength="220"></textarea>
+							</label>
+						</section>
+
+						<section class="panel-section">
+							<div class="section-header-row">
+								<h2>Social Links</h2>
+								<button type="button" id="addSocialBtn" class="ghost-btn">Add Link</button>
+							</div>
+							<div id="socialList" class="repeatable-list"></div>
+						</section>
+
+						<section class="panel-section">
+							<h2>Brand Assets</h2>
+							<label>
+								Logo Upload
+								<input type="file" id="logoUpload" accept="image/*" />
+							</label>
+							<div class="logo-preview" id="logoPreview">
+								<div class="logo-preview-placeholder">No logo selected</div>
+							</div>
+							<button type="button" class="ghost-btn" id="removeLogoBtn">Remove Logo</button>
+						</section>
+
+						<section class="panel-section">
+							<h2>Appearance</h2>
+							<div class="inline-grid three">
+								<label>
+									Background
+									<input type="color" id="colorBackground" />
+								</label>
+								<label>
+									Text
+									<input type="color" id="colorText" />
+								</label>
+								<label>
+									Accent
+									<input type="color" id="colorAccent" />
+								</label>
+							</div>
+							<label>
+								Font Family
+								<select id="fontFamily"></select>
+							</label>
+							<label>
+								Layout Variant
+								<select id="layoutVariant"></select>
+							</label>
+							<div class="toggle-grid">
+								<label class="toggle-item">
+									<input type="checkbox" id="toggleAbout" />
+									<span>Show About</span>
+								</label>
+								<label class="toggle-item">
+									<input type="checkbox" id="toggleServices" />
+									<span>Show Services</span>
+								</label>
+								<label class="toggle-item">
+									<input type="checkbox" id="toggleContact" />
+									<span>Show Contact</span>
+								</label>
+							</div>
+							<div class="range-grid">
+								<label>
+									Border Radius <output id="radiusValue"></output>
+									<input type="range" id="radiusRange" min="0" max="36" step="1" />
+								</label>
+								<label>
+									Spacing <output id="spacingValue"></output>
+									<input type="range" id="spacingRange" min="16" max="56" step="2" />
+								</label>
+								<label>
+									Shadow Strength <output id="shadowValue"></output>
+									<input type="range" id="shadowRange" min="0" max="100" step="1" />
+								</label>
+							</div>
+						</section>
+
+						<section class="panel-section">
+							<h2>Templates</h2>
+							<label>
+								Available Templates
+								<select id="templateSelect"></select>
+							</label>
+							<label>
+								Template Name
+								<input type="text" id="templateNameInput" maxlength="80" placeholder="My Custom Template" />
+							</label>
+							<div class="inline-actions">
+								<button type="button" id="applyTemplateBtn">Apply</button>
+								<button type="button" id="saveTemplateBtn">Save</button>
+								<button type="button" id="deleteTemplateBtn" class="danger-btn">Delete</button>
+							</div>
+							<div class="inline-actions">
+								<button type="button" id="exportTemplateBtn" class="ghost-btn">Export JSON</button>
+								<button type="button" id="importTemplateBtn" class="ghost-btn">Import JSON</button>
+							</div>
+							<input type="file" id="templateImportInput" accept="application/json" hidden />
+						</section>
+
+						<section class="panel-section">
+							<h2>Export</h2>
+							<div class="export-grid">
+								<button type="button" id="exportHtmlBtn">Export HTML</button>
+								<button type="button" id="exportZipBtn">Export ZIP</button>
+								<button type="button" id="exportPngBtn">Export PNG</button>
+								<button type="button" id="exportJsonBtn">Export JSON Template</button>
+							</div>
+						</section>
+					</form>
+				</aside>
+
+				<button type="button" class="editor-backdrop" id="editorBackdrop" aria-label="Close editor"></button>
+
+				<section class="preview-panel" aria-label="Live preview">
+					<div class="preview-toolbar">
+						<div class="device-toggle" role="group" aria-label="Preview size">
+							<button type="button" data-device="desktop" class="active">Desktop</button>
+							<button type="button" data-device="tablet">Tablet</button>
+							<button type="button" data-device="mobile">Mobile</button>
+						</div>
+					</div>
+					<div class="preview-viewport" id="previewViewport">
+						<div class="preview-frame-wrap" id="previewFrameWrap">
+							<iframe
+								id="previewFrame"
+								title="Generated business profile preview"
+								loading="lazy"
+							></iframe>
+						</div>
+					</div>
+				</section>
+			</main>
+		</div>
+
+		<script type="module" src="./js/editor.js"></script>
+	    <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

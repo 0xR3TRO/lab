@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Magnetic Buttons</title>
+        <link rel="stylesheet" href="../../../utils/variables.css" />
+        <link rel="stylesheet" href="btn-magnetic.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 3rem;
+            }
+            .demo-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 2rem;
+                justify-content: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🧲 Magnetic Buttons</h1>
+        <p>Najedź kursorem — przycisk podąży za Twoim ruchem.</p>
+
+        <div class="demo-row">
+            <button class="btn-magnetic">Primary</button>
+            <button class="btn-magnetic btn-magnetic--secondary">
+                Secondary
+            </button>
+            <button class="btn-magnetic btn-magnetic--dark">Dark</button>
+            <button class="btn-magnetic btn-magnetic--outline">Outline</button>
+        </div>
+
+        <script src="btn-magnetic.js"></script>
+    </body>
+</html>

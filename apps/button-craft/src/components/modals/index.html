@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Modals & Alerts</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="modals.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem;
+                margin: 0;
+                min-height: 100vh;
+                gap: 1.5rem;
+            }
+            .btn-demo {
+                padding: 0.65rem 1.5rem;
+                background: var(--bc-color-primary);
+                color: #fff;
+                border: none;
+                border-radius: 0.5rem;
+                cursor: pointer;
+                font-size: 1rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>🪟 Modals & Alerts</h1>
+
+        <button class="btn-demo" data-modal-open="modal1">Otwórz modal</button>
+
+        <!-- Modal -->
+        <div class="bc-modal-overlay" id="modal1">
+            <div class="bc-modal">
+                <div class="bc-modal__header">
+                    <h2 class="bc-modal__title">Tytuł modala</h2>
+                    <button class="bc-modal__close">&times;</button>
+                </div>
+                <div class="bc-modal__body">
+                    <p>
+                        To jest treść okna modalnego. Kliknij na tło lub X aby
+                        zamknąć.
+                    </p>
+                </div>
+                <div class="bc-modal__footer">
+                    <button
+                        class="btn-demo"
+                        data-modal-close
+                        style="background: var(--bc-border)"
+                    >
+                        Anuluj
+                    </button>
+                    <button class="btn-demo">Potwierdź</button>
+                </div>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 2rem">Alerts</h2>
+        <div style="width: 100%; max-width: 600px">
+            <div class="bc-alert bc-alert--info">
+                ℹ️ Informacja — to jest alert informacyjny.
+            </div>
+            <div class="bc-alert bc-alert--success">
+                ✅ Sukces — operacja zakończona pomyślnie.
+            </div>
+            <div class="bc-alert bc-alert--warning">
+                ⚠️ Uwaga — coś wymaga uwagi.
+            </div>
+            <div class="bc-alert bc-alert--danger">
+                ❌ Błąd — wystąpił problem.
+            </div>
+        </div>
+
+        <script src="modals.js"></script>
+    </body>
+</html>

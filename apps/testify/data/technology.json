@@ -1,0 +1,82 @@
+[
+    {
+        "question": "What does HTML stand for?",
+        "options": [
+            "Hyper Text Markup Language",
+            "High Tech Modern Language",
+            "Hyper Transfer Markup Language",
+            "Home Tool Markup Language"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "Who is known as the father of the computer?",
+        "options": [
+            "Alan Turing",
+            "Charles Babbage",
+            "Bill Gates",
+            "Steve Jobs"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "What does CPU stand for?",
+        "options": [
+            "Central Processing Unit",
+            "Central Program Utility",
+            "Computer Personal Unit",
+            "Central Processor Unifier"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "Which programming language is primarily used for web page styling?",
+        "options": ["JavaScript", "Python", "CSS", "Java"],
+        "answer": 2
+    },
+    {
+        "question": "What year was the first iPhone released?",
+        "options": ["2005", "2006", "2007", "2008"],
+        "answer": 2
+    },
+    {
+        "question": "What does 'HTTP' stand for?",
+        "options": [
+            "HyperText Transfer Protocol",
+            "High Tech Transfer Protocol",
+            "Hyper Transfer Text Protocol",
+            "HyperText Transmission Protocol"
+        ],
+        "answer": 0
+    },
+    {
+        "question": "Which company developed the Android operating system?",
+        "options": ["Apple", "Microsoft", "Google", "Samsung"],
+        "answer": 2
+    },
+    {
+        "question": "What is the main function of a firewall in computing?",
+        "options": [
+            "Speed up internet",
+            "Block unauthorized access",
+            "Store data",
+            "Cool hardware"
+        ],
+        "answer": 1
+    },
+    {
+        "question": "How many bits are in a byte?",
+        "options": ["4", "8", "16", "32"],
+        "answer": 1
+    },
+    {
+        "question": "What does 'AI' stand for?",
+        "options": [
+            "Automated Intelligence",
+            "Artificial Intelligence",
+            "Advanced Integration",
+            "Algorithmic Interface"
+        ],
+        "answer": 1
+    }
+]

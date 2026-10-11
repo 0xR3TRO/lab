@@ -1,0 +1,140 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — CSS Custom Properties & Theme System
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Zmienne globalne dla kolorów, typografii, cieni, promieni
+ *  i spacing. Obsługa motywów light / dark.
+ * ============================================================
+ */
+
+/* ── Light Theme (domyślny) ─────────────────────────────── */
+:root,
+[data-theme="light"] {
+    /* Kolory bazowe */
+    --bc-color-primary: #6366f1;
+    --bc-color-primary-light: #818cf8;
+    --bc-color-primary-dark: #4f46e5;
+    --bc-color-secondary: #ec4899;
+    --bc-color-secondary-light: #f472b6;
+    --bc-color-accent: #06b6d4;
+    --bc-color-success: #22c55e;
+    --bc-color-warning: #f59e0b;
+    --bc-color-danger: #ef4444;
+    --bc-color-info: #3b82f6;
+
+    /* Powierzchnie */
+    --bc-bg: #ffffff;
+    --bc-bg-secondary: #f8fafc;
+    --bc-bg-tertiary: #f1f5f9;
+    --bc-surface: #ffffff;
+    --bc-surface-hover: #f8fafc;
+    --bc-overlay: rgba(0, 0, 0, 0.4);
+
+    /* Tekst */
+    --bc-text: #0f172a;
+    --bc-text-secondary: #475569;
+    --bc-text-muted: #94a3b8;
+    --bc-text-inverse: #ffffff;
+
+    /* Obramowania */
+    --bc-border: #e2e8f0;
+    --bc-border-hover: #cbd5e1;
+
+    /* Cienie */
+    --bc-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --bc-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+    --bc-shadow-md:
+        0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    --bc-shadow-lg:
+        0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    --bc-shadow-xl:
+        0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+
+    /* Typografia */
+    --bc-font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --bc-font-mono: "JetBrains Mono", "Fira Code", monospace;
+    --bc-font-size-xs: 0.75rem;
+    --bc-font-size-sm: 0.875rem;
+    --bc-font-size-base: 1rem;
+    --bc-font-size-lg: 1.125rem;
+    --bc-font-size-xl: 1.25rem;
+    --bc-font-size-2xl: 1.5rem;
+    --bc-font-size-3xl: 1.875rem;
+
+    /* Promienie */
+    --bc-radius-sm: 0.25rem;
+    --bc-radius: 0.5rem;
+    --bc-radius-md: 0.75rem;
+    --bc-radius-lg: 1rem;
+    --bc-radius-xl: 1.5rem;
+    --bc-radius-full: 9999px;
+
+    /* Spacing */
+    --bc-space-1: 0.25rem;
+    --bc-space-2: 0.5rem;
+    --bc-space-3: 0.75rem;
+    --bc-space-4: 1rem;
+    --bc-space-5: 1.25rem;
+    --bc-space-6: 1.5rem;
+    --bc-space-8: 2rem;
+    --bc-space-10: 2.5rem;
+    --bc-space-12: 3rem;
+    --bc-space-16: 4rem;
+
+    /* Przejścia */
+    --bc-transition-fast: 150ms ease;
+    --bc-transition: 250ms ease;
+    --bc-transition-slow: 400ms ease;
+    --bc-transition-spring: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+    /* Glass */
+    --bc-glass-bg: rgba(255, 255, 255, 0.25);
+    --bc-glass-border: rgba(255, 255, 255, 0.3);
+    --bc-glass-blur: 16px;
+
+    /* Neon */
+    --bc-neon-glow: 0 0 7px, 0 0 10px, 0 0 21px, 0 0 42px;
+}
+
+/* ── Dark Theme ─────────────────────────────────────────── */
+[data-theme="dark"] {
+    --bc-color-primary: #818cf8;
+    --bc-color-primary-light: #a5b4fc;
+    --bc-color-primary-dark: #6366f1;
+    --bc-color-secondary: #f472b6;
+    --bc-color-secondary-light: #f9a8d4;
+    --bc-color-accent: #22d3ee;
+    --bc-color-success: #4ade80;
+    --bc-color-warning: #fbbf24;
+    --bc-color-danger: #f87171;
+    --bc-color-info: #60a5fa;
+
+    --bc-bg: #0f172a;
+    --bc-bg-secondary: #1e293b;
+    --bc-bg-tertiary: #334155;
+    --bc-surface: #1e293b;
+    --bc-surface-hover: #334155;
+    --bc-overlay: rgba(0, 0, 0, 0.6);
+
+    --bc-text: #f1f5f9;
+    --bc-text-secondary: #cbd5e1;
+    --bc-text-muted: #64748b;
+    --bc-text-inverse: #0f172a;
+
+    --bc-border: #334155;
+    --bc-border-hover: #475569;
+
+    --bc-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --bc-shadow: 0 1px 3px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(0, 0, 0, 0.3);
+    --bc-shadow-md:
+        0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -2px rgba(0, 0, 0, 0.3);
+    --bc-shadow-lg:
+        0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -4px rgba(0, 0, 0, 0.3);
+    --bc-shadow-xl:
+        0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4);
+
+    --bc-glass-bg: rgba(255, 255, 255, 0.08);
+    --bc-glass-border: rgba(255, 255, 255, 0.12);
+    --bc-glass-blur: 20px;
+}

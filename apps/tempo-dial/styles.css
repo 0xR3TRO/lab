@@ -1,0 +1,504 @@
+/* ============================================================
+   TempoDial — styles.css
+   Modern analog clock widget styles
+   ============================================================ */
+
+/* --- CSS Custom Properties (defaults = classic theme) --- */
+:root {
+    --td-bg: #f5f0e8;
+    --td-dial-face: #fffef9;
+    --td-dial-border: #8b7355;
+    --td-hour-hand: #2c2c2c;
+    --td-minute-hand: #2c2c2c;
+    --td-second-hand: #c0392b;
+    --td-center-dot: #2c2c2c;
+    --td-hour-markers: #2c2c2c;
+    --td-minute-markers: #999999;
+    --td-numbers: #333333;
+    --td-shadow: rgba(0, 0, 0, 0.15);
+    --td-accent: #c0392b;
+    --td-digital-text: #333333;
+
+    --td-controls-bg: rgba(255, 255, 255, 0.85);
+    --td-controls-text: #333333;
+    --td-controls-border: rgba(0, 0, 0, 0.08);
+    --td-control-hover: rgba(0, 0, 0, 0.04);
+
+    --td-transition-speed: 0.35s;
+    --td-clock-size: min(80vw, 80vh, 420px);
+
+    font-family:
+        "SF Pro Display",
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Oxygen,
+        sans-serif;
+}
+
+/* Dark mode overrides for controls */
+[data-mode="dark"] {
+    --td-controls-bg: rgba(20, 20, 40, 0.9);
+    --td-controls-text: #e0e0e0;
+    --td-controls-border: rgba(255, 255, 255, 0.08);
+    --td-control-hover: rgba(255, 255, 255, 0.06);
+}
+
+/* --- Reset & Base --- */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--td-bg);
+    color: var(--td-controls-text);
+    transition:
+        background-color var(--td-transition-speed) ease,
+        color var(--td-transition-speed) ease;
+    overflow: hidden;
+}
+
+/* --- App Layout --- */
+.app {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+    gap: 2rem;
+    padding: 1rem;
+    position: relative;
+}
+
+/* --- Controls Panel --- */
+.controls {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 100;
+    width: 220px;
+    background: var(--td-controls-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--td-controls-border);
+    border-radius: 16px;
+    padding: 1rem;
+    transition: all var(--td-transition-speed) ease;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.controls__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+}
+
+.controls__title {
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    color: var(--td-controls-text);
+}
+
+.controls__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: var(--td-control-hover);
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--td-controls-text);
+    transition: all 0.2s ease;
+}
+
+.controls__toggle:hover {
+    background: var(--td-accent);
+    color: #fff;
+}
+
+.controls__toggle:focus-visible {
+    outline: 2px solid var(--td-accent);
+    outline-offset: 2px;
+}
+
+.controls__body {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    overflow: hidden;
+    max-height: 500px;
+    transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease;
+    opacity: 1;
+}
+
+.controls__body.collapsed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Control Group */
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.control-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    opacity: 0.6;
+    color: var(--td-controls-text);
+}
+
+.control-select {
+    width: 100%;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--td-controls-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--td-controls-text);
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.5rem center;
+}
+
+.control-select:hover {
+    border-color: var(--td-accent);
+}
+
+.control-select:focus-visible {
+    outline: 2px solid var(--td-accent);
+    outline-offset: 1px;
+}
+
+.control-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.4rem 0.6rem;
+    border: 1px solid var(--td-controls-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--td-controls-text);
+    font-size: 0.8rem;
+    font-family: inherit;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.control-btn:hover {
+    border-color: var(--td-accent);
+    background: var(--td-control-hover);
+}
+
+.control-btn:focus-visible {
+    outline: 2px solid var(--td-accent);
+    outline-offset: 1px;
+}
+
+.control-btn.active {
+    background: var(--td-accent);
+    color: #fff;
+    border-color: var(--td-accent);
+}
+
+/* --- Clock Container --- */
+.clock-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.clock {
+    width: var(--td-clock-size);
+    height: var(--td-clock-size);
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.clock:hover {
+    transform: scale(1.02);
+}
+
+/* --- SVG Clock Styles --- */
+.clock__face {
+    width: 100%;
+    height: 100%;
+}
+
+.clock__bg {
+    fill: var(--td-dial-face);
+    transition: fill var(--td-transition-speed) ease;
+}
+
+.clock__border {
+    stroke: var(--td-dial-border);
+    transition: stroke var(--td-transition-speed) ease;
+}
+
+.clock__hand {
+    transition:
+        stroke var(--td-transition-speed) ease,
+        stroke-width 0.2s ease;
+    transform-origin: 200px 200px;
+}
+
+.clock__hand--hour {
+    stroke: var(--td-hour-hand);
+    stroke-width: 6;
+}
+
+.clock__hand--minute {
+    stroke: var(--td-minute-hand);
+    stroke-width: 4;
+}
+
+.clock__hand--second {
+    stroke: var(--td-second-hand);
+    stroke-width: 1.5;
+}
+
+.clock__hand--second.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.clock__center {
+    fill: var(--td-center-dot);
+    transition: fill var(--td-transition-speed) ease;
+}
+
+/* Hand style variants */
+.hands-modern .clock__hand--hour {
+    stroke-width: 5;
+}
+.hands-modern .clock__hand--minute {
+    stroke-width: 3;
+}
+.hands-modern .clock__hand--second {
+    stroke-width: 1;
+}
+
+.hands-slim .clock__hand--hour {
+    stroke-width: 3;
+}
+.hands-slim .clock__hand--minute {
+    stroke-width: 2;
+}
+.hands-slim .clock__hand--second {
+    stroke-width: 0.8;
+}
+
+.hands-bold .clock__hand--hour {
+    stroke-width: 9;
+}
+.hands-bold .clock__hand--minute {
+    stroke-width: 6;
+}
+.hands-bold .clock__hand--second {
+    stroke-width: 2.5;
+}
+
+/* Marker styles */
+.marker-hour {
+    stroke: var(--td-hour-markers);
+    stroke-width: 3;
+    stroke-linecap: round;
+    transition: stroke var(--td-transition-speed) ease;
+}
+
+.marker-minute {
+    stroke: var(--td-minute-markers);
+    stroke-width: 1;
+    stroke-linecap: round;
+    transition: stroke var(--td-transition-speed) ease;
+}
+
+.marker-number {
+    fill: var(--td-numbers);
+    font-size: 24px;
+    font-weight: 600;
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-family: inherit;
+    transition: fill var(--td-transition-speed) ease;
+}
+
+.marker-roman {
+    fill: var(--td-numbers);
+    font-size: 20px;
+    font-weight: 500;
+    text-anchor: middle;
+    dominant-baseline: central;
+    font-family: "Georgia", serif;
+    transition: fill var(--td-transition-speed) ease;
+}
+
+/* --- Digital Display --- */
+.digital-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    animation: fadeIn 0.3s ease;
+}
+
+.digital-display[hidden] {
+    display: none;
+}
+
+.digital-time {
+    font-size: 1.8rem;
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    color: var(--td-digital-text);
+    font-variant-numeric: tabular-nums;
+    transition: color var(--td-transition-speed) ease;
+}
+
+.digital-date {
+    font-size: 0.8rem;
+    opacity: 0.5;
+    color: var(--td-digital-text);
+    transition: color var(--td-transition-speed) ease;
+}
+
+/* --- Animations --- */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+}
+
+/* --- Neon theme glow effects --- */
+[data-theme="neon"] .clock__border {
+    filter: drop-shadow(0 0 6px var(--td-dial-border));
+}
+
+[data-theme="neon"] .clock__hand--second {
+    filter: drop-shadow(0 0 4px var(--td-second-hand));
+}
+
+[data-theme="neon"] .clock__center {
+    filter: drop-shadow(0 0 4px var(--td-center-dot));
+}
+
+[data-theme="neon"] .marker-hour,
+[data-theme="neon"] .marker-number,
+[data-theme="neon"] .marker-roman {
+    filter: drop-shadow(0 0 3px var(--td-hour-markers));
+}
+
+[data-theme="neon"] .digital-time {
+    text-shadow: 0 0 10px var(--td-digital-text);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .controls {
+        position: fixed;
+        top: auto;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        width: 100%;
+        border-radius: 16px 16px 0 0;
+        padding: 0.75rem 1rem;
+        max-height: 60vh;
+        overflow-y: auto;
+    }
+
+    .controls__body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+    }
+
+    .app {
+        padding-bottom: 12rem;
+    }
+
+    :root {
+        --td-clock-size: min(75vw, 75vh, 360px);
+    }
+}
+
+@media (max-width: 400px) {
+    .controls__body {
+        grid-template-columns: 1fr;
+    }
+
+    :root {
+        --td-clock-size: min(85vw, 60vh, 300px);
+    }
+}
+
+/* --- Focus & Accessibility --- */
+:focus-visible {
+    outline: 2px solid var(--td-accent);
+    outline-offset: 2px;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* Print styles */
+@media print {
+    .controls {
+        display: none;
+    }
+    body {
+        background: #fff;
+    }
+}

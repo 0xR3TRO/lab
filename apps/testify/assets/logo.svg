@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6c5ce7;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#a29bfe;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="200" height="200" rx="40" fill="url(#grad)"/>
+  <text x="100" y="85" text-anchor="middle" font-family="Arial, sans-serif" font-size="48" font-weight="bold" fill="#fff">T</text>
+  <text x="100" y="130" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="rgba(255,255,255,0.9)">Testify</text>
+  <circle cx="100" cy="158" r="5" fill="rgba(255,255,255,0.6)"/>
+  <circle cx="85" cy="158" r="3" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="115" cy="158" r="3" fill="rgba(255,255,255,0.4)"/>
+</svg>

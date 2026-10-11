@@ -1,0 +1,24 @@
+{
+    "id": "neon",
+    "name": "Neon",
+    "description": "Vibrant cyberpunk glow",
+    "colors": {
+        "background": "#0a0a1a",
+        "dialFace": "#111128",
+        "dialBorder": "#00ffff",
+        "hourHand": "#ff00ff",
+        "minuteHand": "#00ffff",
+        "secondHand": "#ffff00",
+        "centerDot": "#ffffff",
+        "hourMarkers": "#00ffff",
+        "minuteMarkers": "#333366",
+        "numbers": "#00ffff",
+        "shadow": "rgba(0, 255, 255, 0.2)",
+        "accent": "#ff00ff",
+        "digitalText": "#00ffff"
+    },
+    "meta": {
+        "category": "dark",
+        "author": "TempoDial"
+    }
+}

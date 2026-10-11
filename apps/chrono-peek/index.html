@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="ChronoPeek — A modern, compact calendar widget built with pure HTML, CSS & JavaScript."
+        />
+        <meta name="theme-color" content="#6366f1" />
+        <title>ChronoPeek — Calendar Widget</title>
+        <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="../../shared/fonts/fonts.css" />
+    </head>
+    <body>
+        <!-- Toast container -->
+        <div
+            id="toast-container"
+            class="toast-container"
+            aria-live="polite"
+            aria-atomic="true"
+        ></div>
+
+        <!-- Main widget wrapper -->
+        <main class="app" role="main">
+            <div
+                class="widget"
+                role="application"
+                aria-label="ChronoPeek Calendar Widget"
+            >
+                <!-- Header -->
+                <header class="widget__header">
+                    <div class="widget__title-row">
+                        <h1 class="widget__logo">Chrono<span>Peek</span></h1>
+                        <button
+                            id="theme-toggle"
+                            class="btn-icon"
+                            aria-label="Toggle dark mode"
+                            title="Toggle theme (T)"
+                        >
+                            <svg
+                                class="icon icon--sun"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line
+                                    x1="18.36"
+                                    y1="18.36"
+                                    x2="19.78"
+                                    y2="19.78"
+                                />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line
+                                    x1="4.22"
+                                    y1="19.78"
+                                    x2="5.64"
+                                    y2="18.36"
+                                />
+                                <line
+                                    x1="18.36"
+                                    y1="5.64"
+                                    x2="19.78"
+                                    y2="4.22"
+                                />
+                            </svg>
+                            <svg
+                                class="icon icon--moon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+
+                    <!-- Navigation -->
+                    <nav class="widget__nav" aria-label="Calendar navigation">
+                        <button
+                            id="btn-prev"
+                            class="btn-icon"
+                            aria-label="Previous month"
+                            title="Previous month (←)"
+                        >
+                            <svg
+                                class="icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <polyline points="15 18 9 12 15 6" />
+                            </svg>
+                        </button>
+                        <div class="widget__month-year" aria-live="polite">
+                            <span
+                                id="display-month"
+                                class="widget__month"
+                            ></span>
+                            <span id="display-year" class="widget__year"></span>
+                        </div>
+                        <button
+                            id="btn-next"
+                            class="btn-icon"
+                            aria-label="Next month"
+                            title="Next month (→)"
+                        >
+                            <svg
+                                class="icon"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <polyline points="9 18 15 12 9 6" />
+                            </svg>
+                        </button>
+                    </nav>
+                </header>
+
+                <!-- Calendar grid -->
+                <section class="calendar" aria-label="Calendar">
+                    <div class="calendar__weekdays" role="row">
+                        <span role="columnheader" aria-label="Monday">Mo</span>
+                        <span role="columnheader" aria-label="Tuesday">Tu</span>
+                        <span role="columnheader" aria-label="Wednesday"
+                            >We</span
+                        >
+                        <span role="columnheader" aria-label="Thursday"
+                            >Th</span
+                        >
+                        <span role="columnheader" aria-label="Friday">Fr</span>
+                        <span role="columnheader" aria-label="Saturday"
+                            >Sa</span
+                        >
+                        <span role="columnheader" aria-label="Sunday">Su</span>
+                    </div>
+                    <div
+                        id="calendar-grid"
+                        class="calendar__grid"
+                        role="grid"
+                        aria-label="Days of the month"
+                    ></div>
+                </section>
+
+                <!-- Footer actions -->
+                <footer class="widget__footer">
+                    <button
+                        id="btn-today"
+                        class="btn btn--primary"
+                        aria-label="Go to today"
+                        title="Go to today (Home)"
+                    >
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <rect
+                                x="3"
+                                y="4"
+                                width="18"
+                                height="18"
+                                rx="2"
+                                ry="2"
+                            />
+                            <line x1="16" y1="2" x2="16" y2="6" />
+                            <line x1="8" y1="2" x2="8" y2="6" />
+                            <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                        Today
+                    </button>
+                    <button
+                        id="btn-add-event"
+                        class="btn btn--secondary"
+                        aria-label="Add event"
+                        title="Add event (N)"
+                    >
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line x1="12" y1="5" x2="12" y2="19" />
+                            <line x1="5" y1="12" x2="19" y2="12" />
+                        </svg>
+                        Add Event
+                    </button>
+                </footer>
+            </div>
+
+            <!-- Day detail / event panel (sidebar) -->
+            <aside
+                id="day-panel"
+                class="day-panel"
+                aria-label="Day details"
+                hidden
+            >
+                <div class="day-panel__header">
+                    <h2 id="panel-date" class="day-panel__title"></h2>
+                    <button
+                        id="panel-close"
+                        class="btn-icon"
+                        aria-label="Close panel"
+                        title="Close (Esc)"
+                    >
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+                <div id="panel-events" class="day-panel__events"></div>
+                <button
+                    id="panel-add-event"
+                    class="btn btn--primary btn--full"
+                    aria-label="Add event for this day"
+                >
+                    <svg
+                        class="icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    >
+                        <line x1="12" y1="5" x2="12" y2="19" />
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                    Add Event
+                </button>
+            </aside>
+        </main>
+
+        <!-- Event Modal -->
+        <div
+            id="event-modal"
+            class="modal-overlay"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
+            hidden
+        >
+            <div class="modal">
+                <div class="modal__header">
+                    <h2 id="modal-title" class="modal__title">New Event</h2>
+                    <button
+                        id="modal-close"
+                        class="btn-icon"
+                        aria-label="Close modal"
+                    >
+                        <svg
+                            class="icon"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        >
+                            <line x1="18" y1="6" x2="6" y2="18" />
+                            <line x1="6" y1="6" x2="18" y2="18" />
+                        </svg>
+                    </button>
+                </div>
+                <form id="event-form" class="modal__form" novalidate>
+                    <div class="form-group">
+                        <label for="event-title"
+                            >Title
+                            <span class="required" aria-hidden="true"
+                                >*</span
+                            ></label
+                        >
+                        <input
+                            type="text"
+                            id="event-title"
+                            class="input"
+                            maxlength="80"
+                            required
+                            autocomplete="off"
+                            placeholder="Meeting, Birthday, Deadline…"
+                        />
+                    </div>
+                    <div class="form-group">
+                        <label for="event-date">Date</label>
+                        <input
+                            type="date"
+                            id="event-date"
+                            class="input"
+                            required
+                        />
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="event-time">Time</label>
+                            <input type="time" id="event-time" class="input" />
+                        </div>
+                        <div class="form-group">
+                            <label for="event-color">Color</label>
+                            <select id="event-color" class="input">
+                                <option value="#6366f1">Indigo</option>
+                                <option value="#ec4899">Pink</option>
+                                <option value="#10b981">Emerald</option>
+                                <option value="#f59e0b">Amber</option>
+                                <option value="#ef4444">Red</option>
+                                <option value="#3b82f6">Blue</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="event-note">Notes</label>
+                        <textarea
+                            id="event-note"
+                            class="input"
+                            rows="3"
+                            maxlength="300"
+                            placeholder="Optional notes…"
+                        ></textarea>
+                    </div>
+                    <div class="modal__actions">
+                        <button
+                            type="button"
+                            id="modal-delete"
+                            class="btn btn--danger"
+                            hidden
+                        >
+                            Delete
+                        </button>
+                        <div class="modal__actions-right">
+                            <button
+                                type="button"
+                                id="modal-cancel"
+                                class="btn btn--ghost"
+                            >
+                                Cancel
+                            </button>
+                            <button type="submit" class="btn btn--primary">
+                                Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <script src="script.js"></script>
+        <script src="../../shared/back.js" defer></script>
+    </body>
+</html>

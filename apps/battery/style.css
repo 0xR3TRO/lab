@@ -1,0 +1,92 @@
+.battery-card {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 32px;
+    padding: 32px;
+}
+
+.battery {
+    position: relative;
+    width: 220px;
+    height: 104px;
+    padding: 8px;
+    border: 6px solid var(--text);
+    border-radius: 22px;
+}
+
+.battery::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -20px;
+    width: 12px;
+    height: 36px;
+    border-radius: 0 8px 8px 0;
+    background: var(--text);
+    transform: translateY(-50%);
+}
+
+.battery-fill {
+    width: 0;
+    height: 100%;
+    border-radius: 12px;
+    background: var(--good);
+    transition: width 0.6s ease, background-color 0.3s ease;
+}
+
+.battery-fill.mid {
+    background: var(--warn);
+}
+
+.battery-fill.low {
+    background: var(--bad);
+}
+
+.battery-bolt {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    color: var(--surface);
+    filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.45));
+}
+
+.battery-bolt svg {
+    width: 44px;
+    height: 44px;
+}
+
+.battery.charging .battery-bolt {
+    display: grid;
+}
+
+.battery.charging .battery-fill {
+    background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 1.8s linear infinite;
+}
+
+@keyframes shimmer {
+    from { background-position: 200% 0; }
+    to { background-position: -200% 0; }
+}
+
+.battery-info .level {
+    margin: 0;
+    font-family: "Space Grotesk", "Inter", system-ui, sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.battery-info .state {
+    margin: 8px 0 0;
+    color: var(--muted);
+    font-size: 18px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .battery.charging .battery-fill { animation: none; }
+}

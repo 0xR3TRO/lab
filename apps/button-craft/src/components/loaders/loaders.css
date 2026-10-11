@@ -1,0 +1,165 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Animated Loaders
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Kolekcja animowanych wskaźników ładowania (spinners, dots,
+ *  bars, pulse rings).
+ * ============================================================
+ */
+
+/* ── Spinner (border) ───────────────────────────────────── */
+.bc-loader-spin {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--bc-border, #334155);
+    border-top-color: var(--bc-color-primary, #6366f1);
+    border-radius: 50%;
+    animation: bc-spin 0.7s linear infinite;
+    display: inline-block;
+}
+
+@keyframes bc-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ── Dots bounce ────────────────────────────────────────── */
+.bc-loader-dots {
+    display: inline-flex;
+    gap: 6px;
+}
+
+.bc-loader-dots span {
+    width: 10px;
+    height: 10px;
+    background: var(--bc-color-primary, #6366f1);
+    border-radius: 50%;
+    animation: bc-dot-bounce 0.6s ease-in-out infinite alternate;
+}
+
+.bc-loader-dots span:nth-child(2) {
+    animation-delay: 0.2s;
+}
+.bc-loader-dots span:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
+@keyframes bc-dot-bounce {
+    from {
+        transform: translateY(0);
+        opacity: 0.4;
+    }
+    to {
+        transform: translateY(-12px);
+        opacity: 1;
+    }
+}
+
+/* ── Bars ───────────────────────────────────────────────── */
+.bc-loader-bars {
+    display: inline-flex;
+    gap: 4px;
+    align-items: flex-end;
+    height: 32px;
+}
+
+.bc-loader-bars span {
+    width: 5px;
+    background: var(--bc-color-primary, #6366f1);
+    border-radius: 3px;
+    animation: bc-bar-grow 0.8s ease-in-out infinite alternate;
+}
+
+.bc-loader-bars span:nth-child(1) {
+    animation-delay: 0s;
+    height: 12px;
+}
+.bc-loader-bars span:nth-child(2) {
+    animation-delay: 0.15s;
+    height: 20px;
+}
+.bc-loader-bars span:nth-child(3) {
+    animation-delay: 0.3s;
+    height: 28px;
+}
+.bc-loader-bars span:nth-child(4) {
+    animation-delay: 0.15s;
+    height: 20px;
+}
+.bc-loader-bars span:nth-child(5) {
+    animation-delay: 0s;
+    height: 12px;
+}
+
+@keyframes bc-bar-grow {
+    to {
+        height: 32px;
+    }
+}
+
+/* ── Pulse ring ─────────────────────────────────────────── */
+.bc-loader-pulse {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    display: inline-block;
+}
+
+.bc-loader-pulse::before,
+.bc-loader-pulse::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--bc-color-primary, #6366f1);
+    border-radius: 50%;
+    animation: bc-pulse-ring 1.5s ease-out infinite;
+}
+
+.bc-loader-pulse::after {
+    animation-delay: 0.5s;
+}
+
+@keyframes bc-pulse-ring {
+    0% {
+        transform: scale(0.5);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5);
+        opacity: 0;
+    }
+}
+
+/* ── Gradient spinner ───────────────────────────────────── */
+.bc-loader-gradient {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        var(--bc-color-primary, #6366f1)
+    );
+    animation: bc-spin 0.8s linear infinite;
+    display: inline-block;
+    -webkit-mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 4px),
+        #000 calc(100% - 3px)
+    );
+    mask: radial-gradient(
+        farthest-side,
+        transparent calc(100% - 4px),
+        #000 calc(100% - 3px)
+    );
+}
+
+/* ── Size variants ──────────────────────────────────────── */
+.bc-loader--sm {
+    transform: scale(0.7);
+}
+.bc-loader--lg {
+    transform: scale(1.5);
+}

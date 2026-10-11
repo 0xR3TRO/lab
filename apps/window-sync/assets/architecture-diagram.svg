@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 400" font-family="system-ui, sans-serif" font-size="13">
+  <!-- Background -->
+  <rect width="720" height="400" rx="8" fill="#f5f7fa" stroke="#e0e3e8"/>
+
+  <!-- Title -->
+  <text x="360" y="30" text-anchor="middle" font-size="16" font-weight="bold" fill="#1a1a2e">WindowSync Architecture</text>
+
+  <!-- Window A -->
+  <rect x="30" y="60" width="200" height="280" rx="6" fill="#fff" stroke="#4f6ef7" stroke-width="2"/>
+  <rect x="30" y="60" width="200" height="24" rx="6" fill="#4f6ef7"/>
+  <text x="130" y="77" text-anchor="middle" fill="#fff" font-weight="600" font-size="12">Window A</text>
+  <text x="50" y="105" fill="#1a1a2e" font-weight="600" font-size="11">UIController</text>
+  <rect x="45" y="112" width="170" height="28" rx="4" fill="#eef1fd" stroke="#4f6ef7" stroke-dasharray="3 2"/>
+  <text x="130" y="130" text-anchor="middle" fill="#4f6ef7" font-size="10">User actions → state updates</text>
+
+  <text x="50" y="160" fill="#1a1a2e" font-weight="600" font-size="11">StateManager</text>
+  <rect x="45" y="167" width="170" height="28" rx="4" fill="#eef1fd" stroke="#4f6ef7" stroke-dasharray="3 2"/>
+  <text x="130" y="185" text-anchor="middle" fill="#4f6ef7" font-size="10">LWW conflict resolution</text>
+
+  <text x="50" y="215" fill="#1a1a2e" font-weight="600" font-size="11">SyncEngine</text>
+  <rect x="45" y="222" width="170" height="28" rx="4" fill="#eef1fd" stroke="#4f6ef7" stroke-dasharray="3 2"/>
+  <text x="130" y="240" text-anchor="middle" fill="#4f6ef7" font-size="10">Message routing hub</text>
+
+  <text x="50" y="270" fill="#1a1a2e" font-weight="600" font-size="11">WindowRegistry</text>
+  <rect x="45" y="277" width="170" height="28" rx="4" fill="#eef1fd" stroke="#4f6ef7" stroke-dasharray="3 2"/>
+  <text x="130" y="295" text-anchor="middle" fill="#4f6ef7" font-size="10">Heartbeat &amp; presence</text>
+
+  <!-- Window B -->
+  <rect x="490" y="60" width="200" height="280" rx="6" fill="#fff" stroke="#6c8cff" stroke-width="2"/>
+  <rect x="490" y="60" width="200" height="24" rx="6" fill="#6c8cff"/>
+  <text x="590" y="77" text-anchor="middle" fill="#fff" font-weight="600" font-size="12">Window B</text>
+  <text x="510" y="105" fill="#1a1a2e" font-weight="600" font-size="11">UIController</text>
+  <rect x="505" y="112" width="170" height="28" rx="4" fill="#eef1fd" stroke="#6c8cff" stroke-dasharray="3 2"/>
+  <text x="590" y="130" text-anchor="middle" fill="#6c8cff" font-size="10">User actions → state updates</text>
+  <text x="510" y="160" fill="#1a1a2e" font-weight="600" font-size="11">StateManager</text>
+  <rect x="505" y="167" width="170" height="28" rx="4" fill="#eef1fd" stroke="#6c8cff" stroke-dasharray="3 2"/>
+  <text x="590" y="185" text-anchor="middle" fill="#6c8cff" font-size="10">LWW conflict resolution</text>
+  <text x="510" y="215" fill="#1a1a2e" font-weight="600" font-size="11">SyncEngine</text>
+  <rect x="505" y="222" width="170" height="28" rx="4" fill="#eef1fd" stroke="#6c8cff" stroke-dasharray="3 2"/>
+  <text x="590" y="240" text-anchor="middle" fill="#6c8cff" font-size="10">Message routing hub</text>
+  <text x="510" y="270" fill="#1a1a2e" font-weight="600" font-size="11">WindowRegistry</text>
+  <rect x="505" y="277" width="170" height="28" rx="4" fill="#eef1fd" stroke="#6c8cff" stroke-dasharray="3 2"/>
+  <text x="590" y="295" text-anchor="middle" fill="#6c8cff" font-size="10">Heartbeat &amp; presence</text>
+
+  <!-- Channel Manager (center) -->
+  <rect x="275" y="140" width="170" height="120" rx="6" fill="#fff" stroke="#22c55e" stroke-width="2"/>
+  <rect x="275" y="140" width="170" height="24" rx="6" fill="#22c55e"/>
+  <text x="360" y="157" text-anchor="middle" fill="#fff" font-weight="600" font-size="12">ChannelManager</text>
+  <text x="360" y="185" text-anchor="middle" fill="#1a1a2e" font-size="11">BroadcastChannel</text>
+  <text x="360" y="205" text-anchor="middle" fill="#6b7280" font-size="10">(primary transport)</text>
+  <text x="360" y="230" text-anchor="middle" fill="#1a1a2e" font-size="11">localStorage fallback</text>
+  <text x="360" y="245" text-anchor="middle" fill="#6b7280" font-size="10">(storage events)</text>
+
+  <!-- Arrows -->
+  <line x1="230" y1="236" x2="275" y2="200" stroke="#4f6ef7" stroke-width="2" marker-end="url(#arrowBlue)"/>
+  <line x1="445" y1="200" x2="490" y2="236" stroke="#6c8cff" stroke-width="2" marker-end="url(#arrowPurple)"/>
+  <line x1="275" y1="200" x2="230" y2="236" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+  <line x1="490" y1="236" x2="445" y2="200" stroke="#22c55e" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+  <!-- localStorage bar -->
+  <rect x="240" y="350" width="240" height="30" rx="6" fill="#fef3c7" stroke="#f59e0b"/>
+  <text x="360" y="370" text-anchor="middle" fill="#92400e" font-size="11" font-weight="600">localStorage (persisted state)</text>
+
+  <line x1="130" y1="340" x2="300" y2="360" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <line x1="590" y1="340" x2="420" y2="360" stroke="#f59e0b" stroke-width="1.5" stroke-dasharray="4 3"/>
+
+  <!-- Arrow markers -->
+  <defs>
+    <marker id="arrowBlue" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#4f6ef7"/></marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#6c8cff"/></marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#22c55e"/></marker>
+  </defs>
+</svg>

@@ -1,0 +1,95 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Tooltips
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Tooltipy z animacjami wejścia (CSS-only + JS opcjonalnie).
+ * ============================================================
+ */
+
+/* Wrapper z tooltipem */
+[data-tooltip] {
+    position: relative;
+    cursor: pointer;
+}
+
+[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 8px);
+    transform: translateX(-50%) translateY(4px);
+    padding: 0.4rem 0.75rem;
+    font-family: var(--bc-font-family, sans-serif);
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #fff;
+    background: #1e293b;
+    border-radius: var(--bc-radius-sm, 0.25rem);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+    z-index: 100;
+}
+
+[data-tooltip]::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: calc(100% + 2px);
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-top-color: #1e293b;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 100;
+}
+
+[data-tooltip]:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+[data-tooltip]:hover::before {
+    opacity: 1;
+}
+
+/* Bottom position */
+[data-tooltip-pos="bottom"]::after {
+    bottom: auto;
+    top: calc(100% + 8px);
+    transform: translateX(-50%) translateY(-4px);
+}
+[data-tooltip-pos="bottom"]:hover::after {
+    transform: translateX(-50%) translateY(0);
+}
+[data-tooltip-pos="bottom"]::before {
+    bottom: auto;
+    top: calc(100% + 2px);
+    border-top-color: transparent;
+    border-bottom-color: #1e293b;
+}
+
+/* Left & Right */
+[data-tooltip-pos="left"]::after {
+    left: auto;
+    right: calc(100% + 8px);
+    bottom: 50%;
+    transform: translateY(50%) translateX(4px);
+}
+[data-tooltip-pos="left"]:hover::after {
+    transform: translateY(50%) translateX(0);
+}
+
+[data-tooltip-pos="right"]::after {
+    left: calc(100% + 8px);
+    bottom: 50%;
+    transform: translateY(50%) translateX(-4px);
+}
+[data-tooltip-pos="right"]:hover::after {
+    transform: translateY(50%) translateX(0);
+}

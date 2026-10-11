@@ -1,0 +1,89 @@
+/*
+ * ============================================================
+ *  ButtonCraft UI — Ripple Button
+ *  Author: 0xR3TRO | License: MIT
+ * ============================================================
+ *  Przyciski z efektem fali (Material Design ripple).
+ * ============================================================
+ */
+
+.btn-ripple {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 2rem;
+    font-family: var(--bc-font-family, sans-serif);
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: var(--bc-color-primary, #6366f1);
+    border: none;
+    border-radius: var(--bc-radius, 0.5rem);
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    transition:
+        background 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.btn-ripple:hover {
+    box-shadow: var(--bc-shadow-md);
+    filter: brightness(1.08);
+}
+
+.btn-ripple:active {
+    filter: brightness(0.95);
+}
+
+.btn-ripple .ripple-circle {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(0);
+    animation: ripple-anim 600ms ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes ripple-anim {
+    to {
+        transform: scale(2.5);
+        opacity: 0;
+    }
+}
+
+/* Warianty */
+.btn-ripple--secondary {
+    background: var(--bc-color-secondary, #ec4899);
+}
+.btn-ripple--success {
+    background: var(--bc-color-success, #22c55e);
+}
+.btn-ripple--danger {
+    background: var(--bc-color-danger, #ef4444);
+}
+.btn-ripple--outline {
+    background: transparent;
+    border: 2px solid var(--bc-color-primary, #6366f1);
+    color: var(--bc-color-primary, #6366f1);
+}
+.btn-ripple--outline .ripple-circle {
+    background: rgba(99, 102, 241, 0.2);
+}
+.btn-ripple--outline:hover {
+    background: rgba(99, 102, 241, 0.08);
+}
+
+.btn-ripple--sm {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+}
+.btn-ripple--lg {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+}
+.btn-ripple--pill {
+    border-radius: 9999px;
+}

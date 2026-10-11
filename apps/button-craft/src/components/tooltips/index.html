@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Tooltips</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="tooltips.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                min-height: 100vh;
+                margin: 0;
+                gap: 3rem;
+            }
+            .demo-row {
+                display: flex;
+                gap: 3rem;
+            }
+            .demo-item {
+                padding: 0.75rem 1.5rem;
+                background: var(--bc-surface);
+                border: 1px solid var(--bc-border);
+                border-radius: 0.5rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>💬 Tooltips</h1>
+        <p>Najedź na element, aby zobaczyć tooltip.</p>
+
+        <div class="demo-row">
+            <span class="demo-item" data-tooltip="Tooltip u góry"
+                >Top (default)</span
+            >
+            <span
+                class="demo-item"
+                data-tooltip="Tooltip na dole"
+                data-tooltip-pos="bottom"
+                >Bottom</span
+            >
+            <span
+                class="demo-item"
+                data-tooltip="Tooltip po lewej"
+                data-tooltip-pos="left"
+                >Left</span
+            >
+            <span
+                class="demo-item"
+                data-tooltip="Tooltip po prawej"
+                data-tooltip-pos="right"
+                >Right</span
+            >
+        </div>
+    </body>
+</html>

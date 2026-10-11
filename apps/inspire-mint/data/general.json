@@ -1,0 +1,102 @@
+[
+    {
+        "text": "Believe you can and you're halfway there.",
+        "author": "Theodore Roosevelt",
+        "tags": ["confidence", "motivation", "success"]
+    },
+    {
+        "text": "The only way to do great work is to love what you do.",
+        "author": "Steve Jobs",
+        "tags": ["passion", "work", "greatness"]
+    },
+    {
+        "text": "It does not matter how slowly you go as long as you do not stop.",
+        "author": "Confucius",
+        "tags": ["perseverance", "patience", "discipline"]
+    },
+    {
+        "text": "Act as if what you do makes a difference. It does.",
+        "author": "William James",
+        "tags": ["impact", "motivation", "positivity"]
+    },
+    {
+        "text": "What you get by achieving your goals is not as important as what you become by achieving your goals.",
+        "author": "Zig Ziglar",
+        "tags": ["growth", "goals", "self-improvement"]
+    },
+    {
+        "text": "You are never too old to set another goal or to dream a new dream.",
+        "author": "C.S. Lewis",
+        "tags": ["ambition", "dreams", "positivity"]
+    },
+    {
+        "text": "Everything you've ever wanted is on the other side of fear.",
+        "author": "George Addair",
+        "tags": ["courage", "fear", "motivation"]
+    },
+    {
+        "text": "The secret of getting ahead is getting started.",
+        "author": "Mark Twain",
+        "tags": ["action", "discipline", "motivation"]
+    },
+    {
+        "text": "Hardships often prepare ordinary people for an extraordinary destiny.",
+        "author": "C.S. Lewis",
+        "tags": ["resilience", "growth", "perseverance"]
+    },
+    {
+        "text": "Keep your face always toward the sunshine and shadows will fall behind you.",
+        "author": "Walt Whitman",
+        "tags": ["positivity", "optimism", "motivation"]
+    },
+    {
+        "text": "The best time to plant a tree was 20 years ago. The second best time is now.",
+        "author": "Chinese Proverb",
+        "tags": ["action", "motivation", "growth"]
+    },
+    {
+        "text": "Don't watch the clock; do what it does. Keep going.",
+        "author": "Sam Levenson",
+        "tags": ["perseverance", "discipline", "motivation"]
+    },
+    {
+        "text": "Start where you are. Use what you have. Do what you can.",
+        "author": "Arthur Ashe",
+        "tags": ["action", "resourcefulness", "motivation"]
+    },
+    {
+        "text": "In the middle of every difficulty lies opportunity.",
+        "author": "Albert Einstein",
+        "tags": ["resilience", "optimism", "growth"]
+    },
+    {
+        "text": "Happiness is not something ready made. It comes from your own actions.",
+        "author": "Dalai Lama",
+        "tags": ["happiness", "action", "positivity"]
+    },
+    {
+        "text": "With the new day comes new strength and new thoughts.",
+        "author": "Eleanor Roosevelt",
+        "tags": ["positivity", "resilience", "motivation"]
+    },
+    {
+        "text": "Your limitation — it's only your imagination.",
+        "author": "Unknown",
+        "tags": ["confidence", "ambition", "motivation"]
+    },
+    {
+        "text": "Great things never come from comfort zones.",
+        "author": "Unknown",
+        "tags": ["courage", "growth", "ambition"]
+    },
+    {
+        "text": "Dream it. Wish it. Do it.",
+        "author": "Unknown",
+        "tags": ["action", "dreams", "motivation"]
+    },
+    {
+        "text": "The harder you work for something, the greater you'll feel when you achieve it.",
+        "author": "Unknown",
+        "tags": ["discipline", "perseverance", "success"]
+    }
+]

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="pl" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ButtonCraft — Navigation</title>
+        <link rel="stylesheet" href="../../utils/variables.css" />
+        <link rel="stylesheet" href="navigation.css" />
+        <style>
+            body {
+                font-family: var(--bc-font-family, sans-serif);
+                background: var(--bc-bg);
+                color: var(--bc-text);
+                margin: 0;
+            }
+            .content {
+                padding: 4rem 2rem;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="bc-nav">
+            <a class="bc-nav__brand" href="#">ButtonCraft</a>
+
+            <button class="bc-hamburger" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+
+            <ul class="bc-nav__links">
+                <li><a class="bc-nav__link is-active" href="#">Home</a></li>
+                <li><a class="bc-nav__link" href="#">Components</a></li>
+                <li class="bc-dropdown">
+                    <a class="bc-nav__link" href="#">More ▾</a>
+                    <ul class="bc-dropdown__menu">
+                        <li>
+                            <a class="bc-dropdown__item" href="#">Buttons</a>
+                        </li>
+                        <li><a class="bc-dropdown__item" href="#">Cards</a></li>
+                        <li>
+                            <a class="bc-dropdown__item" href="#">Animations</a>
+                        </li>
+                    </ul>
+                </li>
+                <li><a class="bc-nav__link" href="#">About</a></li>
+            </ul>
+        </nav>
+
+        <div class="content">
+            <h1>🧭 Navigation Demo</h1>
+            <p>Responsywna nawigacja z hamburger menu i dropdown.</p>
+        </div>
+
+        <script src="navigation.js"></script>
+    </body>
+</html>
