@@ -1,5 +1,5 @@
 /*
- * web-lab — "back to the lab" button.
+ * R3TRO Lab — "back to the lab" button.
  * Included by every app page: <script src="../../shared/back.js" defer></script>
  */
 (() => {
@@ -42,7 +42,7 @@
     const link = document.createElement("a");
     link.className = "lab-back";
     link.href = home;
-    link.setAttribute("aria-label", "Back to web-lab");
+    link.setAttribute("aria-label", "Back to R3TRO Lab");
     link.innerHTML =
         '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>Lab';
     document.body.appendChild(link);

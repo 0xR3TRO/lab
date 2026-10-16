@@ -1,4 +1,4 @@
-/* CoinPulse — web-lab. Original code, MIT License. Price data: CoinGecko public API (attribution required). */
+/* CoinPulse — R3TRO Lab. Original code, MIT License. Price data: CoinGecko public API (attribution required). */
 (() => {
     const COINS = [
         { id: "bitcoin", name: "Bitcoin", symbol: "BTC", tint: "#f2a900" },

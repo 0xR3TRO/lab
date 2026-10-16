@@ -1,8 +1,8 @@
-# web-lab
+# R3TRO Lab
 
 24 small web apps, tools and UI experiments — plain HTML, CSS and JavaScript, running entirely in the browser.
 
-**Open:** https://klefas.me/web-lab/
+**Open:** https://klefas.me/lab/
 
 | Group | Apps |
 | --- | --- |
@@ -44,4 +44,4 @@ Code: [MIT](LICENSE) © 2026 0xR3TRO. Third-party libraries, fonts and data sour
 
 ## History
 
-web-lab replaced 27 separate repositories in October 2026. Twenty-one apps come from their 2026 versions. Three were rewritten from scratch (Battery Detector, CoinPulse, DateSpan). Duplicates were merged: ChronoPeek covers the two older calendar apps and Qryptix includes the password generator that used to be CipherMint. SkyPulse moved from OpenWeatherMap to Open-Meteo, so it no longer needs an API key.
+R3TRO Lab replaced 27 separate repositories in October 2026. Twenty-one apps come from their 2026 versions. Three were rewritten from scratch (Battery Detector, CoinPulse, DateSpan). Duplicates were merged: ChronoPeek covers the two older calendar apps and Qryptix includes the password generator that used to be CipherMint. SkyPulse moved from OpenWeatherMap to Open-Meteo, so it no longer needs an API key.

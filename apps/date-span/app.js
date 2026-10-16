@@ -1,4 +1,4 @@
-/* DateSpan — web-lab. Original code, MIT License. */
+/* DateSpan — R3TRO Lab. Original code, MIT License. */
 (() => {
     const $ = (id) => document.getElementById(id);
     const DAY = 86400000;

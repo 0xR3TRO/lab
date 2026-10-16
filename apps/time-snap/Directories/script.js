@@ -1,4 +1,4 @@
-// TimeSnap — part of web-lab by 0xR3TRO. MIT License.
+// TimeSnap — part of R3TRO Lab by 0xR3TRO. MIT License.
 let [milliseconds, seconds, minutes, hours] = [0, 0, 0, 0];
 let timeRef = document.querySelector(".timer-display");
 let int = null;

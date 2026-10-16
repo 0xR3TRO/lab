@@ -1,4 +1,4 @@
-/* Battery Detector — web-lab. Original code, MIT License. */
+/* Battery Detector — R3TRO Lab. Original code, MIT License. */
 (() => {
     const $ = (id) => document.getElementById(id);
 

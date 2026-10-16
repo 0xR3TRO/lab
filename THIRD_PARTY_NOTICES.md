@@ -27,7 +27,7 @@ The font files in `shared/fonts/` are unmodified Latin and Latin Extended subset
 | Sora | © 2019 The Sora Project Authors | `OFL-sora.txt` |
 | Playfair Display | © 2017 The Playfair Display Project Authors, Reserved Font Name "Playfair Display" | `OFL-playfairdisplay.txt` |
 
-Cards exported from Cardify as HTML/SVG reference these fonts on Google Fonts so that the downloaded file looks the same on other devices; the web-lab pages themselves never contact Google.
+Cards exported from Cardify as HTML/SVG reference these fonts on Google Fonts so that the downloaded file looks the same on other devices; the R3TRO Lab pages themselves never contact Google.
 
 ## Data services
 
